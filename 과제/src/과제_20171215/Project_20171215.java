@@ -52,14 +52,19 @@ public class Project_20171215 {
 //		   이름,주소,직업,나이
 		
 		String member[] = new String[4];
-		System.out.print("이름 : ");
+		System.out.print("이름을 입력해주세요 : ");
 		member[0] = s.nextLine();
-		System.out.print("주소 : ");
+		System.out.print("주소를 입력해주세요 : ");
 		member[1] = s.nextLine();
-		System.out.print("직업 : ");
+		System.out.print("직업을 입력해주세요 : ");
 		member[2] = s.nextLine();
-		System.out.print("나이 : ");
+		System.out.print("나이를 입력해주세요 : ");
 		member[3] = s.nextLine();
+		
+		System.out.println("이름 : "+member[0]);
+		System.out.println("주소 : "+member[1]);
+		System.out.println("직업 : "+member[2]);
+		System.out.println("나이 : "+member[3]);
 		
 //		5. 비정방형 배열 사용하여 2차원 배열을 만들고 
 //		   출력을 해보세요.
