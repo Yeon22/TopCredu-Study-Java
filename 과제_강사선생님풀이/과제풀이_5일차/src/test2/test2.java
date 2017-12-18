@@ -92,11 +92,8 @@ public class test2 {
 //	 array[4] = in.nextInt();
 //
 //	 System.out.println("°á°ú : "+str[array[0]]+str[array[1]]+str[array[2]]+str[array[3]]+str[array[4]]);
-//	
-//	
 		
 		
-
 	}
 
 }
