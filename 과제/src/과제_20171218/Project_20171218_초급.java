@@ -4,7 +4,7 @@ public class Project_20171218_초급 {
 
 	public static void main(String[] args) {
 		// 1. for문을 이용해서 1부터 10까지 수를 출력하시오.
-		for(int i=1; i<=10; i++) {
+		for(int i=1; i<11; i++) {
 			System.out.println("i = "+i);
 		}
 		
