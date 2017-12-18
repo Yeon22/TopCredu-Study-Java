@@ -37,7 +37,7 @@ public class Project_20171215 {
 //
 //		   07 08 09
 		
-		int arr[][] = {{1,2,3,},{4,5,6,},{7,8,9}};
+		int arr[][] = {{1,2,3},{4,5,6},{7,8,9}};
 		System.out.printf("%02d ", arr[0][0]);
 		System.out.printf("%02d ", arr[0][1]);
 		System.out.printf("%02d \n", arr[0][2]);
