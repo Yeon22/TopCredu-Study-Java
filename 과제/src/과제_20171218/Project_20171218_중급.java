@@ -16,7 +16,7 @@ public class Project_20171218_중급 {
 		}
 		
 //		2. 1~20까지 5의 배수만 출력하기 for문
-		for(int i=1; i<21; i++) {
+		for(int i=1; i<=20; i++) {
 			if(i%5==0) {
 				System.out.println(i);
 			}
