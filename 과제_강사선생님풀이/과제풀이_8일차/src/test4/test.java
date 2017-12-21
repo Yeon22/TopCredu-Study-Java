@@ -54,13 +54,13 @@ public class test {
 //		   5천원으로 계산하세요.
 		
 		
-//		  int age; //나이입력받을 변수
-//		  int cost; //밥값
-//		  Scanner s = new Scanner(System.in);
-//		  System.out.print("나이를 입력하세요 : ");
-//		  age  = s.nextInt();
-//		  cost = age * 365 * 3 * 5000;
-//		  System.out.printf("지금까지 밥값은 %d입니다.", cost);
+//		int age; //나이입력받을 변수
+//		int cost; //밥값
+//		Scanner s = new Scanner(System.in);
+//		System.out.print("나이를 입력하세요 : ");
+//		age  = s.nextInt();
+//		cost = age * 365 * 3 * 5000;
+//		System.out.printf("지금까지 밥값은 %d입니다.", cost);
 		  
 		  	
 		
@@ -91,41 +91,42 @@ public class test {
 		
 //		8. 로또 번호 생성기를 완성하시오, for문, 배열 사용 (중복없이 만들어보기)
 // 		배열  1~45 담고
-    int iLotto[] = new int[45];
+		
+		int iLotto[] = new int[45];
     
-    for(int i=0; i<45; i++)
-    {
-    	iLotto[i] = i+1;
-    }
+		for(int i=0; i<45; i++)
+		{
+			iLotto[i] = i+1;
+		}
     
-    //셔플   배열의 인덱스를 섞어준다.
-    for(int i =0; i<100; i++)
-    {
-    	int iFirst = (int)(Math.random()*45); //0~44
-    	int iSecond = (int)(Math.random()*45); //0~44
-    	int iDest =0;
+		//셔플   배열의 인덱스를 섞어준다.
+		for(int i =0; i<100; i++)
+		{
+			int iFirst = (int)(Math.random()*45); //0~44
+			int iSecond = (int)(Math.random()*45); //0~44
+			int iDest =0;
     	
-    	iDest           = iLotto[iFirst];
-    	iLotto[iFirst]  = iLotto[iSecond];
-    	iLotto[iSecond] = iDest;
-    }
+			iDest           = iLotto[iFirst];
+			iLotto[iFirst]  = iLotto[iSecond];
+			iLotto[iSecond] = iDest;
+		}
     
     
-    for(int i =0; i<6; i++)
-    {
-    	System.out.println(iLotto[i]);
-    }
+	    for(int i =0; i<6; i++)
+	    {
+	    	System.out.println(iLotto[i]);
+	    }
     
     
-//    int a = 10;
-//    int b = 20;
-//    int c =0;
-//    //서로 값을 바꾸는 스왚 기법
-//    c = a;
-//    a = b;
-//    b = c;
-//    
-//    System.out.println("a = "+a+"b = "+b);
+//	    int a = 10;
+//	    int b = 20;
+//	    int c =0;
+//	    //서로 값을 바꾸는 스왚 기법
+//	    c = a;
+//	    a = b;
+//	    b = c;
+//	    
+//	    System.out.println("a = "+a+"b = "+b);
 
 	}
 
