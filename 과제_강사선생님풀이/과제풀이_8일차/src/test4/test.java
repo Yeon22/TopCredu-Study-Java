@@ -39,11 +39,11 @@ public class test {
 //		   입력 예시 ) 173
 //		   1m 73cm
 		
-//		Scanner s = new Scanner(System.in);
-//		System.out.print("키를 센티미터 단위로 입력하세요: ");
-//	    int height = s.nextInt();
-//
-//	    System.out.printf("키가 %dm %dcm 입니다.",height/100,height%100);
+		Scanner s = new Scanner(System.in);
+		System.out.print("키를 센티미터 단위로 입력하세요: ");
+		int height = s.nextInt();
+	
+		System.out.printf("키가 %dm %dcm 입니다.",height/100,height%100);
 		
 		
 		
@@ -112,21 +112,20 @@ public class test {
 		}
     
     
-	    for(int i =0; i<6; i++)
-	    {
-	    	System.out.println(iLotto[i]);
-	    }
+		for(int i =0; i<6; i++){
+			System.out.println(iLotto[i]);
+		}
     
     
-//	    int a = 10;
-//	    int b = 20;
-//	    int c =0;
-//	    //서로 값을 바꾸는 스왚 기법
-//	    c = a;
-//	    a = b;
-//	    b = c;
+//		int a = 10;
+//		int b = 20;
+//		int c =0;
+//		//서로 값을 바꾸는 스왚 기법
+//		c = a;
+//		a = b;
+//		b = c;
 //	    
-//	    System.out.println("a = "+a+"b = "+b);
+//		System.out.println("a = "+a+"b = "+b);
 
 	}
 
