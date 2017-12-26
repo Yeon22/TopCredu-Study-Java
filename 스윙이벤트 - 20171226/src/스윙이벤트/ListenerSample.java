@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
+//외부클래스
 class MyActionListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
