@@ -51,8 +51,8 @@ public class Project_20171226_3 extends JFrame{
 					System.out.println("로그인 성공");
 			    else
 			    	System.out.println("로그인 실패");
-				}
-			});
+			}
+		});
 
 		setSize(450, 250);
 		setVisible(true);
