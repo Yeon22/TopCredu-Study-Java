@@ -18,7 +18,7 @@ public class Project_20171227_6 extends JFrame {
 //		60미만 F학점 표시 
 	
 	public Project_20171227_6() {
-		setTitle("학점 계산");
+		setTitle("학점 계산기");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setLayout(null);
@@ -51,12 +51,12 @@ public class Project_20171227_6 extends JFrame {
 		add(iMath2);
 
 		JLabel Score = new JLabel();
-		Score.setBounds(150, 170, 150, 90);
+		Score.setBounds(130, 170, 150, 90);
 		add(Score);
 		
-		JButton ScoreBtn = new JButton("학점");
+		JButton ScoreBtn = new JButton("학점 계산");
 		ScoreBtn.setLocation(150, 140);
-		ScoreBtn.setSize(88, 28);
+		ScoreBtn.setSize(95, 28);
 		add(ScoreBtn);
 		
 		ScoreBtn.addActionListener(new ActionListener() {
@@ -71,19 +71,19 @@ public class Project_20171227_6 extends JFrame {
 				switch((int)avg/10) {
 				case 10:
 				case 9:
-					Score.setText("학점 : A");
+					Score.setText("당신의 학점은 : A 입니다.");
 					break;
 				case 8:
-					Score.setText("학점 : B");
+					Score.setText("당신의 학점은 : B 입니다.");
 					break;
 				case 7:
-					Score.setText("학점 : C");
+					Score.setText("당신의 학점은 : C 입니다.");
 					break;
 				case 6:
-					Score.setText("학점 : D");
+					Score.setText("당신의 학점은 : D 입니다.");
 					break;
 				default:
-					Score.setText("학점 : F");
+					Score.setText("당신의 학점은 : F 입니다.");
 					break;
 				}
 			}
