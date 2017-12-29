@@ -28,7 +28,9 @@ public class paintPanelEx extends JFrame {
 			super.paintComponents(g);
 			g.setColor(Color.BLUE);
 			g.drawRect(10, 10, 50, 50);
+			g.setColor(Color.RED);
 			g.drawRect(50, 50, 50, 50);
+			g.setColor(Color.BLACK);
 			g.drawRect(90, 90, 50, 50);
 		}
 	}
