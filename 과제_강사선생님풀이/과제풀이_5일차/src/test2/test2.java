@@ -7,7 +7,6 @@ public class test2 {
 	public static void main(String[] args) {
 		//세개의 정수를 배열로 입력받아서 큰수를 출력하시오.
 		
-		
 //		Scanner s = new Scanner(System.in);
 //		
 //		int Max[] = new int[3];
@@ -36,7 +35,9 @@ public class test2 {
 //			}
 //		}
 		
+		
 		//세개의 정수를 배열로 입력받아서 작은수를 출력하시오.
+		
 //		Scanner s = new Scanner(System.in);
 //		
 //		int Max[] = new int[3];
@@ -64,18 +65,19 @@ public class test2 {
 //				System.out.println("Max[2]이 제일작습니다."+Max[2]);
 //			}
 //		}
-//3		
-// 문자 배열을 이용해서 'h','e','l','l','o' 를 초기화 하세요.
-// 그 후 int형 배열 5개에 숫자를 입력 받습니다.
-// 입력은 숫자로 이어서 받습니다.
-// 하단처럼 결과가 나올수 있게 알고리즘을 작성합니다.
-//  ex)
-// 	숫자다섯개를 입력하세요 : 0 1 2 3 4
-// 	결과 : hello
-// 	숫자다섯개를 입력하세요 : 2 3 0 1 4
-// 	결과 : llheo	
-// 	숫자다섯개를 입력하세요 : 4 3 2 1 1
-// 	결과 : ollee
+		
+		
+//	3.문자 배열을 이용해서 'h','e','l','l','o' 를 초기화 하세요.
+//	그 후 int형 배열 5개에 숫자를 입력 받습니다.
+//	입력은 숫자로 이어서 받습니다.
+//	하단처럼 결과가 나올수 있게 알고리즘을 작성합니다.
+// 	ex)
+//	숫자다섯개를 입력하세요 : 0 1 2 3 4
+//	결과 : hello
+//	숫자다섯개를 입력하세요 : 2 3 0 1 4
+//	결과 : llheo	
+//	숫자다섯개를 입력하세요 : 4 3 2 1 1
+//	결과 : ollee
 //		
 //	 char str[] = {'h','e','l','l','o'};
 //	 
@@ -92,8 +94,7 @@ public class test2 {
 //	 array[4] = in.nextInt();
 //
 //	 System.out.println("결과 : "+str[array[0]]+str[array[1]]+str[array[2]]+str[array[3]]+str[array[4]]);
-		
-		
+
 	}
 
 }

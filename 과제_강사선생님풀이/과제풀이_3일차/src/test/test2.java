@@ -48,17 +48,6 @@ public class test2 {
 		System.out.print("이메일 : ");
 		이메일 = s.nextLine();
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 
 }

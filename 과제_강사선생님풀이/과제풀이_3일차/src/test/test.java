@@ -20,13 +20,6 @@ public class test {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
 		//2.숫자를 두개 입력 받고 
 		//두수를 뺀 값을 출력하세요.
 		
@@ -67,8 +60,11 @@ public class test {
 //		int b =0;
 //		b = s.nextInt();
 //		System.out.println("a * b = "+(a/b));
+		
+		
 		//5.숫자를 두개 입력 받고 
 		//두수를 나머지 값을 출력하세요.
+		
 		Scanner s = new Scanner(System.in);
 		
 		System.out.print("첫번째 숫자 입력 : ");

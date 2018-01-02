@@ -17,16 +17,6 @@ public class test6 {
 		//삼항연산자
 		String str = (a%2==0) ? "짝수입니다.":"홀수입니다.";
 		System.out.println(str);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 	}
 

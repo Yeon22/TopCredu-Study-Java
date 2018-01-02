@@ -14,6 +14,7 @@ public class test2 {
 //			System.out.println();
 //		}
 		
+		
 		//구구단 세로
 //		for(int i =1; i<10; i++)//i는 1~9 (뒤에나오게)
 //		{
@@ -23,6 +24,7 @@ public class test2 {
 //			}
 //			System.out.println();
 //		}
+		
 		
 		
 //		*

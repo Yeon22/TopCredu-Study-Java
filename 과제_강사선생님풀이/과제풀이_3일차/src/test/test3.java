@@ -24,7 +24,6 @@ public class test3 {
 		System.out.println("총점 : "+iTotal);
 		fAvg  = iTotal/3.0f;
 		System.out.println("평균 : "+fAvg);
-		//쉬었다가 이어서...
 		
 	}
 

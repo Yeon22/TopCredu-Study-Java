@@ -50,9 +50,7 @@ public class test extends JFrame{
 //				System.out.println(2-(ImgCnt%3));
 				imageLabel.setIcon(image[2-(ImgCnt%3)]);
 			}
-			
 		});
-		
 		
 		RightBtn.addActionListener(new ActionListener() {
 			@Override
@@ -69,7 +67,6 @@ public class test extends JFrame{
 		
 		setSize(500,500);
 		setVisible(true);
-		
 	}
 
 	public static void main(String[] args) {
