@@ -35,7 +35,7 @@ public class ScoreManager extends JFrame {
 				panel.removeAll();
 				panel.revalidate();
 				panel.repaint();
-//				panel.add(new Student());
+				panel.add(new Student());
 				panel.setLayout(null);
 			}
 		});
@@ -45,7 +45,7 @@ public class ScoreManager extends JFrame {
 				panel.removeAll();
 				panel.revalidate();
 				panel.repaint();
-//				panel.add(new Score());
+				panel.add(new Score());
 				panel.setLayout(null);
 			}
 		});
@@ -55,14 +55,14 @@ public class ScoreManager extends JFrame {
 				panel.removeAll();
 				panel.revalidate();
 				panel.repaint();
-//				panel.add(new Graph());
+				panel.add(new Graph());
 				panel.setLayout(null);
 			}
 		});
 		
 		add(panel);
 		setJMenuBar(menubar);
-		setSize(800, 800);
+		setSize(700, 800);
 		setResizable(false);
 		setVisible(true);
 	}
