@@ -35,6 +35,7 @@ public class ChatServer extends JFrame implements ActionListener{
 		setTitle("서버 채팅 창");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
+		
 		clientMessage = new Receiver();
 		clientMessage.setEditable(false);
 		Thread t = new Thread(clientMessage);
@@ -51,6 +52,7 @@ public class ChatServer extends JFrame implements ActionListener{
 		panel.add(IconBox);
 		add(spane,BorderLayout.CENTER);
 		add(panel,BorderLayout.SOUTH);
+		
 		setSize(400,200);
 		setVisible(true);
 		
@@ -82,6 +84,7 @@ public class ChatServer extends JFrame implements ActionListener{
 	
 	private class Receiver extends JTextArea implements Runnable{
 		public void run() {
+			
 			String inputMessage = null;
 			String split[] = null;
 			
@@ -99,6 +102,7 @@ public class ChatServer extends JFrame implements ActionListener{
 					{
 						inputMessage = split[0] + split[1] +".jpg"+split[2];
 					}
+					
 				}catch(IOException e) {
 					handleError(e.getMessage());
 				}

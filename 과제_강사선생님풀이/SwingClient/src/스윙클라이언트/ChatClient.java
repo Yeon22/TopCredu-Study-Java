@@ -33,6 +33,7 @@ public class ChatClient extends JFrame implements ActionListener{
 		setTitle("클라이언트 채팅 창"); //프레임 타이틀
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //프레임 종료 버튼 클릭하면 프로그램종료
 		setLayout(new BorderLayout());
+		
 		//서버에서 받음 메시지를 출력할 컴포넌트 TextArea상속받을클래스
 		serverMessage = new Receiver(); 
 		
@@ -44,6 +45,7 @@ public class ChatClient extends JFrame implements ActionListener{
 		clientMessage = new JTextField(20);
 		clientMessage.addActionListener(this);
 		spane = new JScrollPane(serverMessage); //긴 텍스트를 위해 ScrollPane에서 표시
+		
 		//add(NickName,BorderLayout.SOUTH);
 		add(spane,BorderLayout.CENTER);
 		panel.add(NickName);
@@ -52,19 +54,23 @@ public class ChatClient extends JFrame implements ActionListener{
 		add(panel,BorderLayout.SOUTH);
 		setSize(400,200);
 		setVisible(true);
+		
 		try {
 			setupConnection();//클라이언트가 서버접속하는 함수
 		}catch(IOException e) {
 			handleError(e.getMessage());//에러가 나면 출력하는 함수
 		}
+		
 		t.start();
 	}
 	
 	private void setupConnection() throws IOException{
 		socket = new Socket("localhost",9999);
 		System.out.println("연결됨");
+		
 		//서버로부터 메세지를 받는 스트림
 		in = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
+		
 		//서버로 메세지를 보내는 스트림
 		out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 	}
