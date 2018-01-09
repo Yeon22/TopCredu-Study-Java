@@ -27,8 +27,6 @@ public class ScoreManager extends JFrame {
 		student.add(student_info);
 		JMenuItem score_info = new JMenuItem("성적현황");
 		score.add(score_info);
-		JMenuItem score_graph = new JMenuItem("그래프");
-		score.add(score_graph);
 		
 		student_info.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -46,16 +44,6 @@ public class ScoreManager extends JFrame {
 				panel.revalidate();
 				panel.repaint();
 				panel.add(new Score());
-				panel.setLayout(null);
-			}
-		});
-		
-		score_graph.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panel.removeAll();
-				panel.revalidate();
-				panel.repaint();
-				panel.add(new Graph());
 				panel.setLayout(null);
 			}
 		});
