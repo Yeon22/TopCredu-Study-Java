@@ -22,13 +22,13 @@ class MyDialog extends JDialog{
 		setTitle("회원가입");
 		setLayout(new FlowLayout());
 		
-		add(new JLabel("아이디 : "));
+		add(new JLabel("  아이디    : "));
 		add(d_id);
 		add(new JLabel("비밀번호 : "));
 		add(d_pw);
-		add(new JLabel("이름 : "));
+		add(new JLabel("   이름      : "));
 		add(name);
-		add(new JLabel("주소 : "));
+		add(new JLabel("   주소      : "));
 		add(address);
 		
 		okBtn = new JButton("회원가입하기");
