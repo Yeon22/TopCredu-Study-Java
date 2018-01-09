@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 class MyDialog extends JDialog{
@@ -36,7 +37,19 @@ class MyDialog extends JDialog{
 		okBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if(d_id.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "아이디는 필수 입력사항입니다.");
+				} else if(d_pw.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "비밀번호는 필수 입력사항입니다.");
+				} else if(name.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "이름은 필수 입력사항입니다.");
+				} else if(address.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "주소는 필수 입력사항입니다.");
+				} else {
+					// 모든 입력사항을 작성 한 후
+					JOptionPane.showConfirmDialog(null, "회원가입이 정상적으로 완료되었습니다.");
+					setVisible(false);
+				}
 			}
 		});
 		
@@ -81,7 +94,22 @@ public class LoginManager extends JFrame {
 		login.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				if(id_text.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "아이디를 입력해주세요.");
+				} else if(pw_text.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "비밀번호를 입력해주세요.");
+				} else {
+					// 아이디, 비밀번호 입력했을 때
+					if(id_text.getText().equals("kkk") && pw_text.getText().equals("123456")) {
+						JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.");
+					} else if(!id_text.getText().equals("kkk")){
+						JOptionPane.showConfirmDialog(null, "아이디가 잘못되었습니다.");
+					} else if(!pw_text.getText().equals("123456")) {
+						JOptionPane.showConfirmDialog(null, "비밀번호가 잘못되었습니다.");
+					} else {
+						// 로그인에 성공한 후 화면
+					}
+				}
 			}
 		});
 		
