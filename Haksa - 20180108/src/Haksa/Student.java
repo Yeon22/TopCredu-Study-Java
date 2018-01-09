@@ -165,12 +165,12 @@ public class Student extends JPanel {
 				table = (JTable)e.getComponent();
 				model = (DefaultTableModel)table.getModel();
 				
-				//학번
-				String sname = (String)model.getValueAt(table.getSelectedRow(), 0);
-				name.setText(sname); //id텍스트필드에 표에서 가져온 데이터를 넣어주자.
 				//이름
+				String sname = (String)model.getValueAt(table.getSelectedRow(), 0);
+				name.setText(sname); 
+				//학번
 				String sid = (String)model.getValueAt(table.getSelectedRow(), 1);
-				id.setText(sid);
+				id.setText(sid); //id텍스트필드에 표에서 가져온 데이터를 넣어주자.
 				//학과
 				String sdept = (String)model.getValueAt(table.getSelectedRow(), 2);
 				dept.setText(sdept);
