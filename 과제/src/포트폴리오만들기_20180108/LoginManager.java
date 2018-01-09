@@ -66,12 +66,12 @@ public class LoginManager extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
 		
-		JLabel l_id = new JLabel("아이디 입력");
+		JLabel l_id = new JLabel("아이디      : ");
 		id_text = new JTextField(10);
 		add(l_id);
 		add(id_text);
 		
-		JLabel l_pw = new JLabel("비밀번호 입력");
+		JLabel l_pw = new JLabel("비밀번호  : ");
 		pw_text = new JTextField(10);
 		add(l_pw);
 		add(pw_text);
