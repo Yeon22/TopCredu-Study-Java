@@ -39,15 +39,15 @@ class MyDialog extends JDialog {
 }
 
 class Info {
-	String id;
 	String name;
+	String id;
 	String department;
 	String address;
 	
-	public Info(String id, String name, String department, String address) {
+	public Info(String name, String id, String department, String address) {
 		super();
-		this.id = id;
 		this.name = name;
+		this.id = id;
 		this.department = department;
 		this.address = address;
 	}
@@ -132,8 +132,8 @@ public class Student extends JPanel {
 		add(address); // 주소 TextField 추가
 		
 //		String colName[] = {"이름", "학번", "학과", "주소"};
-		title.add("학번");
 		title.add("이름");
+		title.add("학번");
 		title.add("학과");
 		title.add("주소");
 		
@@ -166,17 +166,17 @@ public class Student extends JPanel {
 				model = (DefaultTableModel)table.getModel();
 				
 				//학번
-				String sid = (String)model.getValueAt(table.getSelectedRow(), 0);
-				id.setText(sid); //id텍스트필드에 표에서 가져온 데이터를 넣어주자.
+				String sname = (String)model.getValueAt(table.getSelectedRow(), 0);
+				name.setText(sname); //id텍스트필드에 표에서 가져온 데이터를 넣어주자.
 				//이름
-				String sname = (String)model.getValueAt(table.getSelectedRow(), 1);
-				name.setText(sname);
+				String sid = (String)model.getValueAt(table.getSelectedRow(), 1);
+				id.setText(sid);
 				//학과
 				String sdept = (String)model.getValueAt(table.getSelectedRow(), 2);
-				name.setText(sdept);
+				dept.setText(sdept);
 				//주소
 				String saddress = (String)model.getValueAt(table.getSelectedRow(), 3);
-				name.setText(saddress);
+				address.setText(saddress);
 			}
 		});
 		
@@ -189,26 +189,26 @@ public class Student extends JPanel {
 				if(name.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "이름을 입력하세요.");
 					name.requestFocus(); //필드로 커서가 가진다.
-				} else if(dept.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학과를 입력하세요.");
-					name.requestFocus(); //필드로 커서가 가진다.
 				} else if(id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "학번을 입력하세요.");
+					name.requestFocus(); //필드로 커서가 가진다.
+				} else if(dept.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "학과를 입력하세요.");
 					name.requestFocus(); //필드로 커서가 가진다.
 				} else if(address.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "주소를 입력하세요.");
 					name.requestFocus(); //필드로 커서가 가진다.
 				} else {
 					//표에 데이터를 넣어주는 곳
-					Info cInfo = new Info(id.getText(), name.getText(), dept.getText(), address.getText());
+					Info cInfo = new Info(name.getText(), id.getText(), dept.getText(), address.getText());
 					m_Vec.add(cInfo);
 					dataVector.clear();
 					
 					for(int i=0; i<m_Vec.size(); i++) {
 						Info st = m_Vec.get(i); //벡터에서 하나 꺼냄
 						Vector<String> temp = new Vector<String>();
-						temp.addElement(st.getId());
 						temp.addElement(st.getName());
+						temp.addElement(st.getId());
 						temp.addElement(st.getDepartment());
 						temp.addElement(st.getAddress());
 						dataVector.addElement(temp); //Vector<Object>에 넣어주면 표에 들어감.
@@ -226,13 +226,13 @@ public class Student extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//YES버튼을 눌렀을 때
 				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					Info student = new Info(id.getText(), name.getText(), dept.getText(), address.getText());
+					Info student = new Info(name.getText(), id.getText(), dept.getText(), address.getText());
 					
 					m_Vec.setElementAt(student, table.getSelectedRow());
 					
 					Vector<String> temp = new Vector<String>();
-					temp.addElement(id.getText());
 					temp.addElement(name.getText());
+					temp.addElement(id.getText());
 					temp.addElement(dept.getText());
 					temp.addElement(address.getText());
 					//그 위치에 다시 넣어서 수정
@@ -256,8 +256,8 @@ public class Student extends JPanel {
 					for(int i=0; i<m_Vec.size(); i++) {
 						Info st = m_Vec.get(i);
 						Vector<String> temp = new Vector<String>();
-						temp.addElement(st.getId());
 						temp.addElement(st.getName());
+						temp.addElement(st.getId());
 						temp.addElement(st.getDepartment());
 						temp.addElement(st.getAddress());
 						dataVector.addElement(temp);
