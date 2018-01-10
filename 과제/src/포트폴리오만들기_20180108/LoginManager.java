@@ -114,7 +114,9 @@ public class LoginManager extends JFrame {
 						JOptionPane.showConfirmDialog(null, "비밀번호가 잘못되었습니다.");
 					} else {
 						// 로그인에 성공한 후 화면
-						JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.");
+						if((JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.", "로그인성공", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
+							setVisible(false);
+						}
 					}
 				}
 			}
