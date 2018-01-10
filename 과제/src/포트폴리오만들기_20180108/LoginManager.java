@@ -122,7 +122,7 @@ public class LoginManager extends JFrame {
 			}
 		});
 		
-		setSize(240,150);
+		setSize(260,150);
 		setVisible(true);
 	}
 
