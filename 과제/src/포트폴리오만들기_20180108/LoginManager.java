@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 class MyDialog extends JDialog{
-	MyDialog(){
+	MyDialog(JFrame frame, String title){
+		super(frame, title, true);
 		JTextField d_id = new JTextField(12);
 		JTextField d_pw = new JTextField(12);
 		JTextField pw_check = new JTextField(12);
@@ -79,7 +80,7 @@ public class LoginManager extends JFrame {
 	JButton login;
 	JButton member;
 	
-	MyDialog dialog = new MyDialog();
+	MyDialog dialog = new MyDialog(this, "회원가입화면");
 	
 	LoginManager(){
 		setTitle("로그인화면");
