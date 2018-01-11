@@ -45,9 +45,9 @@ public class LoginManager extends JFrame {
 					JOptionPane.showConfirmDialog(null, "비밀번호를 입력해주세요.");
 				} else {
 					// 아이디, 비밀번호 입력했을 때
-					if(!id_text.getText().equals("kkk")) {
+					if(!id_text.getText().equals("aaa")) {
 						JOptionPane.showConfirmDialog(null, "아이디가 잘못되었습니다.");
-					} else if(!pw_text.getText().equals("123456")){
+					} else if(!pw_text.getText().equals("123")){
 						JOptionPane.showConfirmDialog(null, "비밀번호가 잘못되었습니다.");
 					} else {
 						// 로그인에 성공한 후 화면
