@@ -50,7 +50,7 @@ public class ScoreManager extends JFrame {
 		
 		add(panel);
 		setJMenuBar(menubar);
-		setSize(700, 800);
+		setSize(500, 500);
 		setResizable(false);
 		setVisible(true);
 	}
