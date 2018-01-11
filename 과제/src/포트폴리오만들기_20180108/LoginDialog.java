@@ -19,6 +19,7 @@ public class LoginDialog  extends JDialog{
 		JTextField pw_check = new JTextField(12);
 		JTextField name = new JTextField(12);
 		JTextField address = new JTextField(12);
+		JTextField birth = new JTextField(12);
 		JButton okBtn;
 		JButton cancelBtn;
 		
@@ -35,6 +36,8 @@ public class LoginDialog  extends JDialog{
 		add(name);
 		add(new JLabel("   주소      : "));
 		add(address);
+		add(new JLabel("   생일      :"));
+		add(birth);
 		
 		okBtn = new JButton("회원가입하기");
 		add(okBtn);
@@ -49,6 +52,8 @@ public class LoginDialog  extends JDialog{
 					JOptionPane.showConfirmDialog(null, "이름은 필수 입력사항입니다.");
 				} else if(address.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "주소는 필수 입력사항입니다.");
+				} else if(birth.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "생일은 필수 입력사항입니다.");
 				} else {
 					// 모든 입력사항을 작성 한 후
 					if(pw_check.getText().equals(d_pw.getText())) {
@@ -70,6 +75,6 @@ public class LoginDialog  extends JDialog{
 			}
 		});
 		
-		setSize(230, 230);
+		setSize(240, 250);
 	}
 }
