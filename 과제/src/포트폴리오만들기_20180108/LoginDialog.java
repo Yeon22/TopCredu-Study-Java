@@ -3,6 +3,7 @@ package 포트폴리오만들기_20180108;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -10,6 +11,73 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+class dialog_ex {
+	String d_id;
+	String d_pw;
+	String pw_check;
+	String name;
+	String address;
+	String birth;
+	
+	public dialog_ex(String d_id, String d_pw, String pw_check, String name, String address, String birth) {
+		super();
+		this.d_id = d_id;
+		this.d_pw = d_pw;
+		this.pw_check = pw_check;
+		this.name = name;
+		this.address = address;
+		this.birth = birth;
+	}
+
+	public String getD_id() {
+		return d_id;
+	}
+	
+	public void setD_id(String d_id) {
+		this.d_id = d_id;
+	}
+	
+	public String getD_pw() {
+		return d_pw;
+	}
+	
+	public void setD_pw(String d_pw) {
+		this.d_pw = d_pw;
+	}
+	
+	public String getPw_check() {
+		return pw_check;
+	}
+	
+	public void setPw_check(String pw_check) {
+		this.pw_check = pw_check;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getBirth() {
+		return birth;
+	}
+	
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+}
 
 public class LoginDialog  extends JDialog{
 	LoginDialog(JFrame frame, String title){
@@ -20,8 +88,12 @@ public class LoginDialog  extends JDialog{
 		JTextField name = new JTextField(12);
 		JTextField address = new JTextField(12);
 		JTextField birth = new JTextField(12);
+		
 		JButton okBtn;
 		JButton cancelBtn;
+		
+		Vector<dialog_ex> dialog_vector = new Vector<dialog_ex>();
+		Vector<Object> obj = new Vector<Object>();
 		
 		setTitle("회원가입");
 		setLayout(new FlowLayout());
@@ -57,6 +129,10 @@ public class LoginDialog  extends JDialog{
 				} else {
 					// 모든 입력사항을 작성 한 후
 					if(pw_check.getText().equals(d_pw.getText())) {
+						dialog_ex dex = new dialog_ex(d_id.getText(), d_pw.getText(), pw_check.getText(), name.getText(), address.getText(), birth.getText());
+						dialog_vector.add(dex);
+						obj.clear();
+						
 						JOptionPane.showConfirmDialog(null, "회원가입이 정상적으로 완료되었습니다.");
 						setVisible(false);
 					} else {
