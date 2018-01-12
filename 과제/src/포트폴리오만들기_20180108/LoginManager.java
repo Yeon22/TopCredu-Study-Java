@@ -44,15 +44,20 @@ public class LoginManager extends JFrame {
 				} else if(pw_text.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "비밀번호를 입력해주세요.");
 				} else {
-					// 아이디, 비밀번호 입력했을 때
-					if(!id_text.getText().equals("aaa")) {
-						JOptionPane.showConfirmDialog(null, "아이디가 잘못되었습니다.");
-					} else if(!pw_text.getText().equals("123")){
-						JOptionPane.showConfirmDialog(null, "비밀번호가 잘못되었습니다.");
-					} else {
-						// 로그인에 성공한 후 화면
-						if((JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.", "로그인성공", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
-							setVisible(false);
+					for(int i =0; i< LoginDialog.dialog_vector.size(); i++) {
+						dialog_ex de = LoginDialog.dialog_vector.get(i);
+						
+						// 아이디, 비밀번호 입력했을 때
+						if(!id_text.getText().equals(de.getD_id())) {
+							JOptionPane.showConfirmDialog(null, "아이디가 잘못되었습니다.");
+						} else if(!pw_text.getText().equals(de.getD_pw())){
+							JOptionPane.showConfirmDialog(null, "비밀번호가 잘못되었습니다.");
+						} else {
+							// 로그인에 성공한 후 화면
+							if((JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.", "로그인성공", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
+								setVisible(false);
+								return;
+							}
 						}
 					}
 				}

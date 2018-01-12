@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-class dialog_ex {
+ class dialog_ex {
 	String d_id;
 	String d_pw;
 	String pw_check;
@@ -90,6 +90,9 @@ class dialog_ex {
 }
 
 public class LoginDialog  extends JDialog{
+	
+	public static Vector<dialog_ex> dialog_vector = new Vector<dialog_ex>();
+	
 	LoginDialog(JFrame frame, String title){
 		super(frame, title, true);
 		JTextField d_id = new JTextField(12);
@@ -99,12 +102,9 @@ public class LoginDialog  extends JDialog{
 		JTextField address = new JTextField(12);
 		JTextField email = new JTextField(12);
 		JTextField birth = new JTextField(12);
-		
 		JButton okBtn;
 		JButton cancelBtn;
 		
-		Vector<dialog_ex> dialog_vector = new Vector<dialog_ex>();
-		Vector<Object> obj = new Vector<Object>();
 		
 		setTitle("회원가입");
 		setLayout(new FlowLayout());
@@ -123,6 +123,7 @@ public class LoginDialog  extends JDialog{
 		add(email);
 		add(new JLabel("  생일      :"));
 		add(birth);
+		
 		
 		okBtn = new JButton("회원가입하기");
 		add(okBtn);
@@ -146,10 +147,10 @@ public class LoginDialog  extends JDialog{
 					if(pw_check.getText().equals(d_pw.getText())) {
 						dialog_ex dex = new dialog_ex(d_id.getText(), d_pw.getText(), pw_check.getText(), name.getText(), address.getText(), email.getText(), birth.getText());
 						dialog_vector.add(dex);
-						obj.clear();
 						
 						JOptionPane.showConfirmDialog(null, "회원가입이 정상적으로 완료되었습니다.");
 						setVisible(false);
+						
 					} else {
 						JOptionPane.showConfirmDialog(null, "비밀번호가 같지 않습니다.");
 					}
