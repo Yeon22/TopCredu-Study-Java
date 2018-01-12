@@ -178,7 +178,7 @@ public class LoginDialog  extends JDialog{
 						dialog_ex dex = new dialog_ex(d_id.getText(), d_pw.getText(), pw_check.getText(), d_class.getText(), department.getText(), name.getText(), address.getText(), email.getText(), birth.getText());
 						dialog_vector.add(dex);
 						
-						JOptionPane.showConfirmDialog(null, "회원가입이 정상적으로 완료되었습니다.");
+						JOptionPane.showConfirmDialog(null, "회원가입이 정상적으로 완료되었습니다. \n가입해 주셔서 감사합니다.");
 						setVisible(false);
 						
 					} else {

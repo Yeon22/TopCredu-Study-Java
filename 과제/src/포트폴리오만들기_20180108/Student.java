@@ -17,9 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 class Info {
-	String id;
-	String department;
-	String name;
+	static String id;
+	static String department;
+	static String name;
 	String iKor;
 	String iEng;
 	String iMath;
@@ -36,7 +36,7 @@ class Info {
 		this.iSience = iSience;
 	}
 	
-	public String getId() {
+	public static String getId() {
 		return id;
 	}
 	
@@ -44,7 +44,7 @@ class Info {
 		this.id = id;
 	}
 	
-	public String getDepartment() {
+	public static String getDepartment() {
 		return department;
 	}
 	
@@ -52,7 +52,7 @@ class Info {
 		this.department = department;
 	}
 	
-	public String getName() {
+	public static String getName() {
 		return name;
 	}
 	
