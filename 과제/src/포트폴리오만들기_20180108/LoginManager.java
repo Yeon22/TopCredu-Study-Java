@@ -55,7 +55,7 @@ public class LoginManager extends JFrame {
 						} else {
 							// 로그인에 성공한 후 화면
 							if((JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.", "로그인성공", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
-								//학사정보관리 화면이 뜨고 회원가입할 때 작성하였던 학번, 학과, 이름이 안에 세팅되도록 구현
+								//회원가입할 때 작성하였던 학번, 학과, 이름이  ScoreManager 안에 세팅되도록 구현
 								
 								setVisible(false);
 							} else {
