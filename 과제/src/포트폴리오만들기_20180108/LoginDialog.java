@@ -16,16 +16,20 @@ import javax.swing.JTextField;
 	String d_id;
 	String d_pw;
 	String pw_check;
+	String d_class;
+	String department;
 	String name;
 	String address;
 	String birth;
 	String email;
 	
-	public dialog_ex(String d_id, String d_pw, String pw_check, String name, String address, String email, String birth) {
+	public dialog_ex(String d_id, String d_pw, String pw_check, String d_class, String department, String name, String address, String email, String birth) {
 		super();
 		this.d_id = d_id;
 		this.d_pw = d_pw;
 		this.pw_check = pw_check;
+		this.d_class = d_class;
+		this.department = department;
 		this.name = name;
 		this.address = address;
 		this.email = email;
@@ -54,6 +58,22 @@ import javax.swing.JTextField;
 	
 	public void setPw_check(String pw_check) {
 		this.pw_check = pw_check;
+	}
+	
+	public String getD_class() {
+		return d_class;
+	}
+
+	public void setD_class(String d_class) {
+		this.d_class = d_class;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 	public String getName() {
@@ -98,6 +118,8 @@ public class LoginDialog  extends JDialog{
 		JTextField d_id = new JTextField(12);
 		JTextField d_pw = new JTextField(12);
 		JTextField pw_check = new JTextField(12);
+		JTextField d_class = new JTextField(12);
+		JTextField department = new JTextField(12);
 		JTextField name = new JTextField(12);
 		JTextField address = new JTextField(12);
 		JTextField email = new JTextField(12);
@@ -115,6 +137,10 @@ public class LoginDialog  extends JDialog{
 		add(d_pw);
 		add(new JLabel("비번확인 : "));
 		add(pw_check);
+		add(new JLabel("   학번      : "));
+		add(d_class);
+		add(new JLabel("   학과      : "));
+		add(department);
 		add(new JLabel("   이름      : "));
 		add(name);
 		add(new JLabel("   주소      : "));
@@ -134,6 +160,10 @@ public class LoginDialog  extends JDialog{
 					JOptionPane.showConfirmDialog(null, "아이디는 필수 입력사항입니다.");
 				} else if(d_pw.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "비밀번호는 필수 입력사항입니다.");
+				} else if(d_class.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "학번은 필수 입력사항입니다.");
+				} else if(department.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "학과는 필수 입력사항입니다.");
 				} else if(name.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "이름은 필수 입력사항입니다.");
 				} else if(address.getText().equals("")) {
@@ -145,7 +175,7 @@ public class LoginDialog  extends JDialog{
 				} else {
 					// 모든 입력사항을 작성 한 후
 					if(pw_check.getText().equals(d_pw.getText())) {
-						dialog_ex dex = new dialog_ex(d_id.getText(), d_pw.getText(), pw_check.getText(), name.getText(), address.getText(), email.getText(), birth.getText());
+						dialog_ex dex = new dialog_ex(d_id.getText(), d_pw.getText(), pw_check.getText(), d_class.getText(), department.getText(), name.getText(), address.getText(), email.getText(), birth.getText());
 						dialog_vector.add(dex);
 						
 						JOptionPane.showConfirmDialog(null, "회원가입이 정상적으로 완료되었습니다.");
@@ -167,6 +197,6 @@ public class LoginDialog  extends JDialog{
 			}
 		});
 		
-		setSize(250, 285);
+		setSize(250, 350);
 	}
 }
