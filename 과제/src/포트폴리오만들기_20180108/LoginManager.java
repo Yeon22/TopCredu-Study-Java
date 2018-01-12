@@ -55,6 +55,7 @@ public class LoginManager extends JFrame {
 						} else {
 							// 로그인에 성공한 후 화면
 							if((JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.", "로그인성공", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
+								JOptionPane.showConfirmDialog(null, "가입을 축하드립니다.");
 								setVisible(false);
 								return;
 							}
