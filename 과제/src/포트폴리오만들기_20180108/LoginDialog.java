@@ -19,14 +19,16 @@ class dialog_ex {
 	String name;
 	String address;
 	String birth;
+	String email;
 	
-	public dialog_ex(String d_id, String d_pw, String pw_check, String name, String address, String birth) {
+	public dialog_ex(String d_id, String d_pw, String pw_check, String name, String address, String email, String birth) {
 		super();
 		this.d_id = d_id;
 		this.d_pw = d_pw;
 		this.pw_check = pw_check;
 		this.name = name;
 		this.address = address;
+		this.email = email;
 		this.birth = birth;
 	}
 
@@ -65,7 +67,15 @@ class dialog_ex {
 	public String getAddress() {
 		return address;
 	}
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
@@ -87,6 +97,7 @@ public class LoginDialog  extends JDialog{
 		JTextField pw_check = new JTextField(12);
 		JTextField name = new JTextField(12);
 		JTextField address = new JTextField(12);
+		JTextField email = new JTextField(12);
 		JTextField birth = new JTextField(12);
 		
 		JButton okBtn;
@@ -108,7 +119,9 @@ public class LoginDialog  extends JDialog{
 		add(name);
 		add(new JLabel("   주소      : "));
 		add(address);
-		add(new JLabel("   생일      :"));
+		add(new JLabel("  email     : "));
+		add(email);
+		add(new JLabel("  생일      :"));
 		add(birth);
 		
 		okBtn = new JButton("회원가입하기");
@@ -124,12 +137,14 @@ public class LoginDialog  extends JDialog{
 					JOptionPane.showConfirmDialog(null, "이름은 필수 입력사항입니다.");
 				} else if(address.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "주소는 필수 입력사항입니다.");
+				} else if(email.getText().equals("")) {
+					JOptionPane.showConfirmDialog(null, "이메일은 필수 입력사항입니다.");
 				} else if(birth.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "생일은 필수 입력사항입니다.");
 				} else {
 					// 모든 입력사항을 작성 한 후
 					if(pw_check.getText().equals(d_pw.getText())) {
-						dialog_ex dex = new dialog_ex(d_id.getText(), d_pw.getText(), pw_check.getText(), name.getText(), address.getText(), birth.getText());
+						dialog_ex dex = new dialog_ex(d_id.getText(), d_pw.getText(), pw_check.getText(), name.getText(), address.getText(), email.getText(), birth.getText());
 						dialog_vector.add(dex);
 						obj.clear();
 						
@@ -151,6 +166,6 @@ public class LoginDialog  extends JDialog{
 			}
 		});
 		
-		setSize(240, 250);
+		setSize(250, 285);
 	}
 }
