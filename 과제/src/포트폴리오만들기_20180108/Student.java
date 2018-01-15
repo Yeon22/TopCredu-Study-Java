@@ -23,18 +23,8 @@ class Info {
 	String iKor;
 	String iEng;
 	String iMath;
-	String iSience;
 	
-	public Info(String name, String iKor, String iEng, String iMath, String iSience) {
-		super();
-		this.name = name;
-		this.iKor = iKor;
-		this.iEng = iEng;
-		this.iMath = iMath;
-		this.iSience = iSience;
-	}
-	
-	public Info(String id, String department, String name, String iKor, String iEng, String iMath, String iSience) {
+	public Info(String id, String department, String name, String iKor, String iEng, String iMath) {
 		super();
 		this.id = id;
 		this.department = department;
@@ -42,7 +32,6 @@ class Info {
 		this.iKor = iKor;
 		this.iEng = iEng;
 		this.iMath = iMath;
-		this.iSience = iSience;
 	}
 	
 	public String getId() {
@@ -96,10 +85,6 @@ class Info {
 	public String getiSience() {
 		return iMath;
 	}
-	
-	public void setiSience(String iSience) {
-		this.iSience = iSience;
-	}
 }
 
 
@@ -115,7 +100,6 @@ public class Student extends JPanel {
 	JTextField iKor;
 	JTextField iEng;
 	JTextField iMath;
-	JTextField iSience;
 	JButton insertBtn;
 	JButton updateBtn;
 	JButton deleteBtn;
@@ -148,17 +132,12 @@ public class Student extends JPanel {
 		iMath = new JTextField(7);
 		add(iMath);
 		
-		add(new JLabel("과학 점수 : "));
-		iSience = new JTextField(7);
-		add(iSience);
-		
 		title.add("학번");
 		title.add("학과");
 		title.add("이름");
 		title.add("국어");
 		title.add("영어");
 		title.add("수학");
-		title.add("과학");
 		
 		model = new DefaultTableModel();
 		
@@ -197,8 +176,6 @@ public class Student extends JPanel {
 				iEng.setText(siEng);
 				String siMath = (String)model.getValueAt(table.getSelectedRow(), 5);
 				iMath.setText(siMath);
-				String siSience = (String)model.getValueAt(table.getSelectedRow(), 6);
-				iSience.setText(siSience);
 			}
 		});
 		
@@ -219,10 +196,8 @@ public class Student extends JPanel {
 					JOptionPane.showConfirmDialog(null, "영어점수를 입력하세요.");
 				} else if(iMath.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "수학점수를 입력하세요.");
-				} else if(iSience.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "과학점수를 입력하세요.");
 				} else {
-					Info cInfo = new Info(id.getText(), dept.getText(), name.getText(), iKor.getText(), iEng.getText(), iMath.getText(), iSience.getText());
+					Info cInfo = new Info(id.getText(), dept.getText(), name.getText(), iKor.getText(), iEng.getText(), iMath.getText());
 					m_Vector.add(cInfo);
 					dataVector.clear();
 					
@@ -235,7 +210,6 @@ public class Student extends JPanel {
 						temp.addElement(st.getiKor());
 						temp.addElement(st.getiEng());
 						temp.addElement(st.getiMath());
-						temp.addElement(st.getiSience());
 						dataVector.addElement(temp);
 					}
 					
@@ -250,7 +224,7 @@ public class Student extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					Info st = new Info(id.getText(), dept.getText(), name.getText(), iKor.getText(), iEng.getText(), iMath.getText(), iSience.getText());
+					Info st = new Info(id.getText(), dept.getText(), name.getText(), iKor.getText(), iEng.getText(), iMath.getText());
 					m_Vector.setElementAt(st, table.getSelectedRow());
 					
 					Vector<String> temp = new Vector<String>();
@@ -260,7 +234,6 @@ public class Student extends JPanel {
 					temp.addElement(iKor.getText());
 					temp.addElement(iEng.getText());
 					temp.addElement(iMath.getText());
-					temp.addElement(iSience.getText());
 					
 					dataVector.setElementAt(temp, table.getSelectedRow());
 					
@@ -287,7 +260,6 @@ public class Student extends JPanel {
 						temp.addElement(st.getiKor());
 						temp.addElement(st.getiEng());
 						temp.addElement(st.getiMath());
-						temp.addElement(st.getiSience());
 						dataVector.addElement(temp);
 					}
 					

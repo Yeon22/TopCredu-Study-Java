@@ -35,7 +35,6 @@ public class Score extends JPanel {
 		title.add("국어");
 		title.add("영어");
 		title.add("수학");
-		title.add("과학");
 		
 		model = new DefaultTableModel(title, 0);
 		table = new JTable(model);
@@ -57,7 +56,6 @@ public class Score extends JPanel {
 					temp.addElement(fo.getiKor());
 					temp.addElement(fo.getiEng());
 					temp.addElement(fo.getiMath());
-					temp.addElement(fo.getiSience());
 					dataVector.addElement(temp);
 				}
 				model.setDataVector(dataVector, title);
