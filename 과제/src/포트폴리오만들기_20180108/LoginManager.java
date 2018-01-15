@@ -77,6 +77,7 @@ public class LoginManager extends JFrame {
 		});
 		
 		setSize(260,150);
+		setResizable(false);
 		setVisible(true);
 	}
 

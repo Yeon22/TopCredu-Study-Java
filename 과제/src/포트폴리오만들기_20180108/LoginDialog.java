@@ -168,5 +168,6 @@ public class LoginDialog  extends JDialog{
 		});
 		
 		setSize(250, 280);
+		setResizable(false);
 	}
 }
