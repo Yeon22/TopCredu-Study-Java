@@ -18,6 +18,7 @@ public class LoginManager extends JFrame {
 	JButton member;
 	
 	LoginDialog dialog = new LoginDialog(this, "회원가입화면");
+	ScoreManager sm;
 	
 	LoginManager(){
 		setTitle("로그인화면");
@@ -55,8 +56,7 @@ public class LoginManager extends JFrame {
 						} else {
 							// 로그인에 성공한 후 화면
 							if((JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.", "로그인성공", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
-								//회원가입할 때 작성하였던 학번, 학과, 이름이  ScoreManager 안에 세팅되도록 구현
-								
+								sm = new ScoreManager();
 								setVisible(false);
 							} else {
 								setVisible(false);
