@@ -25,6 +25,15 @@ class Info {
 	String iMath;
 	String iSience;
 	
+	public Info(String name, String iKor, String iEng, String iMath, String iSience) {
+		super();
+		this.name = name;
+		this.iKor = iKor;
+		this.iEng = iEng;
+		this.iMath = iMath;
+		this.iSience = iSience;
+	}
+	
 	public Info(String id, String department, String name, String iKor, String iEng, String iMath, String iSience) {
 		super();
 		this.id = id;
@@ -95,6 +104,11 @@ class Info {
 
 
 public class Student extends JPanel {
+	
+	public static Vector<Info> m_Vector = new Vector<Info>();
+	Vector<String> title = new Vector<String>();
+	Vector<Object> dataVector = new Vector<Object>();
+	
 	JTextField id;
 	JTextField dept;
 	JTextField name;
@@ -108,10 +122,6 @@ public class Student extends JPanel {
 	
 	DefaultTableModel model;
 	JTable table;
-
-	Vector<Info> m_Vector = new Vector<Info>();
-	Vector<String> title = new Vector<String>();
-	Vector<Object> dataVector = new Vector<Object>();
 
 	Student(){
 		add(new JLabel("학번 : "));
@@ -142,7 +152,6 @@ public class Student extends JPanel {
 		iSience = new JTextField(7);
 		add(iSience);
 		
-//		String colName[] = {"학번", "학과", "이름", "국어", "영어", "수학"};
 		title.add("학번");
 		title.add("학과");
 		title.add("이름");
