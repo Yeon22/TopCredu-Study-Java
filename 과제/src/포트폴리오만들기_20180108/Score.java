@@ -26,7 +26,7 @@ public class Score extends JPanel {
 		S_dept.setBounds(10,10,30,30);
 		add(S_dept);
 		
-		String dept[] = {"전체"};
+		String dept[] = {"전체", "컴퓨터공학과", "멀티미디어과", "세무회계과", "전자공학과"};
 		JComboBox Cb_dept = new JComboBox(dept);
 		Cb_dept.setBounds(45, 10, 120, 20);
 		add(Cb_dept);
