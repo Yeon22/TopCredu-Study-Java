@@ -106,22 +106,22 @@ public class LoginDialog  extends JDialog{
 		JButton cancelBtn;
 		
 		
-		setTitle("회원가입");
+		setTitle("관리자 회원가입");
 		setLayout(new FlowLayout());
 		
-		add(new JLabel("  아이디    : "));
+		add(new JLabel("     아이디       :    "));
 		add(d_id);
-		add(new JLabel("비밀번호 : "));
+		add(new JLabel("   비밀번호    :    "));
 		add(d_pw);
-		add(new JLabel("비번확인 : "));
+		add(new JLabel("   비번확인    :    "));
 		add(pw_check);
-		add(new JLabel("   이름      : "));
+		add(new JLabel("관리자이름  :   "));
 		add(name);
-		add(new JLabel("   주소      : "));
+		add(new JLabel("      주소         :    "));
 		add(address);
-		add(new JLabel("  email     : "));
-		add(email);
-		add(new JLabel("  생일      :"));
+		add(new JLabel("     email        :    "));
+		add(email); 
+		add(new JLabel("     생일         :    "));
 		add(birth);
 		
 		

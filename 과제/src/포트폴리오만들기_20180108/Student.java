@@ -20,18 +20,18 @@ class Info {
 	String id;
 	String department;
 	String name;
-	String iKor;
-	String iEng;
-	String iMath;
+	String attend;
+	String a_exam;
+	String attitude;
 	
-	public Info(String id, String department, String name, String iKor, String iEng, String iMath) {
+	public Info(String id, String department, String name, String attend, String a_exam, String attitude) {
 		super();
 		this.id = id;
 		this.department = department;
 		this.name = name;
-		this.iKor = iKor;
-		this.iEng = iEng;
-		this.iMath = iMath;
+		this.attend = attend;
+		this.a_exam = a_exam;
+		this.attitude = attitude;
 	}
 	
 	public String getId() {
@@ -58,32 +58,28 @@ class Info {
 		this.name = name;
 	}
 	
-	public String getiKor() {
-		return iKor;
+	public String getattend() {
+		return attend;
 	}
 	
-	public void setiKor(String iKor) {
-		this.iKor = iKor;
+	public void setattend(String attend) {
+		this.attend = attend;
 	}
 	
-	public String getiEng() {
-		return iEng;
+	public String geta_exam() {
+		return a_exam;
 	}
 	
-	public void setiEng(String iEng) {
-		this.iEng = iEng;
+	public void seta_exam(String a_exam) {
+		this.a_exam = a_exam;
 	}
 	
-	public String getiMath() {
-		return iMath;
+	public String getattitude() {
+		return attitude;
 	}
 	
-	public void setiMath(String iMath) {
-		this.iMath = iMath;
-	}
-	
-	public String getiSience() {
-		return iMath;
+	public void setattitude(String attitude) {
+		this.attitude = attitude;
 	}
 }
 
@@ -97,9 +93,9 @@ public class Student extends JPanel {
 	JTextField id;
 	JTextField dept;
 	JTextField name;
-	JTextField iKor;
-	JTextField iEng;
-	JTextField iMath;
+	JTextField attend;
+	JTextField a_exam;
+	JTextField attitu;
 	JButton insertBtn;
 	JButton updateBtn;
 	JButton deleteBtn;
@@ -120,24 +116,24 @@ public class Student extends JPanel {
 		name = new JTextField(25);
 		add(name);
 		
-		add(new JLabel("국어 점수 : "));
-		iKor = new JTextField(7);
-		add(iKor);
+		add(new JLabel("출결 점수 : "));
+		attend = new JTextField(7);
+		add(attend);
 		
-		add(new JLabel("영어 점수 : "));
-		iEng = new JTextField(7);
-		add(iEng);
+		add(new JLabel("시험 점수 : "));
+		a_exam = new JTextField(7);
+		add(a_exam);
 		
-		add(new JLabel("수학 점수 : "));
-		iMath = new JTextField(7);
-		add(iMath);
+		add(new JLabel("태도 점수 : "));
+		attitu = new JTextField(7);
+		add(attitu);
 		
 		title.add("학번");
 		title.add("학과");
 		title.add("이름");
-		title.add("국어");
-		title.add("영어");
-		title.add("수학");
+		title.add("출결");
+		title.add("시험");
+		title.add("태도");
 		
 		model = new DefaultTableModel();
 		
@@ -171,11 +167,11 @@ public class Student extends JPanel {
 				String sname = (String)model.getValueAt(table.getSelectedRow(), 2);
 				name.setText(sname);
 				String siKor = (String)model.getValueAt(table.getSelectedRow(), 3);
-				iKor.setText(siKor);
+				attend.setText(siKor);
 				String siEng = (String)model.getValueAt(table.getSelectedRow(), 4);
-				iEng.setText(siEng);
+				a_exam.setText(siEng);
 				String siMath = (String)model.getValueAt(table.getSelectedRow(), 5);
-				iMath.setText(siMath);
+				attitu.setText(siMath);
 			}
 		});
 		
@@ -190,14 +186,14 @@ public class Student extends JPanel {
 					JOptionPane.showConfirmDialog(null, "학과를 입력하세요.");
 				} else if(name.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "이름을 입력하세요.");
-				} else if(iKor.getText().equals("")) {
+				} else if(attend.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "국어점수를 입력하세요.");
-				} else if(iEng.getText().equals("")) {
+				} else if(a_exam.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "영어점수를 입력하세요.");
-				} else if(iMath.getText().equals("")) {
+				} else if(attitu.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "수학점수를 입력하세요.");
 				} else {
-					Info cInfo = new Info(id.getText(), dept.getText(), name.getText(), iKor.getText(), iEng.getText(), iMath.getText());
+					Info cInfo = new Info(id.getText(), dept.getText(), name.getText(), attend.getText(), a_exam.getText(), attitu.getText());
 					m_Vector.add(cInfo);
 					dataVector.clear();
 					
@@ -207,9 +203,9 @@ public class Student extends JPanel {
 						temp.addElement(st.getId());
 						temp.addElement(st.getDepartment());
 						temp.addElement(st.getName());
-						temp.addElement(st.getiKor());
-						temp.addElement(st.getiEng());
-						temp.addElement(st.getiMath());
+						temp.addElement(st.getattend());
+						temp.addElement(st.geta_exam());
+						temp.addElement(st.getattitude());
 						dataVector.addElement(temp);
 					}
 					
@@ -224,16 +220,16 @@ public class Student extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					Info st = new Info(id.getText(), dept.getText(), name.getText(), iKor.getText(), iEng.getText(), iMath.getText());
+					Info st = new Info(id.getText(), dept.getText(), name.getText(), attend.getText(), a_exam.getText(), attitu.getText());
 					m_Vector.setElementAt(st, table.getSelectedRow());
 					
 					Vector<String> temp = new Vector<String>();
 					temp.addElement(id.getText());
 					temp.addElement(dept.getText());
 					temp.addElement(name.getText());
-					temp.addElement(iKor.getText());
-					temp.addElement(iEng.getText());
-					temp.addElement(iMath.getText());
+					temp.addElement(attend.getText());
+					temp.addElement(a_exam.getText());
+					temp.addElement(attitu.getText());
 					
 					dataVector.setElementAt(temp, table.getSelectedRow());
 					
@@ -257,9 +253,9 @@ public class Student extends JPanel {
 						temp.addElement(st.getId());
 						temp.addElement(st.getDepartment());
 						temp.addElement(st.getName());
-						temp.addElement(st.getiKor());
-						temp.addElement(st.getiEng());
-						temp.addElement(st.getiMath());
+						temp.addElement(st.getattend());
+						temp.addElement(st.geta_exam());
+						temp.addElement(st.getattitude());
 						dataVector.addElement(temp);
 					}
 					

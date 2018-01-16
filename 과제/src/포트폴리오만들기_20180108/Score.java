@@ -65,9 +65,9 @@ public class Score extends JPanel {
 						Info fo = Student.m_Vector.get(i);
 						Vector<String> temp = new Vector<String>();
 						temp.addElement(fo.getName());
-						temp.addElement(fo.getiKor());
-						temp.addElement(fo.getiEng());
-						temp.addElement(fo.getiMath());
+						temp.addElement(fo.getattend());
+						temp.addElement(fo.geta_exam());
+						temp.addElement(fo.getattitude());
 						dataVector.addElement(temp);
 					}
 					model.setDataVector(dataVector, title);
