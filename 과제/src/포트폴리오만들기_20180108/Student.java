@@ -1,6 +1,7 @@
 package 포트폴리오만들기_20180108;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -115,6 +116,10 @@ public class Student extends JPanel {
 		add(new JLabel("이름 : "));
 		name = new JTextField(25);
 		add(name);
+		
+		JLabel abc = new JLabel("점수 유형 : A+, A, A-, B+, B, B-, C+, C, C-, D+, D, F");
+		abc.setFont(new Font(null, Font.BOLD, 13));
+		add(abc);
 		
 		add(new JLabel("출결 점수 : "));
 		attend = new JTextField(7);
