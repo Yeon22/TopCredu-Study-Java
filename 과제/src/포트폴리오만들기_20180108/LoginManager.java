@@ -79,7 +79,7 @@ public class LoginManager extends JFrame {
 		});
 		
 		JLabel advice = new JLabel(" * 회원가입을 먼저 해주세요! * ");
-		advice.setFont(new Font("Senserif", Font.BOLD, 16));
+		advice.setFont(new Font("HY견고딕", Font.BOLD, 16));
 		advice.setForeground(Color.RED);
 		add(advice);
 		
