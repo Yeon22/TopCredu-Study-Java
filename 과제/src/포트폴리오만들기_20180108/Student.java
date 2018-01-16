@@ -117,8 +117,8 @@ public class Student extends JPanel {
 		name = new JTextField(25);
 		add(name);
 		
-		JLabel abc = new JLabel("점수 유형 : A+, A, A-, B+, B, B-, C+, C, C-, D+, D, F");
-		abc.setFont(new Font(null, Font.BOLD, 13));
+		JLabel abc = new JLabel("  점수유형 : A, B, C, D, E, F   ");
+		abc.setFont(new Font(null, Font.BOLD, 12));
 		add(abc);
 		
 		add(new JLabel("출결 점수 : "));
@@ -129,7 +129,7 @@ public class Student extends JPanel {
 		a_exam = new JTextField(7);
 		add(a_exam);
 		
-		add(new JLabel("태도 점수 : "));
+		add(new JLabel("과제 점수 : "));
 		attitu = new JTextField(7);
 		add(attitu);
 		
@@ -138,7 +138,7 @@ public class Student extends JPanel {
 		title.add("이름");
 		title.add("출결");
 		title.add("시험");
-		title.add("태도");
+		title.add("과제");
 		
 		model = new DefaultTableModel();
 		
@@ -196,7 +196,7 @@ public class Student extends JPanel {
 				} else if(a_exam.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "시험점수를 입력하세요.");
 				} else if(attitu.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "태도점수를 입력하세요.");
+					JOptionPane.showConfirmDialog(null, "과제점수를 입력하세요.");
 				} else {
 					Info cInfo = new Info(id.getText(), dept.getText(), name.getText(), attend.getText(), a_exam.getText(), attitu.getText());
 					m_Vector.add(cInfo);

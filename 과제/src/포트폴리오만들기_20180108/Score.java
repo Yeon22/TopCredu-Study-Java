@@ -35,7 +35,7 @@ public class Score extends JPanel {
 		title.add("이름");
 		title.add("출결점수");
 		title.add("시험점수");
-		title.add("태도점수");
+		title.add("과제점수");
 		
 		model = new DefaultTableModel(title, 0);
 		table = new JTable(model);
