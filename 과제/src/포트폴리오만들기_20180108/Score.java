@@ -31,6 +31,7 @@ public class Score extends JPanel {
 		Cb_dept.setBounds(45, 10, 120, 20);
 		add(Cb_dept);
 		
+		title.add("학번");
 		title.add("이름");
 		title.add("출결점수");
 		title.add("시험점수");
@@ -64,6 +65,7 @@ public class Score extends JPanel {
 					for(int i =0; i< Student.m_Vector.size(); i++) {
 						Info fo = Student.m_Vector.get(i);
 						Vector<String> temp = new Vector<String>();
+						temp.addElement(fo.getId());
 						temp.addElement(fo.getName());
 						temp.addElement(fo.getattend());
 						temp.addElement(fo.geta_exam());
