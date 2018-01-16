@@ -49,16 +49,29 @@ public class Score extends JPanel {
 		selectBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for(int i =0; i< Student.m_Vector.size(); i++) {
-					Info fo = Student.m_Vector.get(i);
-					Vector<String> temp = new Vector<String>();
-					temp.addElement(fo.getName());
-					temp.addElement(fo.getiKor());
-					temp.addElement(fo.getiEng());
-					temp.addElement(fo.getiMath());
-					dataVector.addElement(temp);
+				int index = Cb_dept.getSelectedIndex();
+				String Cb_name = Cb_dept.getItemAt(index).toString();
+				
+				if(Cb_name.equals("컴퓨터공학과")) {
+					
+				} else if(Cb_name.equals("멀티미디어과")) {
+					
+				} else if(Cb_name.equals("세무회계과")) {
+					
+				} else if(Cb_name.equals("전자공학과")) {
+					
+				} else {
+					for(int i =0; i< Student.m_Vector.size(); i++) {
+						Info fo = Student.m_Vector.get(i);
+						Vector<String> temp = new Vector<String>();
+						temp.addElement(fo.getName());
+						temp.addElement(fo.getiKor());
+						temp.addElement(fo.getiEng());
+						temp.addElement(fo.getiMath());
+						dataVector.addElement(temp);
+					}
+					model.setDataVector(dataVector, title);
 				}
-				model.setDataVector(dataVector, title);
 			}
 		});
 		
