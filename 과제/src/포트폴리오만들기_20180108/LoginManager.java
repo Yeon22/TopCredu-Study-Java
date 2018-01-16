@@ -37,7 +37,7 @@ public class LoginManager extends JFrame {
 		add(l_pw);
 		add(pw_text);
 		
-		login = new JButton("로그인");
+		login = new JButton("관리자로그인");
 		add(login);
 		login.addActionListener(new ActionListener() {
 			@Override

@@ -29,9 +29,9 @@ class Info {
 		this.id = id;
 		this.department = department;
 		this.name = name;
-		this.attend = attend;
-		this.a_exam = a_exam;
-		this.attitude = attitude;
+		this.attend = attend.toUpperCase();
+		this.a_exam = a_exam.toUpperCase();
+		this.attitude = attitude.toUpperCase();
 	}
 	
 	public String getId() {
@@ -63,7 +63,7 @@ class Info {
 	}
 	
 	public void setattend(String attend) {
-		this.attend = attend;
+		this.attend = attend.toUpperCase();
 	}
 	
 	public String geta_exam() {
@@ -71,7 +71,7 @@ class Info {
 	}
 	
 	public void seta_exam(String a_exam) {
-		this.a_exam = a_exam;
+		this.a_exam = a_exam.toUpperCase();
 	}
 	
 	public String getattitude() {
@@ -79,7 +79,7 @@ class Info {
 	}
 	
 	public void setattitude(String attitude) {
-		this.attitude = attitude;
+		this.attitude = attitude.toUpperCase();
 	}
 }
 
@@ -166,12 +166,12 @@ public class Student extends JPanel {
 				dept.setText(sdept);
 				String sname = (String)model.getValueAt(table.getSelectedRow(), 2);
 				name.setText(sname);
-				String siKor = (String)model.getValueAt(table.getSelectedRow(), 3);
-				attend.setText(siKor);
-				String siEng = (String)model.getValueAt(table.getSelectedRow(), 4);
-				a_exam.setText(siEng);
-				String siMath = (String)model.getValueAt(table.getSelectedRow(), 5);
-				attitu.setText(siMath);
+				String sattend = (String)model.getValueAt(table.getSelectedRow(), 3);
+				attend.setText(sattend.toUpperCase());
+				String sexam = (String)model.getValueAt(table.getSelectedRow(), 4);
+				a_exam.setText(sexam.toUpperCase());
+				String sttitu = (String)model.getValueAt(table.getSelectedRow(), 5);
+				attitu.setText(sttitu.toUpperCase());
 			}
 		});
 		
@@ -187,11 +187,11 @@ public class Student extends JPanel {
 				} else if(name.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "이름을 입력하세요.");
 				} else if(attend.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "국어점수를 입력하세요.");
+					JOptionPane.showConfirmDialog(null, "출결점수를 입력하세요.");
 				} else if(a_exam.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "영어점수를 입력하세요.");
+					JOptionPane.showConfirmDialog(null, "시험점수를 입력하세요.");
 				} else if(attitu.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "수학점수를 입력하세요.");
+					JOptionPane.showConfirmDialog(null, "태도점수를 입력하세요.");
 				} else {
 					Info cInfo = new Info(id.getText(), dept.getText(), name.getText(), attend.getText(), a_exam.getText(), attitu.getText());
 					m_Vector.add(cInfo);

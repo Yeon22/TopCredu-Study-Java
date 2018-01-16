@@ -26,15 +26,15 @@ public class Score extends JPanel {
 		S_dept.setBounds(10,10,30,30);
 		add(S_dept);
 		
-		String dept[] = {"전체", "컴퓨터공학과", "멀티미디어과", "세무회계과", "전자공학과"};
+		String dept[] = {"전체", "컴퓨터공학과", "멀티미디어과", "세무회계과", "독어독문과"};
 		JComboBox Cb_dept = new JComboBox(dept);
 		Cb_dept.setBounds(45, 10, 120, 20);
 		add(Cb_dept);
 		
 		title.add("이름");
-		title.add("국어");
-		title.add("영어");
-		title.add("수학");
+		title.add("출결점수");
+		title.add("시험점수");
+		title.add("태도점수");
 		
 		model = new DefaultTableModel(title, 0);
 		table = new JTable(model);
@@ -58,7 +58,7 @@ public class Score extends JPanel {
 					
 				} else if(Cb_name.equals("세무회계과")) {
 					
-				} else if(Cb_name.equals("전자공학과")) {
+				} else if(Cb_name.equals("독어독문과")) {
 					
 				} else {
 					for(int i =0; i< Student.m_Vector.size(); i++) {
