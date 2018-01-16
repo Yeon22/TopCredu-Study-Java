@@ -1,6 +1,8 @@
 package 포트폴리오만들기_20180108;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -76,7 +78,12 @@ public class LoginManager extends JFrame {
 			}
 		});
 		
-		setSize(260,150);
+		JLabel advice = new JLabel(" * 회원가입을 먼저 해주세요! * ");
+		advice.setFont(new Font("Senserif", Font.BOLD, 16));
+		advice.setForeground(Color.RED);
+		add(advice);
+		
+		setSize(260,160);
 		setResizable(false);
 		setVisible(true);
 	}
