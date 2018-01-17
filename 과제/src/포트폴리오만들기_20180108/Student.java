@@ -232,9 +232,9 @@ public class Student extends JPanel {
 					temp.addElement(id.getText());
 					temp.addElement(dept.getText());
 					temp.addElement(name.getText());
-					temp.addElement(attend.getText());
-					temp.addElement(a_exam.getText());
-					temp.addElement(attitu.getText());
+					temp.addElement(attend.getText().toUpperCase());
+					temp.addElement(a_exam.getText().toUpperCase());
+					temp.addElement(attitu.getText().toUpperCase());
 					
 					dataVector.setElementAt(temp, table.getSelectedRow());
 					
