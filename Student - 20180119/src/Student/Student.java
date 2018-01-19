@@ -246,6 +246,39 @@ public class Student extends JFrame{
 		
 		searchBtn = new JButton("검색");
 		add(searchBtn);
+		searchBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(search.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "이름을 입력하세요");
+					search.requestFocus();
+				} else {
+					try {
+						ResultSet rs = stmt.executeQuery("select * from student where name = '"
+										+search.getText()+ "'");
+						
+						String id;
+						String name;
+						String department_id;
+						String address;
+						
+						list.append("학번"+"\t"+"이름"+"\t"+"학과"+"\t"+"주소"+"\n");
+						list.append("==================================================\n");
+						
+						while(rs.next()) {
+							id = rs.getString("id");
+							name = rs.getString("name");
+							department_id = rs.getString("department_id");
+							address = rs.getString("address");
+							list.append(id+"\t"+name+"\t"+department_id+"\t"+address+"\n\n");
+						}
+						
+					} catch(Exception e2) {
+						e2.printStackTrace();
+					}
+				}
+			}
+		});
 		
 		setSize(300, 500);
 		setVisible(true);
