@@ -193,7 +193,6 @@ public class Student extends JFrame{
 					JOptionPane.showMessageDialog(null, "주소를 입력하세요");
 					address.requestFocus();
 				} else {
-					//인서트 작업
 					try {
 						String sql = "update student set id = '"
 										+id.getText()+ "', name = '"
@@ -224,7 +223,6 @@ public class Student extends JFrame{
 					JOptionPane.showMessageDialog(null, "이름을 입력하세요");
 					name.requestFocus();
 				} else {
-					//인서트 작업
 					try {
 						String sql = "delete from student where name = '"
 										+name.getText()+ "'";
