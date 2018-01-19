@@ -164,8 +164,10 @@ public class Student extends JFrame{
 						stmt.executeUpdate(sql);
 						System.out.println("입력되었습니다.");
 						JOptionPane.showMessageDialog(null, "입력되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+						
 						//조회
 						ListAdd();
+						
 					} catch(Exception e2) {
 						e2.printStackTrace();
 					}
@@ -175,9 +177,70 @@ public class Student extends JFrame{
 		
 		updateBtn = new JButton("수정");
 		add(updateBtn);
+		updateBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(name.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "이름을 입력하세요");
+					name.requestFocus();
+				} else if(id.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "학번을 입력하세요");
+					id.requestFocus();
+				} else if(dept.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "학과를 입력하세요");
+					dept.requestFocus();
+				} else if(address.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "주소를 입력하세요");
+					address.requestFocus();
+				} else {
+					//인서트 작업
+					try {
+						String sql = "update student set id = '"
+										+id.getText()+ "', name = '"
+										+name.getText()+ "', DEPARTMENT_ID = '"
+										+dept.getText()+"', address ='"
+										+address.getText()+"' where name = '"
+										+name.getText()+"'";
+						stmt.executeUpdate(sql);
+						System.out.println("수정되었습니다.");
+						JOptionPane.showMessageDialog(null, "수정되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+						
+						//조회
+						ListAdd();
+						
+					} catch(Exception e2) {
+						e2.printStackTrace();
+					}
+				}
+			}
+		});
 		
 		deleteBtn = new JButton("삭제");
 		add(deleteBtn);
+		deleteBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(name.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "이름을 입력하세요");
+					name.requestFocus();
+				} else {
+					//인서트 작업
+					try {
+						String sql = "delete from student where name = '"
+										+name.getText()+ "'";
+						stmt.executeUpdate(sql);
+						System.out.println("삭제되었습니다.");
+						JOptionPane.showMessageDialog(null, "삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+						
+						//조회
+						ListAdd();
+						
+					} catch(Exception e2) {
+						e2.printStackTrace();
+					}
+				}
+			}
+		});
 		
 		add(new JLabel("검색 : "));
 		search = new JTextField(10);
