@@ -47,7 +47,7 @@ public class Project_20180119 extends JFrame{
 			String address;
 			
 			list.append("학번"+"\t"+"이름"+"\t"+"학과"+"\t"+"주소"+"\n");
-			list.append("================================================\n");
+			list.append("==================================================\n");
 			
 			while(rs.next()) {
 				id = rs.getString("id");
@@ -121,7 +121,7 @@ public class Project_20180119 extends JFrame{
 					String address;
 					
 					list.append("학번"+"\t"+"이름"+"\t"+"학과"+"\t"+"주소"+"\n");
-					list.append("================================================\n");
+					list.append("==================================================\n");
 					
 					while(rs.next()) {
 						id = rs.getString("id");
@@ -264,7 +264,7 @@ public class Project_20180119 extends JFrame{
 						String address;
 						
 						list.append("학번"+"\t"+"이름"+"\t"+"학과"+"\t"+"주소"+"\n");
-						list.append("================================================\n");
+						list.append("==================================================\n");
 						
 						while(rs.next()) {
 							id = rs.getString("id");
