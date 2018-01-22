@@ -177,106 +177,96 @@ public class Student extends JFrame{
 		
 		updateBtn = new JButton("수정");
 		add(updateBtn);
+		
 		updateBtn.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(name.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "이름을 입력하세요");
-					name.requestFocus();
-				} else if(id.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학번을 입력하세요");
-					id.requestFocus();
-				} else if(dept.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학과를 입력하세요");
-					dept.requestFocus();
-				} else if(address.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "주소를 입력하세요");
-					address.requestFocus();
-				} else {
-					try {
-						String sql = "update student set id = '"
-										+id.getText()+ "', name = '"
-										+name.getText()+ "', DEPARTMENT_ID = '"
-										+dept.getText()+"', address ='"
-										+address.getText()+"' where name = '"
-										+name.getText()+"'";
-						stmt.executeUpdate(sql);
-						System.out.println("수정되었습니다.");
-						JOptionPane.showMessageDialog(null, "수정되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?","수정"
+						,JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+				{
+					try 
+					{
+						stmt.executeUpdate("update student set name = '"
+								+name.getText() +"'," + "department_id='"
+								+ dept.getText()+"'," + "address = '"
+								+ address.getText()+"'" + "where id = '"
+								+ id.getText()+"'");
+						JOptionPane.showMessageDialog(null, "수정이되었습니다.","알림"
+								,JOptionPane.INFORMATION_MESSAGE);
 						
-						//조회
 						ListAdd();
 						
-					} catch(Exception e2) {
-						e2.printStackTrace();
+					} catch(Exception a) {
+						a.printStackTrace();
 					}
 				}
 			}
 		});
 		
+
 		deleteBtn = new JButton("삭제");
 		add(deleteBtn);
+		
 		deleteBtn.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(name.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "이름을 입력하세요");
-					name.requestFocus();
-				} else {
+				int result = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제",JOptionPane.YES_NO_CANCEL_OPTION);
+				
+				if(result == JOptionPane.YES_OPTION) {
 					try {
-						String sql = "delete from student where name = '"
-										+name.getText()+ "'";
-						stmt.executeUpdate(sql);
-						System.out.println("삭제되었습니다.");
-						JOptionPane.showMessageDialog(null, "삭제되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
-						
-						//조회
+						stmt.executeUpdate("delete from student where id= '"
+								+ id.getText()+"'");
+						JOptionPane.showMessageDialog(null, "삭제되었습니다.");
 						ListAdd();
 						
-					} catch(Exception e2) {
-						e2.printStackTrace();
+					}catch(Exception a) {
+						a.printStackTrace();
 					}
+					
+				} else if(result == JOptionPane.CLOSED_OPTION) {
+					System.out.println("취소");
 				}
+				
 			}
 		});
 		
-		add(new JLabel("검색 : "));
+		
+		add(new JLabel("ID 검색 : "));
 		search = new JTextField(10);
 		add(search);
 		
 		searchBtn = new JButton("검색");
 		add(searchBtn);
 		searchBtn.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(search.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "이름을 입력하세요");
-					search.requestFocus();
-				} else {
-					try {
-						ResultSet rs = stmt.executeQuery("select * from student where name = '"
-										+search.getText()+ "'");
-						
-						String id;
-						String name;
-						String department_id;
-						String address;
-						
-						list.append("학번"+"\t"+"이름"+"\t"+"학과"+"\t"+"주소"+"\n");
-						list.append("==================================================\n");
-						
-						while(rs.next()) {
-							id = rs.getString("id");
-							name = rs.getString("name");
-							department_id = rs.getString("department_id");
-							address = rs.getString("address");
-							list.append(id+"\t"+name+"\t"+department_id+"\t"+address+"\n\n");
-						}
-						
-					} catch(Exception e2) {
-						e2.printStackTrace();
-					}
+				try {
+					ResultSet rs = stmt.executeQuery("select * from student where id = '"
+									+ search.getText()+"'");
+					String sid;
+					String sname;
+					String sdepartment_id;
+					String saddress;
+					
+					rs.next();
+					
+					sid = rs.getString("id");
+					sname = rs.getString("name");
+					sdepartment_id = rs.getString("department_id");
+					saddress = rs.getString("address");
+					
+					id.setText(sid);
+					name.setText(sname);
+					dept.setText(sdepartment_id);
+					address.setText(saddress);
+					
+				} catch(SQLException e1) {
+					e1.printStackTrace();
 				}
+				
 			}
 		});
 		
