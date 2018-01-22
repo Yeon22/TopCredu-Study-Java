@@ -6,6 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -100,13 +105,68 @@ public class Student extends JPanel {
 	JButton idCheckBtn; //학번 중복 체크
 	MyDialog dialog = new MyDialog();
 	
+	Connection conn = null;
+	Statement stmt = null;
+	
 	DefaultTableModel model; //모델, 데이터
 	JTable table; //테이블
-	Vector<String> title = new Vector<String>();
-	Vector<Info> m_Vec = new Vector<Info>(); //데이터 저장하거나 수정, 삭제를 위한 벡터
-	Vector<Object> dataVector = new Vector<Object>();
+	
+	void ListAdd() {
+		try {
+			ResultSet rs = stmt.executeQuery("select * from student");
+			
+//			String id;
+//			String name;
+//			String department_id;
+//			String address;
+//			
+//			list.append("학번"+"\t"+"이름"+"\t"+"학과"+"\t"+"주소"+"\n");
+//			list.append("==================================================\n");
+//			
+//			while(rs.next()) {
+//				id = rs.getString("id");
+//				name = rs.getString("name");
+//				department_id = rs.getString("department_id");
+//				address = rs.getString("address");
+//				list.append(id+"\t"+name+"\t"+department_id+"\t"+address+"\n");
+//			}
+			
+			//JTable 초기화
+			model.setNumRows(0);
+			
+			while(rs.next()) {
+				String[] row = new String[4];
+				row[0] = rs.getString("name");
+				row[1] = rs.getString("id");
+				row[2] = rs.getString("department_id");
+				row[3] = rs.getString("address");
+				model.addRow(row);
+			}
+			rs.close();
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+	}
 	
 	Student() {
+		ResultSet rs = null;
+		String url = null;
+		String uid = "h5";
+		String pw = "h5";
+		
+		url = "jdbc:oracle:thin:@192.168.0.27:1521:topcredu";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url,uid,pw);
+			stmt = conn.createStatement();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		add(new JLabel("이름 : ")); //이름 라벨 추가
 		name = new JTextField(20);
 		add(name); //이름 TextField 추가
@@ -131,13 +191,9 @@ public class Student extends JPanel {
 		address = new JTextField(20);
 		add(address); // 주소 TextField 추가
 		
-//		String colName[] = {"이름", "학번", "학과", "주소"};
-		title.add("이름");
-		title.add("학번");
-		title.add("학과");
-		title.add("주소");
+		String colName[] = {"이름", "학번", "학과", "주소"};
 		
-		model = new DefaultTableModel();
+		model = new DefaultTableModel(colName, 0);
 		
 		table = new JTable(model);
 		table.setPreferredScrollableViewportSize(new Dimension(250, 200));
@@ -180,6 +236,17 @@ public class Student extends JPanel {
 			}
 		});
 		
+		
+		selectBtn = new JButton("조회");
+		add(selectBtn);
+		selectBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ListAdd();
+			}
+		});
+		
+		
 		insertBtn = new JButton("입력");
 		add(insertBtn);
 		insertBtn.addActionListener(new ActionListener() {
@@ -191,33 +258,36 @@ public class Student extends JPanel {
 					name.requestFocus(); //필드로 커서가 가진다.
 				} else if(id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "학번을 입력하세요.");
-					name.requestFocus(); //필드로 커서가 가진다.
+					id.requestFocus(); //필드로 커서가 가진다.
 				} else if(dept.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "학과를 입력하세요.");
-					name.requestFocus(); //필드로 커서가 가진다.
+					dept.requestFocus(); //필드로 커서가 가진다.
 				} else if(address.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "주소를 입력하세요.");
-					name.requestFocus(); //필드로 커서가 가진다.
+					address.requestFocus(); //필드로 커서가 가진다.
 				} else {
-					//표에 데이터를 넣어주는 곳
-					Info cInfo = new Info(name.getText(), id.getText(), dept.getText(), address.getText());
-					m_Vec.add(cInfo);
-					dataVector.clear();
 					
-					for(int i=0; i<m_Vec.size(); i++) {
-						Info st = m_Vec.get(i); //벡터에서 하나 꺼냄
-						Vector<String> temp = new Vector<String>();
-						temp.addElement(st.getName());
-						temp.addElement(st.getId());
-						temp.addElement(st.getDepartment());
-						temp.addElement(st.getAddress());
-						dataVector.addElement(temp); //Vector<Object>에 넣어주면 표에 들어감.
+					try {
+						String sql = "insert into student values('"
+										+id.getText()+"','"
+										+name.getText()+"','"
+										+dept.getText()+"','"
+										+address.getText()+"')";
+						stmt.executeUpdate(sql);
+						System.out.println("입력되었습니다.");
+						JOptionPane.showMessageDialog(null, "입력되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+						
+						//조회
+						ListAdd();
+						
+					} catch(Exception e2) {
+						e2.printStackTrace();
 					}
 					
-					model.setDataVector(dataVector, title);
 				}
 			}
 		});
+		
 		
 		updateBtn = new JButton("수정");
 		add(updateBtn);
@@ -226,44 +296,46 @@ public class Student extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//YES버튼을 눌렀을 때
 				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					Info student = new Info(name.getText(), id.getText(), dept.getText(), address.getText());
-					
-					m_Vec.setElementAt(student, table.getSelectedRow());
-					
-					Vector<String> temp = new Vector<String>();
-					temp.addElement(name.getText());
-					temp.addElement(id.getText());
-					temp.addElement(dept.getText());
-					temp.addElement(address.getText());
-					//그 위치에 다시 넣어서 수정
-					dataVector.setElementAt(temp, table.getSelectedRow()); 
-					
-					model.setDataVector(dataVector, title);
+					try 
+					{
+						stmt.executeUpdate("update student set name = '"
+								+name.getText() +"'," + "department_id='"
+								+ dept.getText()+"'," + "address = '"
+								+ address.getText()+"'" + "where id = '"
+								+ id.getText()+"'");
+						JOptionPane.showMessageDialog(null, "수정이되었습니다.","알림"
+								,JOptionPane.INFORMATION_MESSAGE);
+						
+						ListAdd();
+						
+					} catch(Exception a) {
+						a.printStackTrace();
+					}
 				}
 			}
 		});
+		
 		
 		deleteBtn = new JButton("삭제");
 		add(deleteBtn);
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제",JOptionPane.YES_NO_CANCEL_OPTION);
 				
-				if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					m_Vec.remove(table.getSelectedRow());
-					dataVector.clear();
-					
-					for(int i=0; i<m_Vec.size(); i++) {
-						Info st = m_Vec.get(i);
-						Vector<String> temp = new Vector<String>();
-						temp.addElement(st.getName());
-						temp.addElement(st.getId());
-						temp.addElement(st.getDepartment());
-						temp.addElement(st.getAddress());
-						dataVector.addElement(temp);
+				if(result == JOptionPane.YES_OPTION) {
+					try {
+						stmt.executeUpdate("delete from student where id= '"
+								+ id.getText()+"'");
+						JOptionPane.showMessageDialog(null, "삭제되었습니다.");
+						ListAdd();
+						
+					}catch(Exception a) {
+						a.printStackTrace();
 					}
 					
-					model.setDataVector(dataVector, title);
+				} else if(result == JOptionPane.CLOSED_OPTION) {
+					System.out.println("취소");
 				}
 			}
 		});
