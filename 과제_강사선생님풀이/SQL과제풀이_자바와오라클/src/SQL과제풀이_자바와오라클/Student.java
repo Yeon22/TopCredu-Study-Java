@@ -68,8 +68,8 @@ public class Student extends JFrame{
 		//db¿¬°á
 		ResultSet rs = null;
 		String url = null;
-		String uid = "hr";
-		String pw = "hr";
+		String uid = "hr"; //°­»ç´Ô DB ID
+		String pw = "hr"; //°­»ç´Ô DB PW
 		
 		
 		url = "jdbc:oracle:thin:@192.168.0.27:1521:topcredu";
