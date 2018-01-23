@@ -34,7 +34,7 @@ public class OrderList extends JPanel{
 					"on m.id = o.id " + 
 					"join ordersDetail od " + 
 					"on o.no = od.orderNo " + 
-					"join goods " + 
+					"join goods s " + 
 					"on od.goodsno = s.goodsno";
 			
 			ResultSet rs = stmt.executeQuery(query);

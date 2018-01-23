@@ -104,7 +104,7 @@ public class Shop extends JFrame {
 		JMenuItem m_OrderList = new JMenuItem("주문목록");
 		m_Orders.add(m_OrderList);
 		
-		m_Orders.addActionListener(new ActionListener() {
+		m_OrderList.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				panel.removeAll(); //모든 컴포넌트 삭제
