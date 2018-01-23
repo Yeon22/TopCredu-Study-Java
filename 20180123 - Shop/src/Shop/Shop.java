@@ -21,6 +21,7 @@ public class Shop extends JFrame {
 	MemDialog dialog = new MemDialog(null, "회원가입");
 	
 	//상품등록 다이얼로그 생성
+	GoodsDialog gdialog = new GoodsDialog(null, "상품등록");
 	
 	Shop(){
 		setTitle("샵");
@@ -66,7 +67,7 @@ public class Shop extends JFrame {
 				panel.removeAll(); //모든 컴포넌트 삭제
 				panel.revalidate(); //다시 활성화
 				panel.repaint(); //다시 그리기
-//				panel.add(new GenderList());
+				panel.add(new GenderList());
 				panel.setLayout(null);
 			}
 		});
@@ -93,7 +94,7 @@ public class Shop extends JFrame {
 		m_GoodSign.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				gdialog.setVisible(true);
 			}
 		});
 		
