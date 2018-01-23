@@ -110,7 +110,7 @@ public class Shop extends JFrame {
 				panel.removeAll(); //모든 컴포넌트 삭제
 				panel.revalidate(); //다시 활성화
 				panel.repaint(); //다시 그리기
-//				panel.add(new OrderList());
+				panel.add(new OrderList());
 				panel.setLayout(null);
 			}
 		});
