@@ -5,15 +5,25 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class LoginManager extends JFrame {
+	Connection conn;
+	Statement stmt = null;
+	String query;
+	
 	JTextField id_text;
 	JTextField pw_text;
 	JButton login;
@@ -23,6 +33,21 @@ public class LoginManager extends JFrame {
 	ScoreManager sm;
 	
 	LoginManager(){
+		String url = null;
+		String uid = "h5";
+		String pw = "h5";
+		
+		url = "jdbc:oracle:thin:@192.168.0.27:1521:topcredu";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url,uid,pw);
+			stmt = conn.createStatement();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		setTitle("로그인화면");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
@@ -43,28 +68,32 @@ public class LoginManager extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(id_text.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "아이디를 입력해주세요.");
+					JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.");
 				} else if(pw_text.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "비밀번호를 입력해주세요.");
+					JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요.");
 				} else {
-					for(int i =0; i< LoginDialog.dialog_vector.size(); i++) {
-						dialog_ex de = LoginDialog.dialog_vector.get(i);
+					// 아이디, 비밀번호 입력했을 때
+					try {
+						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
+								" from pofol_member where login_id = '"+id_text.getText()+"' and pw = '"+pw_text.getText()+"'";
 						
-						// 아이디, 비밀번호 입력했을 때
-						if(!id_text.getText().equals(de.getD_id())) {
-							JOptionPane.showConfirmDialog(null, "아이디가 잘못되었습니다.");
-						} else if(!pw_text.getText().equals(de.getD_pw())){
-							JOptionPane.showConfirmDialog(null, "비밀번호가 잘못되었습니다.");
+						ResultSet rs;
+						rs = stmt.executeQuery(query);
+						
+						if(!rs.next()) {
+							JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 틀립니다.");
 						} else {
-							// 로그인에 성공한 후 화면
-							if((JOptionPane.showConfirmDialog(null, "로그인에 성공하였습니다.", "로그인성공", JOptionPane.YES_NO_OPTION)) == JOptionPane.YES_OPTION) {
-								sm = new ScoreManager();
-								setVisible(false);
-							} else {
-								setVisible(false);
-							}
+							JOptionPane.showMessageDialog(null, "로그인이 정상적으로 완료되었습니다.");
+							sm = new ScoreManager();
+							setVisible(false);
 						}
+						
+						rs.close();
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
 					}
+					
 				}
 			}
 		});
@@ -78,12 +107,20 @@ public class LoginManager extends JFrame {
 			}
 		});
 		
-		JLabel advice = new JLabel(" * 회원가입을 먼저 해주세요! * ");
-		advice.setFont(new Font("HY견고딕", Font.BOLD, 16));
-		advice.setForeground(Color.RED);
-		add(advice);
+		//종료이벤트
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				try {
+					if(conn!=null) {
+						conn.close();
+					}
+				} catch(SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		
-		setSize(260,160);
+		setSize(260,130);
 		setResizable(false);
 		setVisible(true);
 	}
