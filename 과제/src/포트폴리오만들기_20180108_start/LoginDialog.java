@@ -63,7 +63,7 @@ public class LoginDialog  extends JDialog{
 			e.printStackTrace();
 		}
 		
-		setTitle("관리자 회원가입");
+		setTitle("회원가입");
 		setLayout(null);
 		
 		JLabel idLbl = new JLabel("아이디 : ");
@@ -293,7 +293,7 @@ public class LoginDialog  extends JDialog{
 			}
 		});
 		
-		setSize(400, 400);
+		setSize(380, 400);
 		setResizable(false);
 	}
 	

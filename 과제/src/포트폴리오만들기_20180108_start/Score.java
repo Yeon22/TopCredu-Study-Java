@@ -3,7 +3,11 @@ package 포트폴리오만들기_20180108_start;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,12 +18,30 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Score extends JPanel {
-	Vector<Object> dataVector = new Vector<Object>();
-	Vector<String> title = new Vector<String>();
+	Connection conn = null;
+	Statement stmt = null;
+	String query;
+	
 	DefaultTableModel model;
 	JTable table;
 	
 	Score(){
+		ResultSet rs = null;
+		String url = null;
+		String uid = "h5";
+		String pw = "h5";
+		
+		url = "jdbc:oracle:thin:@192.168.0.27:1521:topcredu";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url,uid,pw);
+			stmt = conn.createStatement();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		setLayout(null);
 		
 		JLabel S_dept = new JLabel("학과");
@@ -31,13 +53,9 @@ public class Score extends JPanel {
 		Cb_dept.setBounds(45, 10, 120, 20);
 		add(Cb_dept);
 		
-		title.add("학번");
-		title.add("이름");
-		title.add("출결점수");
-		title.add("시험점수");
-		title.add("과제점수");
+		String [] colName =  {"학번", "이름", "태도점수", "출결점수", "시험점수", "과제점수"};
 		
-		model = new DefaultTableModel(title, 0);
+		model = new DefaultTableModel(colName, 0);
 		table = new JTable(model);
 		table.setPreferredScrollableViewportSize(new Dimension(470, 200));
 		JScrollPane scrollpane = new JScrollPane(table);
@@ -61,18 +79,33 @@ public class Score extends JPanel {
 					
 				} else if(Cb_name.equals("독어독문과")) {
 					
-				} else {
-					for(int i =0; i< Student.m_Vector.size(); i++) {
-						Info fo = Student.m_Vector.get(i);
-						Vector<String> temp = new Vector<String>();
-						temp.addElement(fo.getId());
-						temp.addElement(fo.getName());
-						temp.addElement(fo.getattend());
-						temp.addElement(fo.geta_exam());
-						temp.addElement(fo.getattitude());
-						dataVector.addElement(temp);
+				} else if(Cb_name.equals("전체")){
+					try {
+						System.out.println("연결되었습니다.......");
+						
+						query = "select class_id, name, score_attitude, score_check, score_exam, score_work "
+								+ "from pofol_score";
+						
+						ResultSet rs = stmt.executeQuery(query);
+						
+						model.setNumRows(0);
+						
+						while(rs.next()) {
+							String[] row = new String[6];
+							row[0] = rs.getString("class_id");
+							row[1] = rs.getString("name");							
+							row[2] = rs.getString("score_attitude");						
+							row[3] = rs.getString("score_check");							
+							row[4] = rs.getString("score_exam");							
+							row[5] = rs.getString("score_work");
+							
+							model.addRow(row);
+						}
+						
+						rs.close();
+					} catch(SQLException a) {
+						a.getStackTrace();
 					}
-					model.setDataVector(dataVector, title);
 				}
 			}
 		});

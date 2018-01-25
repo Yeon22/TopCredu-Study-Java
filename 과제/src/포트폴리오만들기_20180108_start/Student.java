@@ -1,14 +1,19 @@
 package 포트폴리오만들기_20180108_start;
 
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,134 +22,205 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-class Info {
-	String id;
-	String department;
-	String name;
-	String attend;
-	String a_exam;
-	String attitude;
-	
-	public Info(String id, String department, String name, String attend, String a_exam, String attitude) {
-		super();
-		this.id = id;
-		this.department = department;
-		this.name = name;
-		this.attend = attend.toUpperCase();
-		this.a_exam = a_exam.toUpperCase();
-		this.attitude = attitude.toUpperCase();
-	}
-	
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public String getDepartment() {
-		return department;
-	}
-	
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getattend() {
-		return attend;
-	}
-	
-	public void setattend(String attend) {
-		this.attend = attend.toUpperCase();
-	}
-	
-	public String geta_exam() {
-		return a_exam;
-	}
-	
-	public void seta_exam(String a_exam) {
-		this.a_exam = a_exam.toUpperCase();
-	}
-	
-	public String getattitude() {
-		return attitude;
-	}
-	
-	public void setattitude(String attitude) {
-		this.attitude = attitude.toUpperCase();
-	}
-}
-
 
 public class Student extends JPanel {
-	
-	public static Vector<Info> m_Vector = new Vector<Info>();
-	Vector<String> title = new Vector<String>();
-	Vector<Object> dataVector = new Vector<Object>();
+	Connection conn = null;
+	Statement stmt = null;
+	String query;
 	
 	JTextField id;
-	JTextField dept;
 	JTextField name;
-	JTextField attend;
-	JTextField a_exam;
-	JTextField attitu;
+	JButton selectBtn;
 	JButton insertBtn;
 	JButton updateBtn;
 	JButton deleteBtn;
+	JButton searchBtn;
+	
+	String [] score = {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E", "F"};
+	String [] dept_name = {"C001", "M002", "T003", "G004"};
+
+	JComboBox attitudeCombo = new JComboBox(score);
+	JComboBox checkCombo = new JComboBox(score);
+	JComboBox examCombo = new JComboBox(score);
+	JComboBox workCombo = new JComboBox(score);
+	JComboBox deptCombo = new JComboBox(dept_name);
 	
 	DefaultTableModel model;
 	JTable table;
+	
+	public void AllList(String squery) {
+		try {
+			System.out.println("연결되었습니다.....");
+			
+			if(squery.equals("")) {
+				query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work "
+						+"from pofol_score";
+			} else {
+				query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work "
+						+"from pofol_score"+ squery;
+			}
+			
+			ResultSet rs = stmt.executeQuery(query);
+			
+			model.setNumRows(0);
+			
+			while(rs.next()) {
+				String[] row = new String[7];
+				row[0] = rs.getString("class_id");
+				row[1] = rs.getString("department_id");
+				row[2] = rs.getString("name");
+				row[3] = rs.getString("score_attitude");
+				row[4] = rs.getString("score_check");
+				row[5] = rs.getString("score_exam");
+				row[6] = rs.getString("score_work");
+				model.addRow(row);
+			}
+			
+			rs.close();
+			
+		} catch(SQLException e) {
+			e.getStackTrace();
+		}
+	}
 
 	Student(){
-		add(new JLabel("학번 : "));
+		ResultSet rs = null;
+		String url = null;
+		String uid = "h5";
+		String pw = "h5";
+		
+		url = "jdbc:oracle:thin:@192.168.0.27:1521:topcredu";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url,uid,pw);
+			stmt = conn.createStatement();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		setLayout(null);
+		
+		JLabel h_id = new JLabel("학번 : ");
+		h_id.setBounds(20,10,50,25);
+		add(h_id);
+		
 		id = new JTextField(25);
+		id.setBounds(60,10,150,25);
 		add(id);
 		
-		add(new JLabel("학과 : "));
-		dept = new JTextField(25);
-		add(dept);
+		JButton classBtn = new JButton("학번 중복 체크");
+		classBtn.setBounds(230,10,120,25);
+		add(classBtn); 
+		classBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(id.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "학번을 입력해주세요.");
+					id.requestFocus();
+				} else {
+					try {
+						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
+								" from pofol_member where class_id = '"+id.getText()+"'";
+						
+						ResultSet rs;
+						rs = stmt.executeQuery(query);
+						
+						if(rs.next()) {
+							JOptionPane.showMessageDialog(null, "이미 사용중인 학번입니다.");
+							id.setText("");
+							id.requestFocus();
+						} else {
+							JOptionPane.showMessageDialog(null, "사용 가능한 학번입니다.");
+						}
+						
+						rs.close();
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 		
-		add(new JLabel("이름 : "));
+		searchBtn = new JButton("학번 검색");
+		searchBtn.setBounds(365,10,90,25);
+		add(searchBtn);
+		searchBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(id.getText().equals("")) {
+					AllList("");
+					return;
+				}
+				String query = "where login_id = '"+id.getText()+"'";
+				AllList(query);
+			}
+		});
+		
+		JLabel h_dept = new JLabel("학과 : ");
+		h_dept.setBounds(20,45,50,25);
+		add(h_dept);
+		
+		deptCombo.setBounds(60,45,70,25);
+		add(deptCombo);
+		
+		JButton deptlist = new JButton("학과 리스트");
+		deptlist.setBounds(230,45,120,25);
+		add(deptlist);
+		deptlist.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		JLabel h_name = new JLabel("이름 : ");
+		h_name.setBounds(20,80,50,25);
+		add(h_name);
+		
 		name = new JTextField(25);
+		name.setBounds(60,80,150,25);
 		add(name);
 		
-		JLabel abc = new JLabel("  점수유형 : A, B, C, D, E, F   ");
-		abc.setFont(new Font(null, Font.BOLD, 12));
-		add(abc);
+		JLabel h_attitude = new JLabel("태도 점수 : ");
+		h_attitude.setBounds(10,115,80,25);
+		add(h_attitude);
 		
-		add(new JLabel("출결 점수 : "));
-		attend = new JTextField(7);
-		add(attend);
+		attitudeCombo.setBounds(80,115,50,25);
+		add(attitudeCombo);
 		
-		add(new JLabel("시험 점수 : "));
-		a_exam = new JTextField(7);
-		add(a_exam);
+		JLabel h_check = new JLabel("출결 점수 : ");
+		h_check.setBounds(150,115,80,25);
+		add(h_check);
 		
-		add(new JLabel("과제 점수 : "));
-		attitu = new JTextField(7);
-		add(attitu);
+		checkCombo.setBounds(220,115,50,25);
+		add(checkCombo);
 		
-		title.add("학번");
-		title.add("학과");
-		title.add("이름");
-		title.add("출결");
-		title.add("시험");
-		title.add("과제");
+		JLabel h_exam = new JLabel("시험 점수 : ");
+		h_exam.setBounds(10,150,80,25);
+		add(h_exam);
 		
-		model = new DefaultTableModel();
+		examCombo.setBounds(80,150,50,25);
+		add(examCombo);
+		
+		JLabel h_work = new JLabel("과제 점수 : ");
+		h_work.setBounds(150,150,80,25);
+		add(h_work);
+		
+		workCombo.setBounds(220,150,50,25);
+		add(workCombo);
+		
+		String colName[] = {"학번", "학과", "이름", "태도", "출결", "시험","과제"};
+		
+		model = new DefaultTableModel(colName,0);
 		
 		table = new JTable(model);
 		table.setPreferredScrollableViewportSize(new Dimension(300, 200));
-		add(new JScrollPane(table));
+		JScrollPane h_jp = new JScrollPane(table);
+		h_jp.setBounds(20,200,300,200);
+		add(h_jp);
 		
 		table.addMouseListener(new MouseListener() {
 			@Override
@@ -167,109 +243,78 @@ public class Student extends JPanel {
 				
 				String sid = (String)model.getValueAt(table.getSelectedRow(), 0);
 				id.setText(sid);
-				String sdept = (String)model.getValueAt(table.getSelectedRow(), 1);
-				dept.setText(sdept);
 				String sname = (String)model.getValueAt(table.getSelectedRow(), 2);
 				name.setText(sname);
-				String sattend = (String)model.getValueAt(table.getSelectedRow(), 3);
-				attend.setText(sattend.toUpperCase());
-				String sexam = (String)model.getValueAt(table.getSelectedRow(), 4);
-				a_exam.setText(sexam.toUpperCase());
-				String sttitu = (String)model.getValueAt(table.getSelectedRow(), 5);
-				attitu.setText(sttitu.toUpperCase());
+			}
+		});
+		
+		selectBtn = new JButton("조회");
+		selectBtn.setBounds(340,208,70,25);
+		add(selectBtn);
+		selectBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AllList("");
 			}
 		});
 		
 		insertBtn = new JButton("입력");
+		insertBtn.setBounds(340,258,70,25);
 		add(insertBtn);
 		insertBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				if(id.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "학번을 입력하세요.");
-				} else if(dept.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "학과를 입력하세요.");
 				} else if(name.getText().equals("")) {
 					JOptionPane.showConfirmDialog(null, "이름을 입력하세요.");
-				} else if(attend.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "출결점수를 입력하세요.");
-				} else if(a_exam.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "시험점수를 입력하세요.");
-				} else if(attitu.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "과제점수를 입력하세요.");
 				} else {
-					Info cInfo = new Info(id.getText(), dept.getText(), name.getText(), attend.getText(), a_exam.getText(), attitu.getText());
-					m_Vector.add(cInfo);
-					dataVector.clear();
-					
-					for(int i=0; i<m_Vector.size(); i++) {
-						Info st = m_Vector.get(i);
-						Vector<String> temp = new Vector<String>();
-						temp.addElement(st.getId());
-						temp.addElement(st.getDepartment());
-						temp.addElement(st.getName());
-						temp.addElement(st.getattend());
-						temp.addElement(st.geta_exam());
-						temp.addElement(st.getattitude());
-						dataVector.addElement(temp);
+					try {
+						String sql = "insert into pofol_score values('"
+								+id.getText()+"', '"
+								+deptCombo.getSelectedItem()+"', '"
+								+name.getText()+"', '"
+								+attitudeCombo.getSelectedItem()+"', '"
+								+checkCombo.getSelectedItem()+"', '"
+								+examCombo.getSelectedItem()+"', '"
+								+workCombo.getSelectedItem()+"')";
+						stmt.executeUpdate(sql);
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
 					}
-					
-					model.setDataVector(dataVector, title);
+					JOptionPane.showMessageDialog(null, "입력되었습니다.");
 				}
 			}
 		});
 		
 		updateBtn = new JButton("수정");
+		updateBtn.setBounds(340,308,70,25);
 		add(updateBtn);
 		updateBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					Info st = new Info(id.getText(), dept.getText(), name.getText(), attend.getText(), a_exam.getText(), attitu.getText());
-					m_Vector.setElementAt(st, table.getSelectedRow());
 					
-					Vector<String> temp = new Vector<String>();
-					temp.addElement(id.getText());
-					temp.addElement(dept.getText());
-					temp.addElement(name.getText());
-					temp.addElement(attend.getText().toUpperCase());
-					temp.addElement(a_exam.getText().toUpperCase());
-					temp.addElement(attitu.getText().toUpperCase());
 					
-					dataVector.setElementAt(temp, table.getSelectedRow());
-					
-					model.setDataVector(dataVector, title);
 				}
 			}
 		});
 		
 		deleteBtn = new JButton("삭제");
+		deleteBtn.setBounds(340,358,70,25);
 		add(deleteBtn);
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					m_Vector.remove(table.getSelectedRow());
-					dataVector.clear();
 					
-					for(int i=0; i<m_Vector.size(); i++) {
-						Info st = m_Vector.get(i);
-						Vector<String> temp = new Vector<String>();
-						temp.addElement(st.getId());
-						temp.addElement(st.getDepartment());
-						temp.addElement(st.getName());
-						temp.addElement(st.getattend());
-						temp.addElement(st.geta_exam());
-						temp.addElement(st.getattitude());
-						dataVector.addElement(temp);
-					}
-					
-					model.setDataVector(dataVector, title);
 				}
 			}
 		});
 		
-		setSize(350, 480);
+		setSize(480, 480);
 		setVisible(true);
 	}
 

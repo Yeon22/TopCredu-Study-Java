@@ -2,6 +2,10 @@ package 포트폴리오만들기_20180108_start;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -10,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class ScoreManager extends JFrame {
+	Connection conn;
 	JPanel panel = new JPanel();
 	
 	ScoreManager(){
@@ -45,6 +50,18 @@ public class ScoreManager extends JFrame {
 				panel.repaint();
 				panel.add(new Score());
 				panel.setLayout(null);
+			}
+		});
+		
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				try {
+					if(conn!=null) {
+						conn.close();
+					}
+				} catch(SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
