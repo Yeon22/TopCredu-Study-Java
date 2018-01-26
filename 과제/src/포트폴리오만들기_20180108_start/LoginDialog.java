@@ -24,6 +24,8 @@ public class LoginDialog  extends JDialog{
 	Connection conn = null;
 	Statement stmt = null;
 	String query;
+	String id_query;
+	String email_query;
 	
 	JTextField d_id = new JTextField(12);
 	JTextField d_pw = new JTextField(12);
@@ -141,46 +143,6 @@ public class LoginDialog  extends JDialog{
 		phoneArim.setBounds(195,130,180,25);
 		add(phoneArim);
 		
-//		JLabel classid = new JLabel("학번 : ");
-//		classid.setBounds(35,130,50,25);
-//		add(classid);
-//		class_id.setBounds(80,130,100,25);
-//		add(class_id);
-//		
-//		classBtn = new JButton("학번 중복 체크");
-//		classBtn.setBounds(190,130,140,25);
-//		add(classBtn); 
-//		classBtn.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				if(class_id.getText().equals("")) {
-//					JOptionPane.showMessageDialog(null, "학번을 입력해주세요.");
-//					class_id.requestFocus();
-//				} else {
-//					try {
-//						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
-//								" from pofol_member where class_id = '"+class_id.getText()+"'";
-//						
-//						ResultSet rs;
-//						rs = stmt.executeQuery(query);
-//						
-//						if(rs.next()) {
-//							JOptionPane.showMessageDialog(null, "이미 사용중인 학번입니다.");
-//							class_id.setText("");
-//							class_id.requestFocus();
-//						} else {
-//							JOptionPane.showMessageDialog(null, "사용 가능한 학번입니다.");
-//						}
-//						
-//						rs.close();
-//						
-//					} catch (SQLException e1) {
-//						e1.printStackTrace();
-//					}
-//				}
-//			}
-//		});
-		
 		JLabel adrs = new JLabel("주소 : ");
 		adrs.setBounds(35,160,50,25);
 		add(adrs);
@@ -280,13 +242,13 @@ public class LoginDialog  extends JDialog{
 									+Check+"')";
 
 							stmt.executeUpdate(sql);
-							
+									
 						} catch(Exception a) {
-							a.printStackTrace();
+									a.printStackTrace();
 						}
 						JOptionPane.showMessageDialog(null, "회원가입이 정상적으로 완료되었습니다. \n가입해 주셔서 감사합니다.");
 						setVisible(false);
-						
+								
 					} else {
 						JOptionPane.showMessageDialog(null, "비밀번호가 같지 않습니다.");
 					}
