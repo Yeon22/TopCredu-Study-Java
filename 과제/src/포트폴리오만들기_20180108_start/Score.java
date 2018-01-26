@@ -25,6 +25,40 @@ public class Score extends JPanel {
 	DefaultTableModel model;
 	JTable table;
 	
+	public void List(String squery) {
+		try {
+			System.out.println("연결되었습니다.......");
+			
+			if(squery.equals("")) {
+				query = "select class_id, name, score_attitude, score_check, score_exam, score_work "
+						+ "from pofol_score order by class_id";
+			} else {
+				query = "select class_id, name, score_attitude, score_check, score_exam, score_work "
+						+ "from pofol_score " + squery + " order by class_id";
+			}
+			
+			ResultSet rs = stmt.executeQuery(query);
+			
+			model.setNumRows(0);
+			
+			while(rs.next()) {
+				String[] row = new String[6];
+				row[0] = rs.getString("class_id");
+				row[1] = rs.getString("name");							
+				row[2] = rs.getString("score_attitude");						
+				row[3] = rs.getString("score_check");							
+				row[4] = rs.getString("score_exam");							
+				row[5] = rs.getString("score_work");
+				
+				model.addRow(row);
+			}
+			
+			rs.close();
+		} catch(SQLException a) {
+			a.getStackTrace();
+		}
+	}
+	
 	Score(){
 		ResultSet rs = null;
 		String url = null;
@@ -48,7 +82,7 @@ public class Score extends JPanel {
 		S_dept.setBounds(10,10,30,30);
 		add(S_dept);
 		
-		String dept[] = {"전체", "컴퓨터공학과", "멀티미디어과", "세무회계과", "독어독문과"};
+		String dept[] = {"전체", "C001", "M002", "T003", "G004"};
 		JComboBox Cb_dept = new JComboBox(dept);
 		Cb_dept.setBounds(45, 10, 120, 20);
 		add(Cb_dept);
@@ -71,41 +105,32 @@ public class Score extends JPanel {
 				int index = Cb_dept.getSelectedIndex();
 				String Cb_name = Cb_dept.getItemAt(index).toString();
 				
-				if(Cb_name.equals("컴퓨터공학과")) {
+				if(Cb_name.equals("C001")) {
+					System.out.println("연결되었습니다.......");
+					String squery = "where department_id = "
+							+ "(select department_id from pofol_department where department_id = 'C001')";
+					List(squery);
 					
-				} else if(Cb_name.equals("멀티미디어과")) {
+				} else if(Cb_name.equals("M002")) {
+					System.out.println("연결되었습니다.......");
+					String squery = "where department_id = "
+							+ "(select department_id from pofol_department where department_id = 'M002')";
+					List(squery);
 					
-				} else if(Cb_name.equals("세무회계과")) {
+				} else if(Cb_name.equals("T003")) {
+					System.out.println("연결되었습니다.......");
+					String squery = "where department_id = "
+							+ "(select department_id from pofol_department where department_id = 'T003')";
+					List(squery);
 					
-				} else if(Cb_name.equals("독어독문과")) {
+				} else if(Cb_name.equals("G004")) {
+					System.out.println("연결되었습니다.......");
+					String squery = "where department_id = "
+							+ "(select department_id from pofol_department where department_id = 'G004')";
+					List(squery);
 					
 				} else if(Cb_name.equals("전체")){
-					try {
-						System.out.println("연결되었습니다.......");
-						
-						query = "select class_id, name, score_attitude, score_check, score_exam, score_work "
-								+ "from pofol_score";
-						
-						ResultSet rs = stmt.executeQuery(query);
-						
-						model.setNumRows(0);
-						
-						while(rs.next()) {
-							String[] row = new String[6];
-							row[0] = rs.getString("class_id");
-							row[1] = rs.getString("name");							
-							row[2] = rs.getString("score_attitude");						
-							row[3] = rs.getString("score_check");							
-							row[4] = rs.getString("score_exam");							
-							row[5] = rs.getString("score_work");
-							
-							model.addRow(row);
-						}
-						
-						rs.close();
-					} catch(SQLException a) {
-						a.getStackTrace();
-					}
+					List("");
 				}
 			}
 		});
