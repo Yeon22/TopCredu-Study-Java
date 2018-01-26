@@ -18,17 +18,17 @@ public class ScoreManager extends JFrame {
 	JPanel panel = new JPanel();
 	
 	ScoreManager(){
-		setTitle("己利包府矫胶袍");
+		setTitle("切积己利包府矫胶袍");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menubar = new JMenuBar();
 		
-		JMenu student = new JMenu("切积包府");
+		JMenu student = new JMenu("切积己利包府    ");
 		menubar.add(student);
-		JMenu score = new JMenu("己利包府");
+		JMenu score = new JMenu("己利包府    ");
 		menubar.add(score);
 		
-		JMenuItem student_info = new JMenuItem("切积沥焊");
+		JMenuItem student_info = new JMenuItem("切积己利殿废");
 		student.add(student_info);
 		JMenuItem score_info = new JMenuItem("己利泅炔");
 		score.add(score_info);
