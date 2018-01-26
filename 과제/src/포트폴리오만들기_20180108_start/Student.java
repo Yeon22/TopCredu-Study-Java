@@ -10,7 +10,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -35,6 +34,7 @@ public class Student extends JPanel {
 	JButton updateBtn;
 	JButton deleteBtn;
 	JButton searchBtn;
+	JButton deptListBtn;
 	
 	String [] score = {"A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "E", "F"};
 	String [] dept_name = {"C001", "M002", "T003", "G004"};
@@ -54,10 +54,10 @@ public class Student extends JPanel {
 			
 			if(squery.equals("")) {
 				query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work "
-						+"from pofol_score";
+						+"from pofol_score order by class_id";
 			} else {
 				query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work "
-						+"from pofol_score"+ squery;
+						+"from pofol_score"+ squery + " order by class_id";
 			}
 			
 			ResultSet rs = stmt.executeQuery(query);
@@ -121,8 +121,8 @@ public class Student extends JPanel {
 					id.requestFocus();
 				} else {
 					try {
-						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
-								" from pofol_member where class_id = '"+id.getText()+"'";
+						query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work" + 
+								" from pofol_score where class_id = '"+id.getText()+"'";
 						
 						ResultSet rs;
 						rs = stmt.executeQuery(query);
@@ -144,32 +144,17 @@ public class Student extends JPanel {
 			}
 		});
 		
-		searchBtn = new JButton("학번 검색");
-		searchBtn.setBounds(365,10,90,25);
-		add(searchBtn);
-		searchBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(id.getText().equals("")) {
-					AllList("");
-					return;
-				}
-				String query = "where login_id = '"+id.getText()+"'";
-				AllList(query);
-			}
-		});
-		
 		JLabel h_dept = new JLabel("학과 : ");
 		h_dept.setBounds(20,45,50,25);
 		add(h_dept);
 		
-		deptCombo.setBounds(60,45,70,25);
+		deptCombo.setBounds(60,45,90,25);
 		add(deptCombo);
 		
-		JButton deptlist = new JButton("학과 리스트");
-		deptlist.setBounds(230,45,120,25);
-		add(deptlist);
-		deptlist.addActionListener(new ActionListener() {
+		deptListBtn = new JButton("학과 리스트");
+		deptListBtn.setBounds(230, 45, 120, 25);
+		add(deptListBtn);
+		deptListBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
@@ -219,7 +204,7 @@ public class Student extends JPanel {
 		table = new JTable(model);
 		table.setPreferredScrollableViewportSize(new Dimension(300, 200));
 		JScrollPane h_jp = new JScrollPane(table);
-		h_jp.setBounds(20,200,300,200);
+		h_jp.setBounds(20,200,350,200);
 		add(h_jp);
 		
 		table.addMouseListener(new MouseListener() {
@@ -249,17 +234,44 @@ public class Student extends JPanel {
 		});
 		
 		selectBtn = new JButton("조회");
-		selectBtn.setBounds(340,208,70,25);
+		selectBtn.setBounds(395,208,70,25);
 		add(selectBtn);
 		selectBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AllList("");
+				try {
+					query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work" + 
+							" from pofol_score where class_id = '"+id.getText()+"'";
+					
+					ResultSet rs;
+					rs = stmt.executeQuery(query);
+					
+					model.setNumRows(0);
+					
+					if(rs.next()) {
+						String[] row = new String[7];
+						row[0] = rs.getString("class_id");
+						row[1] = rs.getString("department_id");
+						row[2] = rs.getString("name");
+						row[3] = rs.getString("score_attitude");
+						row[4] = rs.getString("score_check");
+						row[5] = rs.getString("score_exam");
+						row[6] = rs.getString("score_work");
+						model.addRow(row);
+					} else {
+						AllList("");
+					}
+					
+					rs.close();
+					
+				} catch(Exception b) {
+					b.getStackTrace();
+				}
 			}
 		});
 		
 		insertBtn = new JButton("입력");
-		insertBtn.setBounds(340,258,70,25);
+		insertBtn.setBounds(395,258,70,25);
 		add(insertBtn);
 		insertBtn.addActionListener(new ActionListener() {
 			@Override
@@ -271,45 +283,80 @@ public class Student extends JPanel {
 					JOptionPane.showConfirmDialog(null, "이름을 입력하세요.");
 				} else {
 					try {
-						String sql = "insert into pofol_score values('"
-								+id.getText()+"', '"
-								+deptCombo.getSelectedItem()+"', '"
-								+name.getText()+"', '"
-								+attitudeCombo.getSelectedItem()+"', '"
-								+checkCombo.getSelectedItem()+"', '"
-								+examCombo.getSelectedItem()+"', '"
-								+workCombo.getSelectedItem()+"')";
-						stmt.executeUpdate(sql);
+						query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work" + 
+								" from pofol_score where class_id = '"+id.getText()+"'";
 						
-					} catch (SQLException e1) {
-						e1.printStackTrace();
+						ResultSet rs;
+						rs = stmt.executeQuery(query);
+						
+						if(!rs.next()) {
+							String sql = "insert into pofol_score values('"
+									+id.getText()+"', '"
+									+deptCombo.getSelectedItem()+"', '"
+									+name.getText()+"', '"
+									+attitudeCombo.getSelectedItem()+"', '"
+									+checkCombo.getSelectedItem()+"', '"
+									+examCombo.getSelectedItem()+"', '"
+									+workCombo.getSelectedItem()+"')";
+							stmt.executeUpdate(sql);
+							
+							AllList("");
+							
+						} else {
+							JOptionPane.showMessageDialog(null, "이미 존재하는 학번입니다.");
+						}
+						
+						rs.close();
+						
+					} catch(Exception b) {
+						b.getStackTrace();
 					}
-					JOptionPane.showMessageDialog(null, "입력되었습니다.");
 				}
 			}
 		});
 		
 		updateBtn = new JButton("수정");
-		updateBtn.setBounds(340,308,70,25);
+		updateBtn.setBounds(395,308,70,25);
 		add(updateBtn);
 		updateBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					
-					
+					try {
+						stmt.executeUpdate("update pofol_score set CLASS_ID = '"
+								+id.getText()+"', DEPARTMENT_ID = '"
+								+deptCombo.getSelectedItem()+"', NAME = '"
+								+name.getText()+"', SCORE_ATTITUDE = '"
+								+attitudeCombo.getSelectedItem()+"', SCORE_CHECK = '"
+								+checkCombo.getSelectedItem()+"', SCORE_EXAM = '"
+								+examCombo.getSelectedItem()+"', SCORE_WORK = '"
+								+workCombo.getSelectedItem()+"' where CLASS_ID = '"
+								+id.getText()+"'");
+						JOptionPane.showMessageDialog(null, "수정되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+						AllList("");
+						
+					} catch(Exception a1) {
+						a1.getStackTrace();
+					}
 				}
 			}
 		});
 		
 		deleteBtn = new JButton("삭제");
-		deleteBtn.setBounds(340,358,70,25);
+		deleteBtn.setBounds(395,358,70,25);
 		add(deleteBtn);
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					
+					try {
+						stmt.executeUpdate("delete from pofol_score where class_id = '"+id.getText()+"'");
+						JOptionPane.showMessageDialog(null, "삭제되었습니다.");
+						AllList("");
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
