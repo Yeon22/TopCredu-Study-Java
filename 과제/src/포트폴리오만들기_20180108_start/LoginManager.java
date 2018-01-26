@@ -28,6 +28,8 @@ public class LoginManager extends JFrame {
 	JTextField pw_text;
 	JButton login;
 	JButton member;
+	JButton rememberID;
+	JButton rememberPW;
 	
 	LoginDialog dialog = new LoginDialog(this, "회원가입화면");
 	ScoreManager sm;
@@ -48,21 +50,46 @@ public class LoginManager extends JFrame {
 			e.printStackTrace();
 		}
 		
-		setTitle("로그인화면");
+		setTitle("관리자 로그인 화면");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new FlowLayout());
+		setLayout(null);
 		
-		JLabel l_id = new JLabel("아이디      : ");
+		JLabel l_id = new JLabel("아이디 : ");
+		l_id.setBounds(24,10,60,25);
 		id_text = new JTextField(10);
+		id_text.setBounds(79,10,120,25);
 		add(l_id);
 		add(id_text);
+
+		rememberID = new JButton("아이디 찾기");
+		rememberID.setBounds(204,10,120,25);
+		add(rememberID);
+		rememberID.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
-		JLabel l_pw = new JLabel("비밀번호  : ");
+		JLabel l_pw = new JLabel("비밀번호 : ");
+		l_pw.setBounds(10,40,80,25);
 		pw_text = new JTextField(10);
+		pw_text.setBounds(79,40,120,25);
 		add(l_pw);
 		add(pw_text);
 		
+		rememberPW = new JButton("비밀번호 찾기");
+		rememberPW.setBounds(204,40,120,25);
+		add(rememberPW);
+		rememberPW.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
 		login = new JButton("관리자로그인");
+		login.setBounds(45,80,120,25);
 		add(login);
 		login.addActionListener(new ActionListener() {
 			@Override
@@ -100,6 +127,7 @@ public class LoginManager extends JFrame {
 		});
 		
 		member = new JButton("회원가입");
+		member.setBounds(185,80,120,25);
 		add(member);
 		member.addActionListener(new ActionListener() {
 			@Override
@@ -107,6 +135,13 @@ public class LoginManager extends JFrame {
 				dialog.setVisible(true);
 			}
 		});
+		
+		JLabel Alim = new JLabel("아이디 및 비밀번호를 잊으신 분들께선");
+		JLabel Alim2 = new JLabel("아이디 찾기 또는 비밀번호 찾기를 이용해주시기 바랍니다.");
+		Alim.setBounds(60,115,250,25);
+		Alim2.setBounds(10,135,410,25);
+		add(Alim);
+		add(Alim2);
 		
 		//종료이벤트
 		addWindowListener(new WindowAdapter() {
@@ -121,7 +156,7 @@ public class LoginManager extends JFrame {
 			}
 		});
 		
-		setSize(260,130);
+		setSize(355,200);
 		setResizable(false);
 		setVisible(true);
 	}
