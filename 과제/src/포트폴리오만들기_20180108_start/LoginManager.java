@@ -62,7 +62,7 @@ public class LoginManager extends JFrame {
 		add(l_pw);
 		add(pw_text);
 		
-		login = new JButton("로그인");
+		login = new JButton("관리자로그인");
 		add(login);
 		login.addActionListener(new ActionListener() {
 			@Override
@@ -74,10 +74,11 @@ public class LoginManager extends JFrame {
 				} else {
 					// 아이디, 비밀번호 입력했을 때
 					try {
-						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
-								" from pofol_member where login_id = '"+id_text.getText()+"' and pw = '"+pw_text.getText()+"'";
+						query = "select login_id, pw, pro_name, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, phone_number, gender" + 
+								" from pofol_professor where login_id = '"+id_text.getText()+"' and pw = '"+pw_text.getText()+"'";
 						
 						ResultSet rs;
+						
 						rs = stmt.executeQuery(query);
 						
 						if(!rs.next()) {

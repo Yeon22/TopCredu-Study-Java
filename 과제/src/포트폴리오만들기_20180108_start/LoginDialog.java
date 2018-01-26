@@ -29,7 +29,7 @@ public class LoginDialog  extends JDialog{
 	JTextField d_pw = new JTextField(12);
 	JTextField pw_check = new JTextField(12);
 	JTextField name = new JTextField(12);
-	JTextField class_id = new JTextField(12);
+	JTextField phone = new JTextField(12);
 	JTextField address = new JTextField(12);
 	JTextField email = new JTextField(12);
 	JTextField birth = new JTextField(12);
@@ -63,7 +63,7 @@ public class LoginDialog  extends JDialog{
 			e.printStackTrace();
 		}
 		
-		setTitle("회원가입");
+		setTitle("성적 관리자 회원가입");
 		setLayout(null);
 		
 		JLabel idLbl = new JLabel("아이디 : ");
@@ -83,8 +83,8 @@ public class LoginDialog  extends JDialog{
 					d_id.requestFocus();
 				} else {
 					try {
-						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
-								" from pofol_member where login_id = '"+d_id.getText()+"'";
+						query = "select login_id, pw, pro_name, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, phone_number, gender" + 
+								" from pofol_professor where login_id = '"+d_id.getText()+"'";
 						
 						ResultSet rs;
 						rs = stmt.executeQuery(query);
@@ -125,51 +125,61 @@ public class LoginDialog  extends JDialog{
 		pw_check.setBounds(80, 70, 100, 25);
 		add(pw_check);
 		
-		JLabel nametxt = new JLabel("이름 : ");
-		nametxt.setBounds(35,100,50,25);
+		JLabel nametxt = new JLabel("교수이름 : ");
+		nametxt.setBounds(10,100,80,25);
 		add(nametxt);
 		name.setBounds(80,100,100,25);
 		add(name);
 		
-		JLabel classid = new JLabel("학번 : ");
-		classid.setBounds(35,130,50,25);
-		add(classid);
-		class_id.setBounds(80,130,100,25);
-		add(class_id);
+		JLabel phonenumber = new JLabel("전화번호 : ");
+		phonenumber.setBounds(10,130,100,25);
+		add(phonenumber);
+		phone.setBounds(80,130,100,25);
+		add(phone);
 		
-		classBtn = new JButton("학번 중복 체크");
-		classBtn.setBounds(190,130,140,25);
-		add(classBtn); 
-		classBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(class_id.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학번을 입력해주세요.");
-					class_id.requestFocus();
-				} else {
-					try {
-						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
-								" from pofol_member where class_id = '"+class_id.getText()+"'";
-						
-						ResultSet rs;
-						rs = stmt.executeQuery(query);
-						
-						if(rs.next()) {
-							JOptionPane.showMessageDialog(null, "이미 사용중인 학번입니다.");
-							class_id.setText("");
-							class_id.requestFocus();
-						} else {
-							JOptionPane.showMessageDialog(null, "사용 가능한 학번입니다.");
-						}
-						
-						rs.close();
-						
-					} catch (SQLException e1) {
-						e1.printStackTrace();
-					}
-				}
-			}
-		});
+		JLabel phoneArim = new JLabel("전화번호 입력시 숫자만 입력! ");
+		phoneArim.setBounds(195,130,180,25);
+		add(phoneArim);
+		
+//		JLabel classid = new JLabel("학번 : ");
+//		classid.setBounds(35,130,50,25);
+//		add(classid);
+//		class_id.setBounds(80,130,100,25);
+//		add(class_id);
+//		
+//		classBtn = new JButton("학번 중복 체크");
+//		classBtn.setBounds(190,130,140,25);
+//		add(classBtn); 
+//		classBtn.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				if(class_id.getText().equals("")) {
+//					JOptionPane.showMessageDialog(null, "학번을 입력해주세요.");
+//					class_id.requestFocus();
+//				} else {
+//					try {
+//						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
+//								" from pofol_member where class_id = '"+class_id.getText()+"'";
+//						
+//						ResultSet rs;
+//						rs = stmt.executeQuery(query);
+//						
+//						if(rs.next()) {
+//							JOptionPane.showMessageDialog(null, "이미 사용중인 학번입니다.");
+//							class_id.setText("");
+//							class_id.requestFocus();
+//						} else {
+//							JOptionPane.showMessageDialog(null, "사용 가능한 학번입니다.");
+//						}
+//						
+//						rs.close();
+//						
+//					} catch (SQLException e1) {
+//						e1.printStackTrace();
+//					}
+//				}
+//			}
+//		});
 		
 		JLabel adrs = new JLabel("주소 : ");
 		adrs.setBounds(35,160,50,25);
@@ -194,8 +204,8 @@ public class LoginDialog  extends JDialog{
 					email.requestFocus();
 				} else {
 					try {
-						query = "select login_id, pw, name, class_id, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, gender" + 
-								" from pofol_member where email = '"+email.getText()+"'";
+						query = "select login_id, pw, pro_name, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, phone_number, gender" + 
+								" from pofol_professor where email = '"+email.getText()+"'";
 						
 						ResultSet rs;
 						rs = stmt.executeQuery(query);
@@ -246,9 +256,9 @@ public class LoginDialog  extends JDialog{
 				} else if(d_pw.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "비밀번호는 필수 입력사항입니다.");
 				} else if(name.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "이름은 필수 입력사항입니다.");
-				} else if(class_id.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학번은 필수 입력사항입니다.");
+					JOptionPane.showMessageDialog(null, "교수이름은 필수 입력사항입니다.");
+				} else if(phone.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "전화번호는 필수 입력사항입니다.");
 				} else if(address.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "주소는 필수 입력사항입니다.");
 				} else if(email.getText().equals("")) {
@@ -259,15 +269,16 @@ public class LoginDialog  extends JDialog{
 					// 모든 입력사항을 작성 한 후
 					if(pw_check.getText().equals(d_pw.getText())) {
 						try {
-							String sql = "insert into pofol_member values('"
+							String sql = "insert into pofol_professor values('"
 									+d_id.getText()+"', '"
 									+d_pw.getText()+"', '"
 									+name.getText()+"', '"
-									+class_id.getText()+"', '"
 									+address.getText()+"', '"
-									+email.getText()+"', '"
-									+birth.getText()+"', '"
+									+email.getText()+"', TO_DATE('"
+									+birth.getText()+"', 'RRRR-MM-DD'), '"
+									+phone.getText()+"', '"
 									+Check+"')";
+
 							stmt.executeUpdate(sql);
 							
 						} catch(Exception a) {
