@@ -30,8 +30,10 @@ public class LoginManager extends JFrame {
 	JButton member;
 	JButton rememberID;
 	JButton rememberPW;
+	JButton outBtn;
 	
 	LoginDialog dialog = new LoginDialog(this, "회원가입화면");
+	Withdrawal withdialog = new Withdrawal();
 	ScoreManager sm;
 	
 	LoginManager(){
@@ -143,6 +145,27 @@ public class LoginManager extends JFrame {
 		add(Alim);
 		add(Alim2);
 		
+		JLabel jul = new JLabel("---------------------------------------------------------------------------------------");
+		jul.setBounds(0,150,355,10);
+		add(jul);
+		
+		JLabel outLbl = new JLabel("탈퇴를 원하시는 분들은 옆에 있는 ");
+		JLabel outLbl2 = new JLabel("회원 탈퇴 버튼을 누르시기 바랍니다.");
+		outLbl.setBounds(10,165,200,25);
+		outLbl2.setBounds(10,182, 250, 25);
+		add(outLbl);
+		add(outLbl2);
+		
+		outBtn = new JButton("회원 탈퇴");
+		outBtn.setBounds(250,170,90,30);
+		add(outBtn);
+		outBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				withdialog.setVisible(true);
+			}
+		});
+		
 		//종료이벤트
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -156,7 +179,7 @@ public class LoginManager extends JFrame {
 			}
 		});
 		
-		setSize(355,200);
+		setSize(355,250);
 		setResizable(false);
 		setVisible(true);
 	}
