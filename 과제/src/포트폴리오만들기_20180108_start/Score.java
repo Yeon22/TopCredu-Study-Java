@@ -82,7 +82,7 @@ public class Score extends JPanel {
 		S_dept.setBounds(10,10,30,30);
 		add(S_dept);
 		
-		String dept[] = {"전체", "C001", "M002", "T003", "G004"};
+		String dept[] = {"전체", "컴퓨터공학과", "멀티미디어과", "세무회계과", "독어독문과"};
 		JComboBox Cb_dept = new JComboBox(dept);
 		Cb_dept.setBounds(45, 10, 120, 20);
 		add(Cb_dept);
@@ -105,25 +105,25 @@ public class Score extends JPanel {
 				int index = Cb_dept.getSelectedIndex();
 				String Cb_name = Cb_dept.getItemAt(index).toString();
 				
-				if(Cb_name.equals("C001")) {
+				if(Cb_name.equals("컴퓨터공학과")) {
 					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'C001')";
 					List(squery);
 					
-				} else if(Cb_name.equals("M002")) {
+				} else if(Cb_name.equals("멀티미디어과")) {
 					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'M002')";
 					List(squery);
 					
-				} else if(Cb_name.equals("T003")) {
+				} else if(Cb_name.equals("세무회계과")) {
 					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'T003')";
 					List(squery);
 					
-				} else if(Cb_name.equals("G004")) {
+				} else if(Cb_name.equals("독어독문과")) {
 					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'G004')";
