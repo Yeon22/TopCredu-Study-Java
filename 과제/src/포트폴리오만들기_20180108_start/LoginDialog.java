@@ -229,29 +229,50 @@ public class LoginDialog  extends JDialog{
 					JOptionPane.showMessageDialog(null, "생일은 필수 입력사항입니다.");
 				} else {
 					// 모든 입력사항을 작성 한 후
-					if(pw_check.getText().equals(d_pw.getText())) {
-						try {
-							String sql = "insert into pofol_professor values('"
-									+d_id.getText()+"', '"
-									+d_pw.getText()+"', '"
-									+name.getText()+"', '"
-									+address.getText()+"', '"
-									+email.getText()+"', TO_DATE('"
-									+birth.getText()+"', 'RRRR-MM-DD'), '"
-									+phone.getText()+"', '"
-									+Check+"')";
+					try {
+						query = "select login_id, pw, pro_name, address, email, TO_DATE(birth, 'RRRR-MM-DD') as birth, phone_number, gender" + 
+								" from pofol_professor where login_id = '"+d_id.getText()+"'";
+						
+						ResultSet rs;
+						
+						rs = stmt.executeQuery(query);
+						
+						if(rs.next()) {
+							JOptionPane.showMessageDialog(null, "이미 존재하는 계정 입니다.");
+						} else {
+							
+							if(pw_check.getText().equals(d_pw.getText())) {
+								try {
+									String sql = "insert into pofol_professor values('"
+											+d_id.getText()+"', '"
+											+d_pw.getText()+"', '"
+											+name.getText()+"', '"
+											+address.getText()+"', '"
+											+email.getText()+"', TO_DATE('"
+											+birth.getText()+"', 'RRRR-MM-DD'), '"
+											+phone.getText()+"', '"
+											+Check+"')";
 
-							stmt.executeUpdate(sql);
-									
-						} catch(Exception a) {
+									stmt.executeUpdate(sql);
+											
+								} catch(Exception a) {
 									a.printStackTrace();
-						}
-						JOptionPane.showMessageDialog(null, "회원가입이 정상적으로 완료되었습니다. \n가입해 주셔서 감사합니다.");
-						setVisible(false);
+								}
 								
-					} else {
-						JOptionPane.showMessageDialog(null, "비밀번호가 같지 않습니다.");
+								JOptionPane.showMessageDialog(null, "회원가입이 정상적으로 완료되었습니다. \n가입해 주셔서 감사합니다.");
+								setVisible(false);
+										
+							} else {
+								JOptionPane.showMessageDialog(null, "비밀번호가 같지 않습니다.");
+							}
+						}
+						
+						rs.close();
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
 					}
+					
 				}
 			}
 		});
@@ -281,6 +302,8 @@ public class LoginDialog  extends JDialog{
 				Check = "M";
 			} else if(WomanRdb.isSelected()) {
 				Check = "F";
+			} else if(ManRdb.isSelected() && WomanRdb.isSelected()) {
+				JOptionPane.showMessageDialog(null, "성별은 남자와 여자 둘 중 하나만 선택하여 주시기 바랍니다.");
 			}
 		}
 		
