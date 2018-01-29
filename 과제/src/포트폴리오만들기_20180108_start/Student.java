@@ -151,15 +151,9 @@ public class Student extends JPanel {
 		deptCombo.setBounds(60,45,90,25);
 		add(deptCombo);
 		
-		deptListBtn = new JButton("학과 리스트");
-		deptListBtn.setBounds(230, 45, 120, 25);
-		add(deptListBtn);
-		deptListBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		JLabel deptAlim = new JLabel("학과ID별 학과명은 학과 리스트 메뉴를 참고해 주세요.");
+		deptAlim.setBounds(170,45,400,30);
+		add(deptAlim);
 		
 		JLabel h_name = new JLabel("이름 : ");
 		h_name.setBounds(20,80,50,25);
@@ -278,9 +272,9 @@ public class Student extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(id.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "학번을 입력하세요.");
+					JOptionPane.showMessageDialog(null, "학번을 입력하세요.");
 				} else if(name.getText().equals("")) {
-					JOptionPane.showConfirmDialog(null, "이름을 입력하세요.");
+					JOptionPane.showMessageDialog(null, "이름을 입력하세요.");
 				} else {
 					try {
 						query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work" + 
