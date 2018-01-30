@@ -14,7 +14,6 @@ public class HTML과제 {
 		        .bg2 {color: blue;}
 		        
 		        #red {color: red;}
-		        
 		        #red:nth-of-type(1) {color: red;}
 		        
 		        .blue {color: blue;}
@@ -26,7 +25,6 @@ public class HTML과제 {
 		    </style>
 		</head>
 		<body>
-		
 		
 		<!--1. email수신여부 예/아니오를 라디오버튼으로 작성하시오.-->
 		    <form>
