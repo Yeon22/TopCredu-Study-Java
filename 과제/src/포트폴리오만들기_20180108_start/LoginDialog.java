@@ -263,7 +263,10 @@ public class LoginDialog  extends JDialog{
 								setVisible(false);
 										
 							} else {
-								JOptionPane.showMessageDialog(null, "비밀번호가 같지 않습니다.");
+								JOptionPane.showMessageDialog(null, "비밀번호가 같지 않습니다. \n다시 입력해주시기 바랍니다.");
+								d_pw.setText("");
+								d_pw.requestFocus();
+								pw_check.setText("");
 							}
 						}
 						

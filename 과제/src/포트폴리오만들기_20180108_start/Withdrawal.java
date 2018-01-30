@@ -77,7 +77,7 @@ public class Withdrawal extends JDialog{
 				} else if(t_pw.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "비밀번호는 필수 입력사항입니다.");
 				} else if(t_name.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "교수이름은 필수 입력사항입니다.");
+					JOptionPane.showMessageDialog(null, "이름은 필수 입력사항입니다.");
 				} else {
 					// 모든 입력사항을 작성 한 후
 					try {
@@ -94,13 +94,18 @@ public class Withdrawal extends JDialog{
 								try {
 									stmt.executeUpdate("delete from pofol_professor where login_id = '"+t_id.getText()+"'");
 									JOptionPane.showMessageDialog(null, "회원 탈퇴되었습니다.");
+									setVisible(false);
 									
 								} catch (SQLException e1) {
 									e1.printStackTrace();
 								}
 							}
 						} else {
-							JOptionPane.showMessageDialog(null, "입력된 값이 존재하지 않습니다. \n다시 한번 확인해 주시기 바랍니다.");
+							JOptionPane.showMessageDialog(null, "입력된 계정이 존재하지 않습니다. \n다시 한번 확인해 주시기 바랍니다.");
+							t_id.setText("");
+							t_id.requestFocus();
+							t_pw.setText("");
+							t_name.setText("");
 						}
 						
 						rs.close();
