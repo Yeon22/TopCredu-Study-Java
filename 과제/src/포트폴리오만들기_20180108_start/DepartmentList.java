@@ -170,11 +170,17 @@ public class DepartmentList extends JPanel{
 				if(t_id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "학과ID를 입력해주세요.");
 					t_id.requestFocus();
+				} else if(t_name.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "학과명을 입력해주세요.");
+					t_name.requestFocus();
 				} else {
 					if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 						try {
-							stmt.executeUpdate("delete from pofol_department where department_id = '"+t_id.getText()+"'");
+							stmt.executeUpdate("delete from pofol_department "
+									+ "where department_id = '"+t_id.getText()+"' and department_name = '"+t_name.getText()+"'");
 							JOptionPane.showMessageDialog(null, "삭제되었습니다.");
+							t_id.setText("");
+							t_name.setText("");
 							List();
 							
 						} catch (SQLException e1) {

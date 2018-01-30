@@ -298,6 +298,9 @@ public class Student extends JPanel {
 							
 						} else {
 							JOptionPane.showMessageDialog(null, "이미 존재하는 학번입니다.");
+							id.setText("");
+							id.requestFocus();
+							name.setText("");
 						}
 						
 						rs.close();

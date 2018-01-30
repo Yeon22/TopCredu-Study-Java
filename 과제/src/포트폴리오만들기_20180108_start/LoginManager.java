@@ -98,8 +98,10 @@ public class LoginManager extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(id_text.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.");
+					id_text.requestFocus();
 				} else if(pw_text.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요.");
+					pw_text.requestFocus();
 				} else {
 					// 아이디, 비밀번호 입력했을 때
 					try {
@@ -112,6 +114,9 @@ public class LoginManager extends JFrame {
 						
 						if(!rs.next()) {
 							JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 틀립니다.");
+							id_text.setText("");
+							id_text.requestFocus();
+							pw_text.setText("");
 						} else {
 							JOptionPane.showMessageDialog(null, "로그인이 정상적으로 완료되었습니다.");
 							sm = new ScoreManager();
