@@ -118,7 +118,8 @@ public class Withdrawal extends JDialog{
 		}
 	});
 		
-		setSize(250, 220);
+		setSize(240, 200);
+		setResizable(false);
 	}
 
 }
