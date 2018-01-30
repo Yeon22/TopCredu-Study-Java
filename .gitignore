@@ -1,8 +1,4 @@
+
+bin/
 /.metadata/
 /.recommenders/
-# Created by https://www.gitignore.io/api/java,eclipse
-
-### Eclipse ###
-
-.metadata
-bin/
