@@ -36,6 +36,9 @@ public class LoginManager extends JFrame {
 	Withdrawal withdialog = new Withdrawal();
 	ScoreManager sm;
 	
+	FindID findIDdialog = new FindID();
+	FindPW findPWdialog = new FindPW();
+	
 	LoginManager(){
 		String url = null;
 		String uid = "h5";
@@ -69,7 +72,7 @@ public class LoginManager extends JFrame {
 		rememberID.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				findIDdialog.setVisible(true);
 			}
 		});
 		
@@ -86,7 +89,7 @@ public class LoginManager extends JFrame {
 		rememberPW.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				findPWdialog.setVisible(true);
 			}
 		});
 		
