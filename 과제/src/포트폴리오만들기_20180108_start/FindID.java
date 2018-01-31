@@ -62,7 +62,7 @@ public class FindID extends JDialog{
 		add(t_birth);
 		
 		JLabel birthAlim = new JLabel("생일 작성 예시 : 19yy/mm/dd (예시 참고!)");
-		birthAlim.setBounds(15,70,250,25);
+		birthAlim.setBounds(22,73,250,25);
 		add(birthAlim);
 		
 		email = new JLabel("email 주소 : ");
@@ -71,7 +71,7 @@ public class FindID extends JDialog{
 		t_email.setBounds(93,110,130,25);
 		add(t_email);
 		
-		idFindcheck.setBounds(55, 150, 150, 30);
+		idFindcheck.setBounds(55, 165, 165, 30);
 		add(idFindcheck);
 		idFindcheck.addActionListener(new ActionListener() {
 			@Override
