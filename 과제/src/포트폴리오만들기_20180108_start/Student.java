@@ -273,8 +273,10 @@ public class Student extends JPanel {
 				
 				if(id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "학번을 입력하세요.");
+					id.requestFocus();
 				} else if(name.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "이름을 입력하세요.");
+					name.requestFocus();
 				} else {
 					try {
 						query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work" + 
