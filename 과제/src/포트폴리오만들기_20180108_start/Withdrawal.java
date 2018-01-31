@@ -74,10 +74,13 @@ public class Withdrawal extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				if(t_id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "아이디는 필수 입력사항입니다.");
+					t_id.requestFocus();
 				} else if(t_pw.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "비밀번호는 필수 입력사항입니다.");
+					t_pw.requestFocus();
 				} else if(t_name.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "이름은 필수 입력사항입니다.");
+					t_name.requestFocus();
 				} else {
 					// 모든 입력사항을 작성 한 후
 					try {
