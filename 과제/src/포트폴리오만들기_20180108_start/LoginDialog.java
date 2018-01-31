@@ -27,6 +27,8 @@ public class LoginDialog  extends JDialog{
 	String id_query;
 	String email_query;
 	
+	FindID findIDdialog = new FindID();
+	
 	JTextField d_id = new JTextField(12);
 	JTextField d_pw = new JTextField(12);
 	JTextField pw_check = new JTextField(12);
@@ -215,18 +217,25 @@ public class LoginDialog  extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				if(d_id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "아이디는 필수 입력사항입니다.");
+					d_id.requestFocus();
 				} else if(d_pw.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "비밀번호는 필수 입력사항입니다.");
+					d_pw.requestFocus();
 				} else if(name.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "교수이름은 필수 입력사항입니다.");
+					name.requestFocus();
 				} else if(phone.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "전화번호는 필수 입력사항입니다.");
+					phone.requestFocus();
 				} else if(address.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "주소는 필수 입력사항입니다.");
+					address.requestFocus();
 				} else if(email.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "이메일은 필수 입력사항입니다.");
+					email.requestFocus();
 				} else if(birth.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "생일은 필수 입력사항입니다.");
+					birth.requestFocus();
 				} else {
 					// 모든 입력사항을 작성 한 후
 					try {
@@ -238,7 +247,12 @@ public class LoginDialog  extends JDialog{
 						rs = stmt.executeQuery(query);
 						
 						if(rs.next()) {
-							JOptionPane.showMessageDialog(null, "이미 존재하는 계정 입니다.");
+							if(JOptionPane.showConfirmDialog(null, "이미 존재하는 계정입니다. \n아이디 찾기 화면으로 넘어가시겠습니까?", "알림", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+								setVisible(false);
+								findIDdialog.setVisible(true);
+							} else {
+								setVisible(false);
+							}
 						} else {
 							
 							if(pw_check.getText().equals(d_pw.getText())) {
