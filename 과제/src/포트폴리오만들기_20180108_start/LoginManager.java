@@ -121,7 +121,7 @@ public class LoginManager extends JFrame {
 							id_text.requestFocus();
 							pw_text.setText("");
 						} else {
-							JOptionPane.showMessageDialog(null, "로그인이 정상적으로 완료되었습니다.");
+							JOptionPane.showMessageDialog(null, "로그인이 정상적으로 완료되었습니다. \n성적관리시스템에 접속합니다.");
 							sm = new ScoreManager();
 							setVisible(false);
 						}
