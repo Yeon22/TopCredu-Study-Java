@@ -84,6 +84,7 @@ public class FindID extends JDialog{
 					t_birth.requestFocus();
 				} else if(t_email.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "이메일 주소를 입력해주세요.");
+					t_email.requestFocus();
 				} else {
 					//모든 항목을 입력했을 때
 					try {
