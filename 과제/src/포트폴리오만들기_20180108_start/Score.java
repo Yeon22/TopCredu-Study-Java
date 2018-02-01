@@ -27,8 +27,6 @@ public class Score extends JPanel {
 	
 	public void List(String squery) {
 		try {
-			System.out.println("연결되었습니다.......");
-			
 			if(squery.equals("")) {
 				query = "select class_id, name, score_attitude, score_check, score_exam, score_work "
 						+ "from pofol_score order by class_id";

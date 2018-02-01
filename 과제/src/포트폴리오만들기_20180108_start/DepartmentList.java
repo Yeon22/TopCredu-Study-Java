@@ -31,8 +31,6 @@ public class DepartmentList extends JPanel{
 	
 	public void List() {
 		try {
-			System.out.println("연결되었습니다.....");
-			
 			query = "select department_id, department_name from pofol_department";
 			
 			ResultSet rs = stmt.executeQuery(query);
