@@ -27,7 +27,7 @@ public class DepartmentList extends JPanel{
 	JTable table;
 	
 	JButton insertDept;
-	JButton deleteDept;
+	JButton allSearch;
 	
 	public void List() {
 		try {
@@ -78,26 +78,6 @@ public class DepartmentList extends JPanel{
 		scrollpane.setBounds(80, 10, 300, 200);
 		add(scrollpane);
 		
-		try {
-			query = "select department_id, department_name from pofol_department";
-			
-			ResultSet rs = stmt.executeQuery(query);
-			
-			model.setNumRows(0);
-			
-			while(rs.next()) {
-				String[] row = new String[2];
-				row[0] = rs.getString("department_id");
-				row[1] = rs.getString("department_name");
-				model.addRow(row);
-			}
-			
-			rs.close();
-			
-		} catch(SQLException a) {
-			a.getStackTrace();
-		}
-		
 		JLabel id = new JLabel("학과ID : ");
 		id.setBounds(120,250,80,25);
 		add(id);
@@ -113,8 +93,12 @@ public class DepartmentList extends JPanel{
 		JTextField t_name = new JTextField(15);
 		t_name.setBounds(170,290,150,25);
 		add(t_name);
+
+		JLabel idAlim = new JLabel ("학과ID는 영어 대문자 1개 +숫자 3개의 조합으로 되어있습니다.");
+		idAlim.setBounds(65,215,450,30);
+		add(idAlim);
 		
-		insertDept = new JButton("학과 ID 및 학과명 추가하기");
+		insertDept = new JButton("학과 ID로 학과명 검색하기");
 		insertDept.setBounds(130,330,200,30);
 		add(insertDept);
 		insertDept.addActionListener(new ActionListener() {
@@ -123,31 +107,24 @@ public class DepartmentList extends JPanel{
 				if(t_id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "학과ID를 입력하세요.");
 					t_id.requestFocus();
-				} else if(t_name.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학과명을 입력하세요.");
-					t_name.requestFocus();
 				} else {
 					try {
 						query = "select department_id, department_name from pofol_department "+
-								"where department_id = '"+t_id.getText()+"'"
-								+" and department_name = '"+t_name.getText()+"'";
+								"where department_id = '"+t_id.getText()+"'";
 						
 						ResultSet rs;
 						rs = stmt.executeQuery(query);
 						
-						if(!rs.next()) {
-							String sql = "insert into pofol_department values('"
-									+t_id.getText()+"', '"
-									+t_name.getText()+"')";
-							stmt.executeUpdate(sql);
-							
-							List();
+						model.setNumRows(0);
+						
+						if(rs.next()) {
+							String[] row = new String[2];
+							row[0] = rs.getString("department_id");
+							row[1] = rs.getString("department_name");
+							model.addRow(row);
 							
 						} else {
-							JOptionPane.showMessageDialog(null, "이미 존재하는 학과입니다.");
-							t_id.setText("");
-							t_id.requestFocus();
-							t_name.setText("");
+							JOptionPane.showMessageDialog(null, "존재하지 않는 학과ID입니다.");
 						}
 						
 						rs.close();
@@ -159,51 +136,33 @@ public class DepartmentList extends JPanel{
 			}
 		});
 		
-		deleteDept = new JButton("학과 삭제하기");
-		deleteDept.setBounds(150,370,150,30);
-		add(deleteDept);
-		deleteDept.addActionListener(new ActionListener() {
+		allSearch = new JButton("전체학과명 조회");
+		allSearch.setBounds(157,370,150,30);
+		add(allSearch);
+		allSearch.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(t_id.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학과ID를 입력해주세요.");
-					t_id.requestFocus();
-				} else if(t_name.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학과명을 입력해주세요.");
-					t_name.requestFocus();
-				} else {
-					if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-						try {
-							query = "select department_id, department_name from pofol_department "
-									+ "where department_id = '"+t_id.getText()+"' and department_name = '"+t_name.getText()+"'";
-							
-							ResultSet sls;
-							
-							sls = stmt.executeQuery(query);
-							
-							if(sls.next()) {
-								stmt.executeUpdate("delete from pofol_department "
-										+ "where department_id = '"+t_id.getText()+"' and department_name = '"+t_name.getText()+"'");
-								JOptionPane.showMessageDialog(null, "삭제되었습니다.");
-								t_id.setText("");
-								t_name.setText("");
-								List();
-							} else {
-								JOptionPane.showMessageDialog(null, "학과ID 또는 학과명이 틀립니다. \n정확히 입력하여 주시기 바랍니다.");
-								t_id.requestFocus();
-							}
-							
-						} catch (SQLException e1) {
-							e1.printStackTrace();
-						}
+				try {
+					query = "select department_id, department_name from pofol_department";
+					
+					ResultSet rs = stmt.executeQuery(query);
+					
+					model.setNumRows(0);
+					
+					while(rs.next()) {
+						String[] row = new String[2];
+						row[0] = rs.getString("department_id");
+						row[1] = rs.getString("department_name");
+						model.addRow(row);
 					}
+					
+					rs.close();
+					
+				} catch(SQLException a) {
+					a.getStackTrace();
 				}
 			}
 		});
-		
-		JLabel idAlim = new JLabel ("학과ID는 최대 문자+숫자 조합으로 4자까지만 입력가능합니다.");
-		idAlim.setBounds(65,215,450,30);
-		add(idAlim);
 		
 		setSize(450, 400);
 		setVisible(true);
