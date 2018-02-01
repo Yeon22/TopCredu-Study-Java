@@ -29,6 +29,7 @@ public class Student extends JPanel {
 	
 	JTextField id;
 	JTextField name;
+	JButton nameSearch;
 	JButton selectBtn;
 	JButton insertBtn;
 	JButton updateBtn;
@@ -50,8 +51,6 @@ public class Student extends JPanel {
 	
 	public void AllList(String squery) {
 		try {
-			System.out.println("연결되었습니다.....");
-			
 			if(squery.equals("")) {
 				query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work "
 						+"from pofol_score order by class_id";
@@ -162,6 +161,49 @@ public class Student extends JPanel {
 		name = new JTextField(25);
 		name.setBounds(60,80,150,25);
 		add(name);
+		
+		nameSearch = new JButton("이름 검색");
+		nameSearch.setBounds(230,80,120,25);
+		add(nameSearch);
+		nameSearch.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work" + 
+							" from pofol_score where name = '"+name.getText()+"'";
+					
+					ResultSet rs;
+					rs = stmt.executeQuery(query);
+					
+					model.setNumRows(0);
+					
+					if(rs.next()) {
+						String[] row = new String[7];
+						row[0] = rs.getString("class_id");
+						row[1] = rs.getString("department_id");
+						row[2] = rs.getString("name");
+						row[3] = rs.getString("score_attitude");
+						row[4] = rs.getString("score_check");
+						row[5] = rs.getString("score_exam");
+						row[6] = rs.getString("score_work");
+						model.addRow(row);
+					} else {
+						if(name.getText().equals("")) {
+							JOptionPane.showMessageDialog(null, "이름을 입력해주세요.");
+							name.requestFocus();
+						} else {
+							JOptionPane.showMessageDialog(null, "등록되어있지 않은 학생입니다.");
+						}
+						
+					}
+					
+					rs.close();
+					
+				} catch(Exception b) {
+					b.getStackTrace();
+				}
+			}
+		});
 		
 		JLabel h_attitude = new JLabel("태도 점수 : ");
 		h_attitude.setBounds(10,115,80,25);
