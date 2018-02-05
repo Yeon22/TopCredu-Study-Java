@@ -29,6 +29,8 @@ public class ScoreManager extends JFrame {
 		menubar.add(score);
 		JMenu department = new JMenu("학과 리스트   ");
 		menubar.add(department);
+		JMenu attendcheck = new JMenu("출석관리  ");
+		menubar.add(attendcheck);
 		
 		JMenuItem student_info = new JMenuItem("학생성적등록");
 		student.add(student_info);
@@ -36,6 +38,10 @@ public class ScoreManager extends JFrame {
 		score.add(score_info);
 		JMenuItem dept_info = new JMenuItem("학과ID별 학과명");
 		department.add(dept_info);
+		JMenuItem check_info = new JMenuItem("출석체크");
+		attendcheck.add(check_info);
+		JMenuItem check_info2 = new JMenuItem("출석현황");
+		attendcheck.add(check_info2);
 		
 		student_info.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,6 +70,28 @@ public class ScoreManager extends JFrame {
 				panel.revalidate();
 				panel.repaint();
 				panel.add(new DepartmentList());
+				panel.setLayout(null);
+			}
+		});
+		
+		check_info.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				panel.add(new Absence());
+				panel.setLayout(null);
+			}
+		});
+		
+		check_info2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panel.removeAll();
+				panel.revalidate();
+				panel.repaint();
+				panel.add(new Absence2());
 				panel.setLayout(null);
 			}
 		});
