@@ -312,7 +312,6 @@ public class Student extends JPanel {
 		insertBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				if(id.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "학번을 입력하세요.");
 					id.requestFocus();
@@ -321,11 +320,10 @@ public class Student extends JPanel {
 					name.requestFocus();
 				} else {
 					try {
-						query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work" + 
+						query = "select class_id, department_id, name, score_attitude, score_check, score_exam, score_work, check_date, checkme" + 
 								" from pofol_score where class_id = '"+id.getText()+"'";
 						
-						ResultSet rs;
-						rs = stmt.executeQuery(query);
+						ResultSet rs = stmt.executeQuery(query);
 						
 						if(!rs.next()) {
 							String sql = "insert into pofol_score values('"
@@ -335,8 +333,13 @@ public class Student extends JPanel {
 									+attitudeCombo.getSelectedItem()+"', '"
 									+checkCombo.getSelectedItem()+"', '"
 									+examCombo.getSelectedItem()+"', '"
-									+workCombo.getSelectedItem()+"')";
+									+workCombo.getSelectedItem()+"', "
+									+"sysdate, "
+									+"'미체크'"+")";
+							
 							stmt.executeUpdate(sql);
+							
+							JOptionPane.showMessageDialog(null, "입력되었습니다.","입력",JOptionPane.INFORMATION_MESSAGE);
 							
 							AllList("");
 							
@@ -362,24 +365,33 @@ public class Student extends JPanel {
 		updateBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					try {
-						stmt.executeUpdate("update pofol_score set CLASS_ID = '"
-								+id.getText()+"', DEPARTMENT_ID = '"
-								+deptCombo.getSelectedItem()+"', NAME = '"
-								+name.getText()+"', SCORE_ATTITUDE = '"
-								+attitudeCombo.getSelectedItem()+"', SCORE_CHECK = '"
-								+checkCombo.getSelectedItem()+"', SCORE_EXAM = '"
-								+examCombo.getSelectedItem()+"', SCORE_WORK = '"
-								+workCombo.getSelectedItem()+"' where CLASS_ID = '"
-								+id.getText()+"'");
-						JOptionPane.showMessageDialog(null, "수정되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
-						AllList("");
-						
-					} catch(Exception a1) {
-						a1.getStackTrace();
+				if(id.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "학번을 입력하세요.");
+					id.requestFocus();
+				} else if(name.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "이름을 입력하세요.");
+					name.requestFocus();
+				} else {
+					if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+						try {
+							stmt.executeUpdate("update pofol_score set CLASS_ID = '"
+									+id.getText()+"', DEPARTMENT_ID = '"
+									+deptCombo.getSelectedItem()+"', NAME = '"
+									+name.getText()+"', SCORE_ATTITUDE = '"
+									+attitudeCombo.getSelectedItem()+"', SCORE_CHECK = '"
+									+checkCombo.getSelectedItem()+"', SCORE_EXAM = '"
+									+examCombo.getSelectedItem()+"', SCORE_WORK = '"
+									+workCombo.getSelectedItem()+"' where CLASS_ID = '"
+									+id.getText()+"'");
+							JOptionPane.showMessageDialog(null, "수정되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+							AllList("");
+							
+						} catch(Exception a1) {
+							a1.getStackTrace();
+						}
 					}
 				}
+				
 			}
 		});
 		
