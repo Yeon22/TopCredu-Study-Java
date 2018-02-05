@@ -76,13 +76,13 @@ public class Score extends JPanel {
 		
 		setLayout(null);
 		
-		JLabel S_dept = new JLabel("학과");
-		S_dept.setBounds(10,10,30,30);
+		JLabel S_dept = new JLabel("학과 : ");
+		S_dept.setBounds(10,10,35,30);
 		add(S_dept);
 		
 		String dept[] = {"전체", "컴퓨터공학과", "멀티미디어과", "세무회계과", "독어독문과"};
 		JComboBox Cb_dept = new JComboBox(dept);
-		Cb_dept.setBounds(45, 10, 120, 20);
+		Cb_dept.setBounds(48, 12, 120, 20);
 		add(Cb_dept);
 		
 		String [] colName =  {"학번", "이름", "태도점수", "출결점수", "시험점수", "과제점수"};
