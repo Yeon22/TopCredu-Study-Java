@@ -116,10 +116,15 @@ public class LoginManager extends JFrame {
 						rs = stmt.executeQuery(query);
 						
 						if(!rs.next()) {
-							JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 틀립니다.");
+							JOptionPane.showMessageDialog(null, "가입되어있지 않은 계정입니다. \n회원가입을 먼저 해주시기 바랍니다.");
 							id_text.setText("");
 							id_text.requestFocus();
 							pw_text.setText("");
+							
+							if(JOptionPane.showConfirmDialog(null, "회원가입화면으로 이동하시겠습니다?", "알림", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+								dialog.setVisible(true);
+							}
+							
 						} else {
 							JOptionPane.showMessageDialog(null, "로그인이 정상적으로 완료되었습니다. \n성적관리시스템에 접속합니다.");
 							sm = new ScoreManager();
