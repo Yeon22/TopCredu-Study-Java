@@ -104,25 +104,21 @@ public class Score extends JPanel {
 				String Cb_name = Cb_dept.getItemAt(index).toString();
 				
 				if(Cb_name.equals("컴퓨터공학과")) {
-					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'C001')";
 					List(squery);
 					
 				} else if(Cb_name.equals("멀티미디어과")) {
-					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'M002')";
 					List(squery);
 					
 				} else if(Cb_name.equals("세무회계과")) {
-					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'T003')";
 					List(squery);
 					
 				} else if(Cb_name.equals("독어독문과")) {
-					System.out.println("연결되었습니다.......");
 					String squery = "where department_id = "
 							+ "(select department_id from pofol_department where department_id = 'G004')";
 					List(squery);
