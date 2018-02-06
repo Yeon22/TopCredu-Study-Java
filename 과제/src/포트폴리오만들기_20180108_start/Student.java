@@ -366,10 +366,10 @@ public class Student extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(id.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "학번을 입력하세요.");
+					JOptionPane.showMessageDialog(null, "학번을 입력하거나 수정할 데이터를 \n클릭해 주세요.");
 					id.requestFocus();
 				} else if(name.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "이름을 입력하세요.");
+					JOptionPane.showMessageDialog(null, "이름을 입력하거나 수정할 데이터를 \n클릭해 주세요.");
 					name.requestFocus();
 				} else {
 					if(JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -401,14 +401,22 @@ public class Student extends JPanel {
 		deleteBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-					try {
-						stmt.executeUpdate("delete from pofol_score where class_id = '"+id.getText()+"'");
-						JOptionPane.showMessageDialog(null, "삭제되었습니다.");
-						AllList("");
-						
-					} catch (SQLException e1) {
-						e1.printStackTrace();
+				if(id.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "학번을 입력하거나 삭제할 데이터를 \n클릭해 주세요.","알림",JOptionPane.INFORMATION_MESSAGE);
+					id.requestFocus();
+				}else if(name.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "이름을 입력하거나 삭제할 데이터를 \n클릭해 주세요.","알림",JOptionPane.INFORMATION_MESSAGE);
+					name.requestFocus();
+				}else {
+					if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+						try {
+							stmt.executeUpdate("delete from pofol_score where class_id = '"+id.getText()+"'");
+							JOptionPane.showMessageDialog(null, "삭제되었습니다.");
+							AllList("");
+							
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
 					}
 				}
 			}
