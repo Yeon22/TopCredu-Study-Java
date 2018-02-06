@@ -38,6 +38,7 @@ public class Absence extends JPanel implements Runnable{
 	
 	JLabel timerLabel;
 	JLabel timerLabel2;
+	JButton alreadycheck = new JButton("미체크");
 	JButton search = new JButton ("조회");
 	JButton check = new JButton("출석");
 	JButton uncheck = new JButton("결석");
@@ -123,12 +124,12 @@ public class Absence extends JPanel implements Runnable{
 
 		timerLabel = new JLabel();
 		timerLabel.setFont(new Font("Gothic", Font.BOLD, 16));
-		timerLabel.setBounds(355,40,150,25);
+		timerLabel.setBounds(350,44,150,25);
 		add(timerLabel);
 		
 		timerLabel2 = new JLabel();
 		timerLabel2.setFont(new Font("Gothic", Font.BOLD, 16));
-		timerLabel2.setBounds(357,65,150,25);
+		timerLabel2.setBounds(356,69,150,25);
 		add(timerLabel2);
 		
 		Thread thread = new Thread(this);
@@ -181,8 +182,31 @@ public class Absence extends JPanel implements Runnable{
 			}
 		});
 		
+		//미체크 버튼
+		alreadycheck.setBounds(195, 10, 80,25);
+		add(alreadycheck);
+		alreadycheck.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(class_id == null) {
+					JOptionPane.showMessageDialog(null, "미체크 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					try {
+						stmt.executeQuery("update pofol_score set checkme = '미체크' " + 
+								"where class_id = '"+class_id+"'");
+						
+						JOptionPane.showMessageDialog(null, "미체크처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
+						List("");
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		
 		//조회
-		search.setBounds(350, 115, 100, 35);
+		search.setBounds(350, 110, 100, 35);
 		add(search);
 		search.addActionListener(new ActionListener() {
 			@Override
@@ -219,81 +243,96 @@ public class Absence extends JPanel implements Runnable{
 		
 		
 		//출석
-		check.setBounds(350, 175, 100, 35);
+		check.setBounds(350, 170, 100, 35);
 		add(check);
 		check.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					stmt.executeQuery("update pofol_score set checkme = '출석' " + 
-							"where class_id = '"+class_id+"'");
-					
-					JOptionPane.showMessageDialog(null, "출석처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-					List("");
-					
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+				if(class_id == null) {
+					JOptionPane.showMessageDialog(null, "출석 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					try {
+						stmt.executeQuery("update pofol_score set checkme = '출석' " + 
+								"where class_id = '"+class_id+"'");
+						
+						JOptionPane.showMessageDialog(null, "출석처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
+						List("");
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
-				
 			}
 		});
 		
 		
 		//결석
-		uncheck.setBounds(350, 235, 100, 35);
+		uncheck.setBounds(350, 230, 100, 35);
 		add(uncheck);
 		uncheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					stmt.executeQuery("update pofol_score set checkme = '결석' " + 
-							"where class_id = '"+class_id+"'");
+				if(class_id == null) {
+					JOptionPane.showMessageDialog(null, "결석 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					try {
+						stmt.executeQuery("update pofol_score set checkme = '결석' " + 
+								"where class_id = '"+class_id+"'");
 
-					JOptionPane.showMessageDialog(null, "결석처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-					List("");
-					
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "결석처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
+						List("");
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
 		
 		
 		//병가
-		sick.setBounds(350, 295, 100, 35);
+		sick.setBounds(350, 290, 100, 35);
 		add(sick);
 		sick.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					stmt.executeQuery("update pofol_score set checkme = '병가' " + 
-							"where class_id = '"+class_id+"'");
+				if(class_id == null) {
+					JOptionPane.showMessageDialog(null, "병가 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					try {
+						stmt.executeQuery("update pofol_score set checkme = '병가' " + 
+								"where class_id = '"+class_id+"'");
 
-					JOptionPane.showMessageDialog(null, "병가처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-					List("");
-					
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "병가처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
+						List("");
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
 		
 		
 		//조퇴
-		jotai.setBounds(350, 355, 100, 35);
+		jotai.setBounds(350, 350, 100, 35);
 		add(jotai);
 		jotai.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					stmt.executeQuery("update pofol_score set checkme = '조퇴' " + 
-							"where class_id = '"+class_id+"'");
+				if(class_id == null) {
+					JOptionPane.showMessageDialog(null, "조퇴 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					try {
+						stmt.executeQuery("update pofol_score set checkme = '조퇴' " + 
+								"where class_id = '"+class_id+"'");
 
-					JOptionPane.showMessageDialog(null, "조퇴처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-					List("");
-					
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "조퇴처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
+						List("");
+						
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
