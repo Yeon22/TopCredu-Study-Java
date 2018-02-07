@@ -113,25 +113,6 @@ public class Absence2 extends JPanel implements Runnable{
 		JScrollPane jsp = new JScrollPane(table);
 		jsp.setBounds(20,40,430,320);
 		add(jsp);
-		table.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-			}
-		});
-		
 		
 		JLabel w_date = new JLabel("¿À´Ã ³¯Â¥ : ");
 		w_date.setBounds(240,8,70,30);
