@@ -35,6 +35,7 @@ public class Absence extends JPanel implements Runnable{
 	String class_id;
 	String name;
 	String checkme;
+	String department_id;
 	
 	JLabel timerLabel;
 	JLabel timerLabel2;
@@ -188,6 +189,9 @@ public class Absence extends JPanel implements Runnable{
 		alreadycheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int index = cb_depart.getSelectedIndex();
+				String cb_name = cb_depart.getItemAt(index).toString();
+				
 				if(class_id == null) {
 					JOptionPane.showMessageDialog(null, "미체크 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
 				} else {
@@ -196,7 +200,29 @@ public class Absence extends JPanel implements Runnable{
 								"where class_id = '"+class_id+"'");
 						
 						JOptionPane.showMessageDialog(null, "미체크처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-						List("");
+						
+						if(cb_name.equals("전체")) {
+							List("");
+						} else if(cb_name.equals("컴퓨터공학과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'C001')";
+							List(squery);
+							
+						} else if(cb_name.equals("멀티미디어과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'M002')";
+							List(squery);
+							
+						} else if(cb_name.equals("세무회계과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'T003')";
+							List(squery);
+							
+						} else if(cb_name.equals("독어독문과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'G004')";
+							List(squery);
+						}
 						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
@@ -248,6 +274,9 @@ public class Absence extends JPanel implements Runnable{
 		check.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int index = cb_depart.getSelectedIndex();
+				String cb_name = cb_depart.getItemAt(index).toString();
+				
 				if(class_id == null) {
 					JOptionPane.showMessageDialog(null, "출석 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
 				} else {
@@ -256,7 +285,29 @@ public class Absence extends JPanel implements Runnable{
 								"where class_id = '"+class_id+"'");
 						
 						JOptionPane.showMessageDialog(null, "출석처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-						List("");
+						
+						if(cb_name.equals("전체")) {
+							List("");
+						} else if(cb_name.equals("컴퓨터공학과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'C001')";
+							List(squery);
+							
+						} else if(cb_name.equals("멀티미디어과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'M002')";
+							List(squery);
+							
+						} else if(cb_name.equals("세무회계과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'T003')";
+							List(squery);
+							
+						} else if(cb_name.equals("독어독문과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'G004')";
+							List(squery);
+						}
 						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
@@ -272,6 +323,9 @@ public class Absence extends JPanel implements Runnable{
 		uncheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int index = cb_depart.getSelectedIndex();
+				String cb_name = cb_depart.getItemAt(index).toString();
+				
 				if(class_id == null) {
 					JOptionPane.showMessageDialog(null, "결석 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
 				} else {
@@ -280,7 +334,29 @@ public class Absence extends JPanel implements Runnable{
 								"where class_id = '"+class_id+"'");
 
 						JOptionPane.showMessageDialog(null, "결석처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-						List("");
+						
+						if(cb_name.equals("전체")) {
+							List("");
+						} else if(cb_name.equals("컴퓨터공학과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'C001')";
+							List(squery);
+							
+						} else if(cb_name.equals("멀티미디어과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'M002')";
+							List(squery);
+							
+						} else if(cb_name.equals("세무회계과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'T003')";
+							List(squery);
+							
+						} else if(cb_name.equals("독어독문과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'G004')";
+							List(squery);
+						}
 						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
@@ -296,6 +372,9 @@ public class Absence extends JPanel implements Runnable{
 		sick.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int index = cb_depart.getSelectedIndex();
+				String cb_name = cb_depart.getItemAt(index).toString();
+				
 				if(class_id == null) {
 					JOptionPane.showMessageDialog(null, "병가 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
 				} else {
@@ -304,7 +383,29 @@ public class Absence extends JPanel implements Runnable{
 								"where class_id = '"+class_id+"'");
 
 						JOptionPane.showMessageDialog(null, "병가처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-						List("");
+						
+						if(cb_name.equals("전체")) {
+							List("");
+						} else if(cb_name.equals("컴퓨터공학과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'C001')";
+							List(squery);
+							
+						} else if(cb_name.equals("멀티미디어과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'M002')";
+							List(squery);
+							
+						} else if(cb_name.equals("세무회계과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'T003')";
+							List(squery);
+							
+						} else if(cb_name.equals("독어독문과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'G004')";
+							List(squery);
+						}
 						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
@@ -320,6 +421,9 @@ public class Absence extends JPanel implements Runnable{
 		jotai.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int index = cb_depart.getSelectedIndex();
+				String cb_name = cb_depart.getItemAt(index).toString();
+				
 				if(class_id == null) {
 					JOptionPane.showMessageDialog(null, "조퇴 처리할 학생을 선택하신 후 \n버튼을 눌러주시기 바랍니다.","경고",JOptionPane.INFORMATION_MESSAGE);
 				} else {
@@ -328,7 +432,29 @@ public class Absence extends JPanel implements Runnable{
 								"where class_id = '"+class_id+"'");
 
 						JOptionPane.showMessageDialog(null, "조퇴처리되었습니다.","알림",JOptionPane.INFORMATION_MESSAGE);
-						List("");
+						
+						if(cb_name.equals("전체")) {
+							List("");
+						} else if(cb_name.equals("컴퓨터공학과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'C001')";
+							List(squery);
+							
+						} else if(cb_name.equals("멀티미디어과")) {
+							String squery = "where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'M002')";
+							List(squery);
+							
+						} else if(cb_name.equals("세무회계과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'T003')";
+							List(squery);
+							
+						} else if(cb_name.equals("독어독문과")) {
+							String squery = " where department_id = "
+									+ "(select department_id from pofol_department where department_id = 'G004')";
+							List(squery);
+						}
 						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
