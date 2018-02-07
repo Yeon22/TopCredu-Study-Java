@@ -99,7 +99,7 @@ public class FindPW extends JDialog{
 							JOptionPane.showMessageDialog(null, "찾으시는 비밀번호는 "+rs.getString(1)+" 입니다.");
 							setVisible(false);
 						} else {
-							if(JOptionPane.showConfirmDialog(null, "ID계정을 찾을 수 없습니다. \nID찾기 화면으로 가시겠습니까?","알림",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+							if(JOptionPane.showConfirmDialog(null, "입력하신 내용을 찾을 수 없습니다. \nID찾기 화면으로 가시겠습니까?","알림",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 								findIDdialog = new FindID();
 								findIDdialog.setVisible(true);
 								setVisible(false);
