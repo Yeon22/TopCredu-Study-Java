@@ -68,7 +68,7 @@ public class ResponsiveGallery {
 		<body>
 		    <div id="gallery_layout">
 		        <div class="gallery_content">
-		            <img src="images/animal_1.jpg" alt="animal_img">
+		            <img src="img/animal_1.jpg" alt="animal_img">
 		            <div class="content">
 		                <h1>Animal</h1>
 		                <p>그 아이를 끝까지 책임질 자신이 있는가.</p>
@@ -76,7 +76,7 @@ public class ResponsiveGallery {
 		            <div class="overlay darkBlue"></div>
 		        </div>
 		        <div class="gallery_content">
-		            <img src="images/animal_2.jpg" alt="animal_img">
+		            <img src="img/animal_2.jpg" alt="animal_img">
 		            <div class="content">
 		                <h1>Animal</h1>
 		                <p>끝까지 책임질게 아니면 시작도 하지 마라.</p>
@@ -84,7 +84,7 @@ public class ResponsiveGallery {
 		            <div class="overlay red"></div>
 		        </div>
 		        <div class="gallery_content">
-		            <img src="images/animal_3.jpg" alt="animal_img">
+		            <img src="img/animal_3.jpg" alt="animal_img">
 		            <div class="content">
 		                <h1>Animal</h1>
 		                <p>자신의 목숨을 다하여 사랑해 줘라.</p>
@@ -92,7 +92,7 @@ public class ResponsiveGallery {
 		            <div class="overlay pink"></div>
 		        </div>
 		        <div class="gallery_content">
-		            <img src="images/animal_4.jpg" alt="animal_img">
+		            <img src="img/animal_4.jpg" alt="animal_img">
 		            <div class="content">
 		                <h1>Animal</h1>
 		                <p>돈 없으면 키우지 마라.</p>
@@ -100,7 +100,7 @@ public class ResponsiveGallery {
 		            <div class="overlay black"></div>
 		        </div>
 		        <div class="gallery_content">
-		            <img src="images/animal_5.jpg" alt="animal_img">
+		            <img src="img/animal_5.jpg" alt="animal_img">
 		            <div class="content">
 		                <h1>Animal</h1>
 		                <p>후회를 남기지 마라. 그리움만 남겨라.</p>
@@ -108,7 +108,7 @@ public class ResponsiveGallery {
 		            <div class="overlay yellow"></div>
 		        </div>
 		        <div class="gallery_content">
-		            <img src="images/animal_6.jpg" alt="animal_img">
+		            <img src="img/animal_6.jpg" alt="animal_img">
 		            <div class="content">
 		                <h1>Animal</h1>
 		                <p>당신은 그 아이에게 최고의 사랑을 받을 것이다. 당신이 버리지 않는 한</p>
