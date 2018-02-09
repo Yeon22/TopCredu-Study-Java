@@ -1,4 +1,4 @@
-package JQuery.수업_20180209;
+package ResponsiveWeb.수업_20180209;
 
 public class ResponsiveGallery {
 	
