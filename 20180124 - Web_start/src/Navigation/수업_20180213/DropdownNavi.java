@@ -1,4 +1,4 @@
-package JQuery.수업_20180213;
+package Navigation.수업_20180213;
 
 public class DropdownNavi {
 	
