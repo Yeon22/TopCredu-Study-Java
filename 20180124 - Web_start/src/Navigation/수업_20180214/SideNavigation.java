@@ -92,6 +92,8 @@ public class SideNavigation {
 	        
 	        .openmenu > i { font-size: 30px; }
 	        
+	        #main { transition: 0.5s ease-in-out; }
+	        
 	        // 미디어쿼리 적용
 	        @media screen and (max-height:450px) {
 	            .sidenav {
@@ -113,21 +115,33 @@ public class SideNavigation {
 	        <a href="#">Contact</a>
 	        <a href="#">Portfolio</a>
 	    </div>
-	    <h2>side_navigation 제작</h2>
-	    <p>아래 메뉴버튼을 클릭하면 사이드 네비게이션이 열립니다.</p>
+	    <div id="main">
+        	<h2>side_navigation 제작</h2>
+        	<p>아래 메뉴버튼을 클릭하면 사이드 네비게이션이 열립니다.</p>
+    	/div>
 	    <span class="openmenu" onclick="openNav()"><i class="fa fa-angle-double-left fa-5" aria-hidden="true"></i>open</span>
 	    
 	    <script>
 	        function openNav(){
+	            //푸쉬메뉴
 	            //mysidenav 아이디의 스타일 너비값을 250px로 바꾼다.
-	            document.getElementById('mysidenav').style.width = '250px';
+	//            document.getElementById('mysidenav').style.width = '250px';
+	//            document.getElementById('main').style.marginLeft = '250px';
+	            
+	            //풀사이드
+	            document.getElementById('mysidenav').style.width = '100%';
 	        }
 	        
 	        function closeNav(){
+	            //푸쉬메뉴
 	            //mysidenav 아이디의 스타일 너비값을 0px로 바꾼다.
-	            document.getElementById('mysidenav').style.width = '0px';
+	//            document.getElementById('mysidenav').style.width = '0px';
+	//            document.getElementById('main').style.marginLeft = '0px';
+	            
+	            //풀사이드
+	            document.getElementById('mysidenav').style.width = '0';
 	        }
-	    </script>
+    	</script>
 	</body>
 	</html>
 	 */
