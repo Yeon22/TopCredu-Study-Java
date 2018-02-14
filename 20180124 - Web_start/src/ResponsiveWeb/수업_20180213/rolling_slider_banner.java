@@ -1,4 +1,4 @@
-package JQuery.수업_20180213;
+package ResponsiveWeb.수업_20180213;
 
 public class rolling_slider_banner {
 	
