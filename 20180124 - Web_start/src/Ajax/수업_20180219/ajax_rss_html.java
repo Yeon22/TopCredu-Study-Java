@@ -1,6 +1,6 @@
 package Ajax.수업_20180219;
 
-public class index_html { //bitnami로 apm가 설치되어 있는 상태여야 한다. 웹서버가 실행되는 상태여야함.
+public class ajax_rss_html { //bitnami로 apm가 설치되어 있는 상태여야 한다. 웹서버가 실행되는 상태여야함.
 	
 	/*
 	 * <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
