@@ -1,6 +1,6 @@
 package Ajax.수업_20180219;
 
-public class index_html {
+public class index_html { //bitnami로 apm가 설치되어 있는 상태여야 한다. 웹서버가 실행되는 상태여야함.
 	
 	/*
 	 * <!DOCTYPE html>
@@ -11,41 +11,37 @@ public class index_html {
 		    <title>Document</title>
 		    <script>
 		        $(function(){
-		            $("#d1").load("document_1.txt");
+		//            $.ajax({
+		//                url:"rank.xml",
+		//                dataType:"xml",
+		//                success:function(result){
+		//                    if($(result).find("rank").length>0){
+		//                        $(result).find("rank").each(function(){
+		//                            var name = $(this).find("k").text();
+		//                            var result = "<li>"+name+"</li>";
+		//                            $("#wrap ol").append(result);
+		//                        });
+		//                    }
+		//                }
+		//            });
 		            
-		            $("#member").on("submit", function(){ //확인 버튼을 눌렀을 때
-		                var d = $(this).serialize(); //폼 요소에 전송할 데이터를 재가공한다.
-		                
-		                $.ajax({
-		                    url:"member.php", //데이터 전송 및 요청할 URL주소
-		                    type:"post", //데이터 전송 방식
-		                    data:d, //전송할 데이터
-		                    success:function(result){ //전송 및 요청이 정상적으로 되었을 때
-		                        $("#txt1").text(result);
-		                    }
-		                });
-		                
-		                return false;
+		            $.ajax({
+		                url:"rank.json",
+		                dataType:"json",
+		                success:function(result){
+		                    $.each(result.rank, function(i,d){
+		                        $("#wrap ol").append("<li>"+d["k"]+"</li>");
+		                    });
+		                }
 		            });
 		        });
 		    </script>
 		</head>
 		<body>
-		    <div id="d1">내용</div>
-		    
-		    <form action="member.php" method="post" name="member" id="member">
-		        <fieldset>
-		            <legend>회원가입</legend>
-		            <p>
-		                <label for="user_name">이름</label>
-		                <input type="text" name="user_name" id="user_name" />
-		            </p>
-		            <p>
-		                <input type="submit" value="확인" />
-		            </p>
-		        </fieldset>
-		    </form>
-		    <h1 id="txt1"></h1>
+		    <h1>인기 검색어</h1>
+		    <div id="wrap">
+		        <ol></ol>
+		    </div>
 		</body>
 		</html>
 	 */

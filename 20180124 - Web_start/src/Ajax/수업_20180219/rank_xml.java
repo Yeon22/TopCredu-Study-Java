@@ -1,0 +1,22 @@
+package Ajax.수업_20180219;
+
+public class rank_xml {
+	
+	/*
+	 * <?xml version="1.0" encoding="UTF-8"?>
+		<result>
+		    <item>
+		        <rank>
+		            <k>김연아</k>
+		        </rank>
+		        <rank>
+		            <k>이상화</k>
+		        </rank>
+		        <rank>
+		            <k>모태범</k>
+		        </rank>
+		    </item>
+		</result>
+	 */
+
+}
