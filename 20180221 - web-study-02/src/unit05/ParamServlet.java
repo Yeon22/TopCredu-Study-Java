@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ParamServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html; charset=EUC-KR");
+		response.setContentType("text/html; charset=UTF-8");
 		String id = request.getParameter("id");
 		int age = Integer.parseInt(request.getParameter("age"));
 		PrintWriter out = response.getWriter();
