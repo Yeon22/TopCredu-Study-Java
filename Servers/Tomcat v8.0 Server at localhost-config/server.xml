@@ -124,7 +124,10 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="20180307 - web-study-08" path="/20180307_-_web-study-08" reloadable="true" source="org.eclipse.jst.jee.server:20180307 - web-study-08"/><Context docBase="과제 - JSP" path="/과제_-_JSP_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:과제 - JSP"/></Host>
+      <Context docBase="과제 - JSP" path="/과제_-_JSP_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:과제 - JSP"/><Context docBase="20180308 - web-study-09" path="/20180308_-_web-study-09" reloadable="true" source="org.eclipse.jst.jee.server:20180308 - web-study-09">
+      	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="h5" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu" username="h5"/>
+      </Context>
+      </Host>
     </Engine>
   </Service>
 </Server>
