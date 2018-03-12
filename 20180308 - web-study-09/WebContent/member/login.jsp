@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="userid" value="${userid}"/></td>
+				<td><input type="text" name="userid" value="${loginUser.userid}"/></td>
 			</tr>
 			<tr>
 				<td>암호</td>
