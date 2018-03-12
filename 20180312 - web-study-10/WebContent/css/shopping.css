@@ -1,0 +1,36 @@
+#wrap{
+	width: 971px;
+	/*가운데 정렬을 위한 바깥쪽 여백 설정*/
+	margin: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1{
+	/*글 색상*/
+	color: green;
+}
+
+table td,th{
+	border: #d3d3d3 solid 1px;
+	padding: 5px;
+}
+
+th{
+	background: yellowgreen;
+}
+
+img{
+	width: 220px;
+	height: 300px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+a:hover{
+	text-decoration: underline;
+	color: green;
+}
