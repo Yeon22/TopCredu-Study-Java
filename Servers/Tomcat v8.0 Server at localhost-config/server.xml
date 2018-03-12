@@ -126,11 +126,10 @@
 
       <Context docBase="과제 - JSP" path="/과제_-_JSP_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:과제 - JSP"/>
       <Context docBase="20180312 - web-study-10" path="/20180312_-_web-study-10" reloadable="true" source="org.eclipse.jst.jee.server:20180312 - web-study-10">
-      	<Resource name="jdbc/myoracle" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu"
-              username="h5" password="h5" maxTotal="20" maxIdle="10"
-              maxWaitMillis="-1"/>
+      	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="h5" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu" username="h5"/>
+      </Context>
+      <Context docBase="20180308 - web-study-09" path="/20180308_-_web-study-09" reloadable="true" source="org.eclipse.jst.jee.server:20180308 - web-study-09">
+      	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="h5" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu" username="h5"/>
       </Context>
       </Host>
     </Engine>
