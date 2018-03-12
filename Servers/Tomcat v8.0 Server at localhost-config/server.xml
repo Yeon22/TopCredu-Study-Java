@@ -125,7 +125,14 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       <Context docBase="과제 - JSP" path="/과제_-_JSP_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:과제 - JSP"/>
-      <Context docBase="20180312 - web-study-10" path="/20180312_-_web-study-10" reloadable="true" source="org.eclipse.jst.jee.server:20180312 - web-study-10"/></Host>
+      <Context docBase="20180312 - web-study-10" path="/20180312_-_web-study-10" reloadable="true" source="org.eclipse.jst.jee.server:20180312 - web-study-10">
+      	<Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu"
+              username="h5" password="h5" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/>
+      </Context>
+      </Host>
     </Engine>
   </Service>
 </Server>
