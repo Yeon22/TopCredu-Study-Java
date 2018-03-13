@@ -58,7 +58,7 @@ public class ProductUpdateServlet extends HttpServlet {
 		String description = multi.getParameter("description");
 		String pictureUrl = multi.getFilesystemName("pictureUrl");
 		if(pictureUrl == null) {
-			pictureUrl = multi.getParameter("nonmakeImg");
+			pictureUrl = multi.getParameter("nanmarkeImg");
 		}
 		ProductVO pVo = new ProductVO();
 		pVo.setCode(Integer.parseInt(code));
