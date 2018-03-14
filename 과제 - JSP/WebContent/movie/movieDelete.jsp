@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>영화 게시판 만들기</title>
+<title>영화 삭제 페이지</title>
 <link rel="stylesheet" type="text/css" href="../movieCSS/movieStyle.css">
 </head>
-<body>
+<body id="body">
 	<div id="wrap" align="center">
 		<h1>영화 삭제</h1>
 		<form method="post" action="movieDelete.do">
-			<table>
+			<table id="wrap_table">
 				<tr>
 					<td>
 						<c:choose>
@@ -25,21 +25,21 @@
 						</c:choose>
 					</td>
 					<td>
-						<table>
+						<table id="deltd">
 							<tr>
-								<th style="width:90px;">영화 제목</th>
+								<th>영화 제목</th>
 								<td>
 									${movie.name}
 								</td>
 							</tr>
 							<tr>
-								<th style="width:90px;">감독</th>
+								<th>감독</th>
 								<td>
 									${movie.supervisor}
 								</td>
 							</tr>
 							<tr>
-								<th style="width:90px;">출연배우</th>
+								<th>출연배우</th>
 								<td>
 									${movie.actor}
 								</td>

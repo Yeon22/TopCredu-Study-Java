@@ -1,3 +1,7 @@
+#body{
+	background-color: #c0c0c0;
+}
+
 #wrap{
 	width: 971px;
 	/*가운데 정렬을 위한 바깥쪽 여백 설정*/
@@ -6,9 +10,31 @@
 	margin-right: auto;
 }
 
+#mu{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#deltd tr td{
+	background-color: white;
+}
+
+.list{
+	width: 100%;
+}
+
+.record{
+	background-color: white;
+	text-align: center;
+	font-size: 17px;
+	font-weight: bold;
+}
+
 h1{
 	/*글 색상*/
-	color: green;
+	color: white;
+	font-size: 50px;
+	background-color: black;
 }
 
 table td, th{
@@ -16,8 +42,15 @@ table td, th{
 	padding: 5px;
 }
 
+#wrap_table td, th{
+	background: #dedede;
+}
+
 th{
-	background: yellowgreen;
+	background: black;
+	color:white;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 img{
@@ -28,6 +61,7 @@ img{
 a{
 	text-decoration: none;
 	color: black;
+	font-weight: bold;
 }
 
 a:hover {

@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>2013-03-13 과제</title>
+<title>영화 등록 페이지</title>
 <link rel="stylesheet" type="text/css" href="../movieCSS/movieStyle.css">
 <script type="text/javascript" src="../movieScript/movie.js"></script>
 </head>
-<body>
+<body id="body">
 	<div id="wrap" align="center">
 		<h1>영화 등록</h1>
 		<form action="movieWrite.do" method="post" enctype="multipart/form-data" name="frm">
-			<table>
+			<table id="wrap_table">
 				<tr>
 					<th>영화 제목</th>
 					<td><input type="text" name="name" size="77"/></td>

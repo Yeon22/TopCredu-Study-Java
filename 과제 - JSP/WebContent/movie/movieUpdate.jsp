@@ -5,17 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>2018-03-13 과제</title>
+<title>영화 수정 페이지</title>
 <link rel="stylesheet" type="text/css" href="../movieCSS/movieStyle.css">
 <script type="text/javascript" src="../movieScript/movie.js"></script>
 </head>
-<body>
+<body id="body">
 	<div id="wrap" align="center">
 		<h1>영화 수정</h1>
 		<form method="post" action="movieUpdate.do" enctype="multipart/form-data" name="frm">
 			<input type="hidden" name="code" value="${movie.code}"/>
 			<input type="hidden" name="nanmarkeImg" value="${movie.pictureUrl}"/>
-			<table>
+			<table id="wrap_table">
 				<tr>
 					<td>
 						<c:choose>

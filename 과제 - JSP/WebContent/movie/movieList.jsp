@@ -5,16 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>2018-03-13 과제</title>
+<title>영화 게시판</title>
 <link rel="stylesheet" type="text/css" href="../movieCSS/movieStyle.css">
 </head>
-<body>
+<body id="body">
 	<div id="wrap" align="center">
 		<h1>영화 리스트</h1>
 		<table class="list">
 			<tr>
 				<td colspan="6" style="border:white; text-align: right;">
-					<a href="movieWrite.do">영화 등록</a>
+					<a href="movieWrite.do" id="mu">영화 등록</a>
 				</td>
 			</tr>
 			<tr>
