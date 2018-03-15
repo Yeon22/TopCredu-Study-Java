@@ -20,6 +20,7 @@ public class BoardCheckPassAction implements Action { //게시글 비밀번호�
 		String pass = request.getParameter("pass");
 		BoardDAO bDao = BoardDAO.getInstance();
 		BoardVO bVo = bDao.selectOneBoardByNum(num);
+		//BoardVO bVo = bDao.checkPassWord(pass, num); 으로 해도 가능.
 		
 		if(bVo.getPass().equals(pass)) {
 			url = "/board/checkSuccess.jsp";
