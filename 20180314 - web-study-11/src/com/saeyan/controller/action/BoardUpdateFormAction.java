@@ -17,7 +17,7 @@ public class BoardUpdateFormAction implements Action {
 		String url = "/board/boardUpdate.jsp";
 		String num = request.getParameter("num");
 		BoardDAO bDao = BoardDAO.getInstance();
-		bDao.updateReadCount(num);
+//		bDao.updateReadCount(num); 이걸 풀면 게시글 수정했을 때 조회수가  기존 조회수 +2가 된다. 필요없는 코드...
 		BoardVO bVo = bDao.selectOneBoardByNum(num);
 		request.setAttribute("board", bVo);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
