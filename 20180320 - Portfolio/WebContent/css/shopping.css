@@ -1,0 +1,111 @@
+body{
+	background-color: #B96DB5;
+	margin: 0;
+	padding: 0;
+	font-size: 0.75em;
+}
+
+#wrap{
+	width: 971px; /* 각 웹 페이지 크기에 맞게 사이즈 조정 */
+	text-align: left;
+	margin: 0;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #B96DB5;
+	background-repeat: repeat-y;
+	min-height: 780px;
+}
+
+.clear{clear:both;}
+
+#logo{
+	float: left;
+	width: 180px;
+	height: 100px;
+	margin: 40px 0 0 40px;
+}
+
+nav#catagory_menu{
+	float: right;
+	margin: 20px 64px 0 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+nav#catagory_menu ul{
+	list-style: none;
+}
+
+nav#catagory_menu ul li{
+	display: block;
+	height: 30px;
+	float: left;
+	font-family: 굴림;
+}
+
+nav#catagory_menu a{
+	text-decoration: none;
+	display: inline-block;
+	width: 80px;
+	text-align: center;
+	color: #CCC;
+	font-weight: bold;
+}
+
+nav#catagory_menu a:hover{
+	color: #F90;
+	font-weight: bold;
+}
+
+nav#top_menu{
+	margin: 20px 0;
+	float: right;
+}
+
+nav#top_menu ul{
+	list-style: none;
+	font-family: Verdana;
+}
+
+nav#top_menu ul li{
+	float: left;
+	margin: 0 15px;
+	font-size: 14px;
+}
+
+nav#top_menu a{
+	display: block;
+	height: 20px;
+	text-decoration: none;
+	color: #fff;
+	padding: 10px;
+}
+
+nav#top_menu a:hover{
+	background-image: url(../images/purple.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+
+#bestProduct{
+	border: solid 1px #FFFFFF;
+	border-radius: 10px;
+	width: 910px;
+	min-height: 260px;
+	background: #ebebeb;
+	padding: 10px;
+	text-align: center;
+}
+
+footer{
+	margin: 10px 0 0 0;
+	height: 50px;
+	background-image: url(../images/under_logo.gif);
+	background-repeat: no-repeat;
+	background-position: 40px center;
+}
+
+footer #copy{
+	margin: 20px 0 10px 300px;
+	width: 600px;
+	float: left;
+}
