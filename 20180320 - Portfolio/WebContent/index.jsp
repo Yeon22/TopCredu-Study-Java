@@ -6,7 +6,7 @@
 <!-- 메인 이미지가 들어가는 곳 시작 -->
 <div class="clear"></div>
 <div id="main_img">
-	<img src="/images/main_img.jpg">
+	<img src="images/main_img.jpg">
 </div>
 <!-- 메인 이미지가 들어가는 곳 끝 -->
 <div class="clear"></div>
@@ -16,7 +16,7 @@
 	<div id="bestProduct">
 		<c:forEach items="${newProductList}" var="productVO">
 			<div id="item">
-				<a href="nonageServlet?command=product_detail&pseq=${productVO.pseq}">
+				<a href="NonageServlet?command=product_detail&pseq=${productVO.pseq}">
 					<img src="product_images/${productVO.image}"/>
 					<h3>${productVO.name}</h3>
 					<p>${productVO.price2}</p>
@@ -29,9 +29,9 @@
 	<!-- 베스트 상품 -->
 	<h2>Best Item</h2>
 	<div id="bestProduct">
-		<c:forEach items="${bestProductList}" var="productVO">
+		<c:forEach items="${bestProdcutList}" var="productVO">
 			<div id="item">
-				<a href="nonageServlet?command=product_detail&pseq=${productVO.pseq}">
+				<a href="NonageServlet?command=product_detail&pseq=${productVO.pseq}">
 					<img src="product_images/${productVO.image}"/>
 					<h3>${productVO.name}</h3>
 					<p>${productVO.price2}</p>

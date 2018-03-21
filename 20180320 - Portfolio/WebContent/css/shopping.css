@@ -109,3 +109,107 @@ footer #copy{
 	width: 600px;
 	float: left;
 }
+
+table#cartList{
+	border-collapse: collapse; /* border 사이의 간격 없앰 */
+	border-top: 2px solid #333;
+	border-bottom: 1px solid #333;
+	width: 100%; /* 전체 테이블 길이 설정 */
+	margin-bottom: 20px;
+}
+
+table#cartList th, td{
+	border-bottom: 1px dotted #333;
+	text-align: center;
+}
+
+#main_img{
+	text-align: center;
+}
+
+#main_img img{
+	margin: 9px 0 0 0;
+}
+
+div#front{
+	margin: 5px 0 5px 20px;
+}
+
+#item{
+	width: 200px;
+	float: left;
+	margin: 0 13px;
+	text-align: center;
+}
+
+#item img{
+	width: 190px;
+	height: 200px;
+}
+
+#itemdetail img{
+	width: 190px;
+	height: 200px;
+	margin-right: 20px;
+}
+
+a{
+	color: #F00;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #F90;
+	text-decoration: underline;
+}
+
+#pname{
+	font-size: 20px;
+	border-bottom: 1px dotted #666;
+	padding: 5px 0;
+}
+
+#sub_img{
+	text-align: center;
+}
+
+#sub_img img{
+	margin: 9px 0 0 0;
+}
+
+#sub_menu{
+	width: 250px;
+	float: left;
+	margin: 20px 0;
+}
+
+#sub_menu ul{
+	margin: 20px 0 0 16px;
+	list-style: none;
+}
+
+#sub_menu a{
+	text-decoration: none;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 16px;
+	display: block;
+	height: 15px;
+	width: 160px;
+	padding: 7px;
+	border-bottom: 1px dotted #999;
+	background-image: url(../images/bullet.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+#sub_menu a:hover{
+	background-image: url(../images/bullet_orange.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+	color: #F90;
+	font-weight: bold;
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
