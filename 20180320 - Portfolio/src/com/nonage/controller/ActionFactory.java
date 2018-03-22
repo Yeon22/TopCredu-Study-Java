@@ -3,6 +3,7 @@ package com.nonage.controller;
 import com.nonage.controller.action.Action;
 import com.nonage.controller.action.IndexAction;
 import com.nonage.controller.action.ProductDetailAction;
+import com.nonage.controller.action.ProductKindAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -23,6 +24,8 @@ public class ActionFactory {
 			action = new IndexAction();
 		}else if(command.equals("product_detail")) {
 			action = new ProductDetailAction();
+		}else if(command.equals("catagory")) {
+			action = new ProductKindAction();
 		}
 		
 		return action;
