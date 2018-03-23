@@ -2,6 +2,7 @@ package Portfolio.MVC2.controller.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,9 @@ public class IndexAction implements Action {
 		String url = "index.jsp";
 		
 		CompanyDAO companyDAO = CompanyDAO.getInstance();
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 }
