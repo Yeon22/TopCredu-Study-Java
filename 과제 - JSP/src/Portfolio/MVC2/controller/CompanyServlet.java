@@ -12,7 +12,7 @@ import Portfolio.MVC2.controller.action.Action;
 /**
  * Servlet implementation class CompanyServlet
  */
-@WebServlet("/CompanyServlet")
+@WebServlet("/Portfolio_MVC2/CompanyServlet")
 public class CompanyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
