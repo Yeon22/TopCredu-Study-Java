@@ -5,6 +5,7 @@ import com.nonage.controller.action.ContractAction;
 import com.nonage.controller.action.FindZipNumAction;
 import com.nonage.controller.action.IdCheckFormAction;
 import com.nonage.controller.action.IndexAction;
+import com.nonage.controller.action.JoinAction;
 import com.nonage.controller.action.JoinFormAction;
 import com.nonage.controller.action.ProductDetailAction;
 import com.nonage.controller.action.ProductKindAction;
@@ -38,6 +39,8 @@ public class ActionFactory {
 			action = new IdCheckFormAction();
 		}else if(command.equals("find_zip_num")) {
 			action = new FindZipNumAction();
+		}else if(command.equals("join")) {
+			action = new JoinAction();
 		}
 		
 		return action;
