@@ -7,6 +7,9 @@ import com.nonage.controller.action.IdCheckFormAction;
 import com.nonage.controller.action.IndexAction;
 import com.nonage.controller.action.JoinAction;
 import com.nonage.controller.action.JoinFormAction;
+import com.nonage.controller.action.LoginAction;
+import com.nonage.controller.action.LoginFormAction;
+import com.nonage.controller.action.LogoutAction;
 import com.nonage.controller.action.ProductDetailAction;
 import com.nonage.controller.action.ProductKindAction;
 
@@ -41,6 +44,12 @@ public class ActionFactory {
 			action = new FindZipNumAction();
 		}else if(command.equals("join")) {
 			action = new JoinAction();
+		}else if(command.equals("login_form")) {
+			action = new LoginFormAction();
+		}else if(command.equals("login")) {
+			action = new LoginAction();
+		}else if(command.equals("logout")) {
+			action = new LogoutAction();
 		}
 		
 		return action;
