@@ -20,8 +20,8 @@
 					<td><fmt:formatDate value="${orderVO.indate}" type="date"/></td>
 					<td>${orderVO.oseq}</td>
 					<td>${orderVO.pname}</td>
-					<td><fmt:formatDate value="${orderVO.price2}" type="currency"/></td>
-					<td><a href="NonageServlet?command=order_detail&pseq=${orderVO.oseq}">조회</a></td>
+					<td><fmt:formatNumber value="${orderVO.price2}" type="currency"/></td>
+					<td><a href="NonageServlet?command=order_detail&oseq=${orderVO.oseq}">조회</a></td>
 				</tr>
 			</c:forEach>
 		</table>
