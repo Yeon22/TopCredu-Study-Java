@@ -20,7 +20,7 @@
 			<c:forEach items="${orderList}" var="orderVO">
 				<tr>
 					<td>
-						<a href="NonageServlet?command=product_detail&pseq=${cartVO.pseq}">
+						<a href="NonageServlet?command=product_detail&pseq=${orderVO.pseq}">
 							<h3>${orderVO.pname}</h3>
 						</a>
 					</td>
