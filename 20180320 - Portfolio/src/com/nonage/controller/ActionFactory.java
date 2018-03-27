@@ -13,6 +13,8 @@ import com.nonage.controller.action.JoinFormAction;
 import com.nonage.controller.action.LoginAction;
 import com.nonage.controller.action.LoginFormAction;
 import com.nonage.controller.action.LogoutAction;
+import com.nonage.controller.action.OrderInsertAction;
+import com.nonage.controller.action.OrderListAction;
 import com.nonage.controller.action.ProductDetailAction;
 import com.nonage.controller.action.ProductKindAction;
 
@@ -59,6 +61,10 @@ public class ActionFactory {
 			action = new CartListAction();
 		}else if(command.equals("cart_delete")) {
 			action = new CartDeleteAction();
+		}else if(command.equals("order_insert")) {
+			action = new OrderInsertAction();
+		}else if(command.equals("order_list")) {
+			action = new OrderListAction();
 		}
 		
 		return action;
