@@ -88,7 +88,23 @@ public class QnaDAO {
 	}
 	
 	public void insertqna(QnaVO qnaVO, String session_id) {
+		String sql = "insert into qna (qseq, subject, content, id) values(qna_seq.nextval, ?, ?, ?)";
 		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qnaVO.getSubject());
+			pstmt.setString(2, qnaVO.getContent());
+			pstmt.setString(3, session_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
 	}
 	
 	//관리자 모드에서 필요한 메소드
