@@ -41,7 +41,7 @@ public class AdminProductListAction implements Action {
 		
 		int n = productList.size();
 		request.setAttribute("productListSize", n);
-		request.setAttribute("paing", paging);
+		request.setAttribute("paging", paging);
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
