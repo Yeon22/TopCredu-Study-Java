@@ -190,52 +190,56 @@ public class ProductDAO {
 	static int view_rows = 5; //페이지의 갯수
 	static int counts = 5; //한 페이지에 나타낼 상품의 갯수
 	
-	// 페이지 이동을 위한 메소드
-	  public String pageNumber(int tpage, String name) {
-	    String str = "";
-	   
-	    int total_pages = totalRecord(name); 
-	    //페이지 카운터 계산식 = 총페이지 / 한페이지에 나타낼 상품의 개수 +1  
-	    int page_count = total_pages / counts + 1;
+	 // 페이지 이동을 위한 메서드
+	 public String pageNumber(int tpage, String name) {
+	  String str = "";
 
-	    if (total_pages % counts == 0) {
-	      page_count--;
-	    }
-	    if (tpage < 1) {
-	      tpage = 1;
-	    }
+	  int total_pages = totalRecord(name);
+	  // 페이지 카운터 계산식 = 총페이지 / 한페이지에 나타낼 상품의 개수 +1
+	  int page_count = total_pages / counts + 1;
 
-	    int start_page = tpage - (tpage % view_rows) + 1;  
-	    int end_page = start_page + (counts-1); 
-
-	    if (end_page > page_count) {
-	      end_page = page_count; 
-	    }
-	    if (start_page > view_rows) {
-	      str += "<a href='NonageServlet?command=admin_product_list&tpage=1&key=" 
-	         + name + "'>&lt;&lt;</a>&nbsp;&nbsp;";
-	      str+="<a href='NonageServlet?command=admin_product_list&tpage=" 
-	         + (start_page - 1);
-	      str += "&key=<%=product_name%>'>&lt;</a>&nbsp;&nbsp;";
-	    }
-	    
-	    for (int i = start_page; i <= end_page; i++) {
-	      if (i == tpage) {
-	        str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
-	      } else {
-	        str += "<a href='NonageServlet?command=admin_product_list&tpage=" 
-	           + i + "&key=" + name + "'>[" + i + "]</a>&nbsp;&nbsp;";
-	      }
-	    }
-
-	    if (page_count > end_page) {
-	      str += "<a href='NonageServlet?command=admin_product_list&tpage="
-	          + (end_page + 1) + "&key=" + name + "'> &gt; </a>&nbsp;&nbsp;";
-	      str += "<a href='NonageServlet?command=admin_product_list&tpage="
-	          + page_count + "&key=" + name + "'> &gt; &gt; </a>&nbsp;&nbsp;";
-	    }
-	    return str;
+	  if (total_pages % counts == 0) {
+	   page_count--;
 	  }
+	  
+	  if (tpage < 1) {
+	   tpage = 1;
+	  }
+
+	  int start_page = tpage - (tpage % view_rows) + 1;
+	  if(tpage % view_rows == 0) {
+	   start_page -= view_rows;
+	  }
+	  int end_page = start_page + (counts - 1);
+
+	  if (end_page > page_count) {
+	   end_page = page_count;
+	  }
+
+	  if (start_page > view_rows) {
+	   str += "<a href='NonageServlet?command=admin_product_list&tpage=1&key=" + name + "'>&lt;&lt;</a>&nbsp;&nbsp;";
+	   str += "<a href='NonageServlet?command=admin_product_list&tpage=" + (start_page - 1);
+	   str += "&key=" + name + "'>&lt;</a>&nbsp;&nbsp;";
+	  }
+
+	  for (int i = start_page; i <= end_page; i++) {
+	   if (i == tpage) {
+	    str += "<font color=red>[" + i + "]&nbsp;&nbsp;</font>";
+	   } else {
+	    str += "<a href='NonageServlet?command=admin_product_list&tpage=" + i;
+	    str += "&key=" + name + "'>[" + i + "]</a>&nbsp;&nbsp;";
+	   }
+	  }
+
+	  if (page_count > end_page) {
+	   str += "<a href='NonageServlet?command=admin_product_list&tpage=" + (end_page + 1);
+	   str += "&key=" + name + "'> &gt; </a>&nbsp;&nbsp;";
+	   str += "<a href='NonageServlet?command=admin_product_list&tpage=" + page_count;
+	   str += "&key=" + name + "'> &gt; &gt; </a>&nbsp;&nbsp;";
+	  }
+
+	  return str;
+	 }
 	
 	//상품 리스트
 	public ArrayList<ProductVO> listProduct(int tpage, String product_name) {
@@ -299,8 +303,7 @@ public class ProductDAO {
 	public int insertProduct(ProductVO product) {
 	    int result = 0;
 
-	    String sql = "insert into product (" +
-	        "pseq, kind, name, price1, price2, price3, content, image) " +
+	    String sql = "insert into product (pseq, kind, name, price1, price2, price3, content, image) " +
 	        "values(product_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 
 	    Connection con = null;
@@ -329,9 +332,8 @@ public class ProductDAO {
 	//상품수정
 	public int updateProduct(ProductVO product) {
 	      int result = -1;
-	      String sql = "update product set kind=?, useyn=?, name=?" +
-	          ", price1=?, price2=?, price3=?, content=?, image=?, bestyn=? " +
-	          "where pseq=?";
+	      String sql = "update product set kind=?, useyn=?, name=?, "
+	      		+ "price1=?, price2=?, price3=?, content=?, image=?, bestyn=? where pseq=?";
 	      
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
