@@ -1,5 +1,9 @@
 package com.nonage.controller;
 
+import com.nonage.admin.AdminIndexAction;
+import com.nonage.admin.AdminLoginAction;
+import com.nonage.admin.AdminLogoutAction;
+import com.nonage.admin.AdminProductListAction;
 import com.nonage.controller.action.Action;
 import com.nonage.controller.action.CartDeleteAction;
 import com.nonage.controller.action.CartInsertAction;
@@ -86,6 +90,17 @@ public class ActionFactory {
 			action = new QnaWriteAction();
 		}else if(command.equals("qna_view")) {
 			action = new QnaViewAction();
+		}
+		
+		//관리자용
+		if(command.equals("admin_login_form")) {
+			action = new AdminIndexAction();
+		}else if(command.equals("admin_login")) {
+			action = new AdminLoginAction();
+		}else if(command.equals("admin_logout")) {
+			action = new AdminLogoutAction();
+		}else if(command.equals("admin_product_list")) {
+			action = new AdminProductListAction();
 		}
 		
 		return action;
