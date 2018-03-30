@@ -38,7 +38,7 @@
 						<tr>
 							<td height="23" align="center">${productVO.pseq}</td>
 							<td style="text-align: left; padding-left: 50px; padding-right: 0px;">
-								<a href="#" oncliick="go_detail('${tpage}', '${productVO.pseq}')">${productVO.name}</a>
+								<a href="#" onClick="go_detail('${tpage}', '${productVO.pseq}')">${productVO.name}</a>
 							</td>
 							<td><fmt:formatNumber value="${productVO.price1}"/></td>
 							<td><fmt:formatNumber value="${productVO.price2}"/></td>

@@ -3,7 +3,10 @@ package com.nonage.controller;
 import com.nonage.admin.AdminIndexAction;
 import com.nonage.admin.AdminLoginAction;
 import com.nonage.admin.AdminLogoutAction;
+import com.nonage.admin.AdminProductDetailAction;
 import com.nonage.admin.AdminProductListAction;
+import com.nonage.admin.AdminProductWriteAction;
+import com.nonage.admin.AdminProductWriteFormAction;
 import com.nonage.controller.action.Action;
 import com.nonage.controller.action.CartDeleteAction;
 import com.nonage.controller.action.CartInsertAction;
@@ -101,6 +104,12 @@ public class ActionFactory {
 			action = new AdminLogoutAction();
 		}else if(command.equals("admin_product_list")) {
 			action = new AdminProductListAction();
+		}else if(command.equals("admin_product_detail")) {
+			action = new AdminProductDetailAction();
+		}else if(command.equals("admin_product_write_form")) {
+			action = new AdminProductWriteFormAction();
+		}else if(command.equals("admin_product_write")) {
+			action = new AdminProductWriteAction();
 		}
 		
 		return action;
