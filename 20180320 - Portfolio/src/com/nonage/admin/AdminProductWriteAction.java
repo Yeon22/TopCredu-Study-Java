@@ -22,7 +22,7 @@ public class AdminProductWriteAction implements Action {
 		String url = "NonageServlet?command=admin_product_list";
 		HttpSession session = request.getSession();
 		
-		int sizeLimit = 5 * 1024 * 10124;
+		int sizeLimit = 5 * 1024 * 1024;
 		String savePath = "product_images";
 		ServletContext context = session.getServletContext();
 		String uploadFilePath = context.getRealPath(savePath);
