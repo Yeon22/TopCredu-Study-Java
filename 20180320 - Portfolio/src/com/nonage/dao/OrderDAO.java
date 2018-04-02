@@ -161,4 +161,74 @@ public class OrderDAO {
 		
 		return oseqList;
 	}
+	
+	
+	//관리자 모드에서 사용되는 메소드
+	
+	//주문 리스트
+	public ArrayList<OrderVO> listOrder(String member_name){
+		ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+		String sql = "select * from order_view where mname like '%'||?||'%' order by result, pseq desc";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			if(member_name == "") {
+				pstmt.setString(1, "%");
+			} else {
+				pstmt.setString(1, member_name);
+			}
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrderVO orderVO = new OrderVO();
+				orderVO.setOdseq(rs.getInt("odseq"));
+				orderVO.setOseq(rs.getInt("oseq"));
+				orderVO.setId(rs.getString("id"));
+				orderVO.setPseq(rs.getInt("pseq"));
+				orderVO.setMname(rs.getString("mname"));
+				orderVO.setPname(rs.getString("pname"));
+				orderVO.setQuantity(rs.getInt("quantity"));
+				orderVO.setZipNum(rs.getString("zip_num"));
+				orderVO.setAddress(rs.getString("address"));
+				orderVO.setPhone(rs.getString("phone"));
+				orderVO.setIndate(rs.getTimestamp("indate"));
+				orderVO.setPrice2(rs.getInt("price2"));
+				orderVO.setResult(rs.getString("result"));
+				orderList.add(orderVO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return orderList;
+	}
+	
+	//주문 미처리 1, 처리 2
+	//oseq : 주문번호, odseq : 주문상세번호
+	//oseq : 주문 시퀀스로 증가, odseq : 시퀀스로 증가된다.
+	//oseq : 주문 상세 테이블에서 FK
+	public void updateOrderResult(String oseq) {
+		String sql = "update order_detail set result='2' where odseq=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, oseq);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
 }
