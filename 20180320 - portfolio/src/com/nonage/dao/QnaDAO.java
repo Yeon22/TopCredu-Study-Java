@@ -145,7 +145,7 @@ public class QnaDAO {
 	
 	//게시판 업데이트
 	public void updateQna(QnaVO qnaVO) {
-		String sql = "update qna set reply=?, rep='2', where qseq=?";
+		String sql = "update qna set reply=?, rep='2' where qseq=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -154,7 +154,7 @@ public class QnaDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qnaVO.getReply());
-			pstmt.setString(2, qnaVO.getRep());
+			pstmt.setInt(2, qnaVO.getQseq());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
