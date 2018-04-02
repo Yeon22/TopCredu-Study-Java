@@ -127,11 +127,10 @@
       <Context docBase="과제 - JSP" path="/과제_-_JSP_Servlet" reloadable="true" source="org.eclipse.jst.jee.server:과제 - JSP">
       	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="h5" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu" username="h5"/>
       </Context>
-
-      <Context docBase="20180320 - Portfolio" path="/20180320_-_Portfolio" reloadable="true" source="org.eclipse.jst.jee.server:20180320 - Portfolio">
-    	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="h5" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu" username="h5"/>
-      </Context>
       
+      <Context docBase="20180402 - portfolio" path="/portfolio" reloadable="true" source="org.eclipse.jst.jee.server:20180402 - portfolio">
+      	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="h5" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.0.27:1521:topcredu" username="h5"/>
+      </Context>
       </Host>
     </Engine>
   </Service>
