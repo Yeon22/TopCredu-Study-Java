@@ -54,22 +54,4 @@ public class AddressDAO {
 		
 		return list;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

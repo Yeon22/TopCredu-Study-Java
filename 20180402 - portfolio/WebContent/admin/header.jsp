@@ -29,5 +29,3 @@
 			<input class="btn" type="button"  value="logout" style="float: right;" onClick="location.href='NonageServlet?command=admin_logout'">			
 		</header>
 		<div class="clear"></div>
-</body>
-</html>

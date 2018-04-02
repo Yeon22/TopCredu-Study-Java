@@ -3,6 +3,7 @@ package com.nonage.controller;
 import com.nonage.admin.AdminIndexAction;
 import com.nonage.admin.AdminLoginAction;
 import com.nonage.admin.AdminLogoutAction;
+import com.nonage.admin.AdminMemberListAction;
 import com.nonage.admin.AdminOrderListAction;
 import com.nonage.admin.AdminOrderSaveAction;
 import com.nonage.admin.AdminProductDetailAction;
@@ -11,6 +12,9 @@ import com.nonage.admin.AdminProductUpdateAction;
 import com.nonage.admin.AdminProductUpdateFormAction;
 import com.nonage.admin.AdminProductWriteAction;
 import com.nonage.admin.AdminProductWriteFormAction;
+import com.nonage.admin.AdminQnaDetailAction;
+import com.nonage.admin.AdminQnaListAction;
+import com.nonage.admin.AdminQnaResaveAction;
 import com.nonage.controller.action.Action;
 import com.nonage.controller.action.CartDeleteAction;
 import com.nonage.controller.action.CartInsertAction;
@@ -53,23 +57,23 @@ public class ActionFactory {
 		
 		if(command.equals("index")) {
 			action = new IndexAction();
-		}else if (command.equals("product_detail")) {
-		    action = new ProductDetailAction();
-	    }else if(command.equals("catagory")) {
+		} else if (command.equals("product_detail")) {
+			action = new ProductDetailAction();
+	    } else if(command.equals("catagory")) {
 	    	action = new ProductKindAction();
-	    }else if (command.equals("contract")) {
+	    } else if (command.equals("contract")) {
 	        action = new ContractAction();
-	    }else if (command.equals("join_form")) {
+	    } else if (command.equals("join_form")) {
 	        action = new JoinFormAction();
 	    } else if (command.equals("id_check_form")) {
 	        action = new IdCheckFormAction();
 	    } else if(command.equals("find_zip_num")) {
 	    	action = new FindZipNumAction();
-	    }else if (command.equals("join")) {
+	    } else if (command.equals("join")) {
 	        action = new JoinAction();
-	    }else if (command.equals("login_form")) {
+	    } else if (command.equals("login_form")) {
 	        action = new LoginFormAction();
-	    }else if (command.equals("login")) {
+	    } else if (command.equals("login")) {
 	        action = new LoginAction();
 	    } else if (command.equals("logout")) {
 	        action = new LogoutAction();
@@ -83,38 +87,38 @@ public class ActionFactory {
 	        action = new OrderInsertAction();
 	    } else if (command.equals("order_list")) {
 	    	action = new OrderListAction();
-	    }else if (command.equals("mypage")) {
+	    } else if (command.equals("mypage")) {
 	    	action = new MyPageAction();
-	    }else if (command.equals("order_detail")) {
+	    } else if (command.equals("order_detail")) {
 	    	action = new OrderDetailAction();
-	    }else if (command.equals("order_all")) {
+	    } else if (command.equals("order_all")) {
 	    	action = new OrderAllAction();
 	    } else if(command.equals("qna_list")) {
 	    	action = new QnaListAction();
-	    }	else if(command.equals("qna_write_form")) {
+	    } else if(command.equals("qna_write_form")) {
 	    	action = new QnaWriteFormAction();
-	    }	else if(command.equals("qna_write")) {
+	    } else if(command.equals("qna_write")) {
 	    	action = new QnaWriteAction();
-	    } 	else if(command.equals("qna_view")) {
+	    } else if(command.equals("qna_view")) {
 	    	action = new QnaViewAction();
 	    }
 		
 		//관리
 		if(command.equals("admin_login_form")) {
 			action = new AdminIndexAction();
-		}else if(command.equals("admin_login")) {
+		} else if(command.equals("admin_login")) {
 			action = new AdminLoginAction();
-		}else if(command.equals("admin_logout")) {
+		} else if(command.equals("admin_logout")) {
 			action = new AdminLogoutAction();
-		}else if(command.equals("admin_product_list")) {
+		} else if(command.equals("admin_product_list")) {
 			action = new AdminProductListAction();
-		}else if (command.equals("admin_product_detail")) {
+		} else if (command.equals("admin_product_detail")) {
 		      action = new AdminProductDetailAction();
-	    }else if (command.equals("admin_product_write_form")) {
+	    } else if (command.equals("admin_product_write_form")) {
 	        action = new AdminProductWriteFormAction();
-	    }else if (command.equals("admin_product_write")) {
+	    } else if (command.equals("admin_product_write")) {
 	        action = new AdminProductWriteAction();
-	    }else if (command.equals("admin_product_update_form")) {
+	    } else if (command.equals("admin_product_update_form")) {
 	        action = new AdminProductUpdateFormAction();
 	    } else if (command.equals("admin_product_update")) {
 	      action = new AdminProductUpdateAction();
@@ -122,36 +126,16 @@ public class ActionFactory {
 	        action = new AdminOrderListAction();
 	    } else if (command.equals("admin_order_save")) {
 	        action = new AdminOrderSaveAction();
-	    } 
-		
-		
-		
+	    } else if(command.equals("admin_member_list")) {
+	    	action = new AdminMemberListAction();
+	    } else if(command.equals("admin_qna_list")) {
+	    	action = new AdminQnaListAction();
+	    } else if(command.equals("admin_qna_detail")) {
+	    	action = new AdminQnaDetailAction();
+	    } else if(command.equals("admin_qna_repsave")) {
+	    	action = new AdminQnaResaveAction();
+	    }
 		
 		return action;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

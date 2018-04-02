@@ -14,6 +14,7 @@ public class ProductVO {
 	private String useyn;
 	private String bestyn;
 	private Timestamp indate;
+	
 	public int getPseq() {
 		return pseq;
 	}
@@ -80,7 +81,4 @@ public class ProductVO {
 	public void setIndate(Timestamp indate) {
 		this.indate = indate;
 	}
-	
-	
-
 }

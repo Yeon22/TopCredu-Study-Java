@@ -16,7 +16,6 @@ import com.nonage.controller.action.Action;
 public class NonageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		System.out.println(command);
@@ -27,10 +26,7 @@ public class NonageServlet extends HttpServlet {
 		if (action != null) {
 		      action.execute(request, response);
 		}
-		
-		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

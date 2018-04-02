@@ -6,12 +6,6 @@ public class QnaVO {
 	private int qseq;
 	private String subject;
 	private String content;
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
 	private String reply;
 	private String id;
 	private String rep;
@@ -28,6 +22,12 @@ public class QnaVO {
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getReply() {
 		return reply;

@@ -13,18 +13,19 @@ public class DBManager {
 	//dbcp 연결 함수
 	public static Connection getConnection() {
 		Connection conn = null;
+		
 		try {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
 			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
 			conn = ds.getConnection(); 	
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}		
 		
 		return conn;
 	}
+	
 	// select수행 후 리소스 해제를 위한 메소드
 	public static void close(Connection conn, Statement stmt, ResultSet rs) {
 		try {
@@ -35,6 +36,7 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
+	
 	//insert,update , delete 작업을 수행한 후  리소스 해제를 위한 메소스
 	public static void close(Connection conn, Statement stmt) {
 		try {			
@@ -43,8 +45,6 @@ public class DBManager {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
 	
 }

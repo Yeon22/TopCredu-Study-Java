@@ -3,15 +3,16 @@
 <%@ include file="../header.jsp" %>	 
 <%@ include file="sub_img.html"%> 
 <%@ include file="sub_menu.html" %>   
-  <article>
-    <h2>Join Us</h2>
-    <form id="join" action="NonageServlet?command=join_form" method="post" name="formm">
-        언제나 새로운 즐거움이 가득한 Nonage의 회원가입 페이지 입니다. <br>
-       Nonage의 회원가입은 무료이며, 회원님의 개인신상에 관한 정보는 
-       ‘정보통신망이용촉진 및 정보보호등에관한법률’에 의해 회원님의 동의없이
-         제 3자에게 제공되지 않으며, 철저히 보호되고 있사오니 안심하고 이용하시기 바랍
-니다.<br><br>
-       <textarea rows="15" cols="100" readonly="readonly">
+
+<article>
+	<h2>Join Us</h2>
+	<form id="join" action="NonageServlet?command=join_form" method="post" name="formm">
+		언제나 새로운 즐거움이 가득한 Nonage의 회원가입 페이지 입니다. <br>
+		Nonage의 회원가입은 무료이며, 회원님의 개인신상에 관한 정보는 
+		‘정보통신망이용촉진 및 정보보호등에관한법률’에 의해 회원님의 동의없이
+		제 3자에게 제공되지 않으며, 철저히 보호되고 있사오니 안심하고 이용하시기 바랍니다.<br><br>
+		<textarea rows="15" cols="100" readonly="readonly">
+		
        제 1 장 총 칙
 
 제 1 조 (목적) 
@@ -184,13 +185,14 @@
 (1) 이 약관에 명시되지 않은 사항은 전기통신사업법 등 관계법령과 상관습에 따릅니다.
 (2) 회사의 정액 서비스 회원 및 기타 유료 서비스 이용 회원의 경우 회사가 별도로 정한 약관 및 정책에 따릅니다.
 (3) 서비스 이용으로 발생한 분쟁에 대해 소송이 제기되는 경우 회사의 본사 소재지를 관할하는 법원을 관할 법원으로 합니다.
-      </textarea>
-      <br><br>
-      <div style="text-align: center;">
-      <input type="radio" name="okon1" checked> 동의함 &nbsp; &nbsp; &nbsp;
-      <input type="radio" name="okon1" checked> 동의안함
-      </div>
-      <input type="button" value="Next" class="submit"  onclick="go_next()" style="float: right;"> 
-    </form>
-  </article>
+
+		</textarea><br><br>
+		<div style="text-align: center;">
+			<input type="radio" name="okon1" checked> 동의함 &nbsp; &nbsp; &nbsp;
+			<input type="radio" name="okon1" checked> 동의안함
+		</div>
+		<input type="button" value="Next" class="submit"  onclick="go_next()" style="float: right;"> 
+	</form>
+</article>
+
 <%@ include file="../footer.jsp" %>  

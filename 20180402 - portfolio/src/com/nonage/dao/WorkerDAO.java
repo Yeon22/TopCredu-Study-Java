@@ -50,13 +50,10 @@ public class WorkerDAO {
 				}
 			}
 			DBManager.close(conn, pstmt, rs);
-		} catch (Exception e) {
-		}
+			} catch (Exception e) {
+				DBManager.close(conn, pstmt, rs);
+			}
+		
 		return result;
 	}
-	
-	
-	
-	
-	
 }

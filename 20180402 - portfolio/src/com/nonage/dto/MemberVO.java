@@ -12,6 +12,7 @@ public class MemberVO {
 	private String phone;
 	private String useyn;
 	private Timestamp indate;
+	
 	public String getId() {
 		return id;
 	}
@@ -49,7 +50,6 @@ public class MemberVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
 	public String getPhone() {
 		return phone;
 	}

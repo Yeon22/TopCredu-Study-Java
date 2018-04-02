@@ -27,6 +27,7 @@ public class QnaListAction implements Action {
 			ArrayList<QnaVO> qnaList = qnaDAO.listQna(loginUser.getId());
 			request.setAttribute("qnaList", qnaList);
 		}
+		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 

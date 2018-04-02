@@ -25,7 +25,6 @@ body{
 	margin:40px 0 0 40px;
 }
 
-
 nav#catagory_menu{
 	float:right;
 	margin:20px 64px 0 0;
@@ -57,7 +56,6 @@ nav#catagory_menu a:hover{
     font-weight: bold;
 }
 
-
 nav#top_menu{
 	margin: 20px 0;
 	float:right;
@@ -73,6 +71,7 @@ nav#top_menu ul li{
    margin:0 15px;  
    font-size: 14px; 
 }
+
 nav#top_menu a{
 	display:block; 
     height:20px;
@@ -87,8 +86,6 @@ nav#top_menu a:hover{
     background-position:bottom;
 }
 
-
-
 #bestProduct{
     border:solid 1px #FFFFFF;
     border-radius:10px;
@@ -98,6 +95,7 @@ nav#top_menu a:hover{
     padding:10px;
     text-align: center;    
 }
+
 footer {
 	margin:10px 0 0 0;
 	height:50px;
@@ -105,12 +103,12 @@ footer {
 	background-repeat: no-repeat;
 	background-position: 40px center;	
 }
+
 footer #copy {
 	margin: 20px 0 10px 300px;
 	width:600px;	
 	float:left;	
 }
-
 
 table#cartList {
     border-collapse:collapse;    /* border 사이의 간격 없앰 */
@@ -128,6 +126,7 @@ table#cartList th, td{
 #main_img{
 	text-align: center;
 } 
+
 #main_img img{
     margin:9px 0 0 0; 
 }
@@ -141,8 +140,6 @@ div#front{
     float:left; margin: 0 13px;
     text-align: center;
 }
-
-
 
 #item img{
 	width: 190px;
@@ -159,6 +156,7 @@ a{
     color:#F00;
     text-decoration:none;
 }
+
 a:hover{
     color:#F90;
     text-decoration:underline;
@@ -188,8 +186,6 @@ a:hover{
 	margin: 20px 0 0 16px;
 	list-style: none;
 }
-
-
 
 #sub_menu a {
 	text-decoration: none;
@@ -247,6 +243,7 @@ article table#notice td{
 	padding: 6px 0;
 	border-bottom: 1px dotted #999;
 }
+
 article table#notice tr:hover {
 	background-color: #DDF;
 	cursor: pointer;
@@ -270,8 +267,7 @@ form fieldset legend{
 	border-bottom: 1px dotted #666;
 	/* 전체 크기를 잡아 줍니다. */
 	width:600px;
-	/* 위와 아래로 여백을 주고 좌우로는 여백을 없애버립니다. 
-                                      여백을 안 주게 되면 밑줄과 너무 붙어버려 보기에 좋지 않습니다. */
+	/* 위와 아래로 여백을 주고 좌우로는 여백을 없애버립니다. 여백을 안 주게 되면 밑줄과 너무 붙어버려 보기에 좋지 않습니다. */
 	padding: 5px 0;	
 }
 
@@ -296,7 +292,7 @@ form #buttons {
 	margin: 20px 0 0 0;
 }
 
-form  .submit,form  .cancel {
+form .submit,form  .cancel {
 	height: 30px; /* 버튼의 세로 크기를 정의합니다. */
 	width: 150px; /* 버튼의 가로 크기를 정의합니다. */
 	border: 1px solid #666; /* 버튼의 테두리를 정의합니다. */
@@ -309,11 +305,11 @@ form  .submit,form  .cancel {
 	margin: 0 0 0 20px;
 }
 
-form  .submit {
+form .submit {
 	background-image: url(../images/submit_back.jpg);
 }
 
-form  .cancel {
+form .cancel {
 	background-image: url(../images/cancel_back.jpg);	
 }
 
