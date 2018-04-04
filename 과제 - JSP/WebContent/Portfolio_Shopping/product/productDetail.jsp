@@ -15,10 +15,14 @@
 					</span>
 					<h2>${productVO.name}</h2>
 				</a>
-				<label>가 격 : </label>
-				<p>${productVO.price2} 원</p>
-				<label>수 량 : </label>
-				<input type="text" name="quantity" size="2" value="1"/><br>
+				<label style="width: 70px; font-weight: bold; font-size: 1.24em;">가 격 : </label>
+				<p style="font-weight: bold; padding-top: 6px;">${productVO.price2} 원</p>
+				<label style="width: 70px; font-weight: bold; font-size: 1.24em;">수 량 : </label>
+				<input type="number" name="quantity" value="1" 
+					style="width: 55px; height: 18px; text-align: center; font-size: 1.25em; font-weight: bold"/><br>
+				<label style="line-height: 25px; padding: 15px 0 0 5px; font-weight: bold; font-size: 1.41em;">
+					${productVO.content}
+				</label>
 				<input type="hidden" name="pseq" value="${productVO.pseq}"/><br>
 			</fieldset>
 			<div class="clear"></div>

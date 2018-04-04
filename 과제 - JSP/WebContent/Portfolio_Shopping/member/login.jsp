@@ -14,7 +14,7 @@
 		<div class="clear"></div>
 		<div id="buttons">
 			<input type="submit" value="로그인" class="submit"/>
-			<input type="button" value="회원가입" class="cancel" onclick="location='ShoppingServlet?command=join_form'"/>
+			<input type="button" value="회원가입" class="cancel" onclick="location='ShoppingServlet?command=contract'"/>
 			<input type="button" value="아이디, 비밀번호 찾기" class="submit" onclick="location='ShoppingServlet?command=find_id_form'"/>
 		</div>
 	</form>

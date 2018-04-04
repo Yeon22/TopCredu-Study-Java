@@ -290,6 +290,10 @@ form fieldset{
 	border: none;
 }
 
+form fieldset > input{
+	height: 20px;
+}
+
 form fieldset legend{
 	font-size: 20px;
 	border-bottom: 1px dotted #666;
@@ -301,6 +305,8 @@ form label{
 	width: 140px;
 	float: left;
 	margin: 5px 0;
+	font-size: 1.01em;
+	font-weight: bold;
 }
 
 form input{
@@ -357,4 +363,12 @@ form input.dup{
 	background-image: url(../images/dup.jpg);
 	background-repeat: repeat-x;
 	background-position: center center;
+}
+
+.dup:hover{
+	color: #80ff00;
+	text-decoration:underline;
+	font-weight: bold;
+	font-weight: lighter;
+	cursor: pointer;
 }
