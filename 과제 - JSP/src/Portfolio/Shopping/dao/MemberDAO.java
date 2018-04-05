@@ -44,6 +44,63 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public int confirmIDPwd(String userid, String name, String email) {
+		int result = -1;
+		String sql = "select * from pofol_member where id=? and name=? and email=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = 1;
+			} else {
+				result = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
+	
+	public int confirmName(String name, String email) {
+		int result = -1;
+		String sql = "select * from pofol_member where name=? and email=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = 1;
+			} else {
+				result = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return result;
+	}
+	
 	public MemberVO getMember(String id) {
 		MemberVO memberVO = null;
 		String sql = "select * from pofol_member where id=?";
@@ -78,9 +135,80 @@ public class MemberDAO {
 		return memberVO;
 	}
 	
+	public MemberVO getMemberName(String name, String email) {
+		MemberVO memberVO = null;
+		String sql = "select * from pofol_member where name=? and email=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				memberVO = new MemberVO();
+				memberVO.setId(rs.getString("id"));
+				memberVO.setPwd(rs.getString("pwd"));
+				memberVO.setName(rs.getString("name"));
+				memberVO.setEmail(rs.getString("email"));
+				memberVO.setZipNum(rs.getString("zip_num"));
+				memberVO.setAddress(rs.getString("address"));
+				memberVO.setPhone(rs.getString("phone"));
+				memberVO.setUseyn(rs.getString("useyn"));
+				memberVO.setIndate(rs.getTimestamp("indate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return memberVO;
+	}
+	
+	public MemberVO getMemberPwd(String userid, String name, String email) {
+		MemberVO memberVO = null;
+		String sql = "select * from pofol_member where id=? and name=? and email=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, name);
+			pstmt.setString(3, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				memberVO = new MemberVO();
+				memberVO.setId(rs.getString("id"));
+				memberVO.setPwd(rs.getString("pwd"));
+				memberVO.setName(rs.getString("name"));
+				memberVO.setEmail(rs.getString("email"));
+				memberVO.setZipNum(rs.getString("zip_num"));
+				memberVO.setAddress(rs.getString("address"));
+				memberVO.setPhone(rs.getString("phone"));
+				memberVO.setUseyn(rs.getString("useyn"));
+				memberVO.setIndate(rs.getTimestamp("indate"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		
+		return memberVO;
+	}
+	
 	public int insertMember(MemberVO memberVO) {
 		int result = 0;
-		String sql = "insert into pofol_member(id, pwd, name, zip_num, address, phone) values(?, ?, ?, ?, ?, ?)";
+		String sql = "insert into pofol_member(id, pwd, name, email, zip_num, address, phone) values(?, ?, ?, ?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -91,9 +219,10 @@ public class MemberDAO {
 			pstmt.setString(1, memberVO.getId());
 			pstmt.setString(2, memberVO.getPwd());
 			pstmt.setString(3, memberVO.getName());
-			pstmt.setString(4, memberVO.getZipNum());
-			pstmt.setString(5, memberVO.getAddress());
-			pstmt.setString(6, memberVO.getPhone());
+			pstmt.setString(4, memberVO.getEmail());
+			pstmt.setString(5, memberVO.getZipNum());
+			pstmt.setString(6, memberVO.getAddress());
+			pstmt.setString(7, memberVO.getPhone());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

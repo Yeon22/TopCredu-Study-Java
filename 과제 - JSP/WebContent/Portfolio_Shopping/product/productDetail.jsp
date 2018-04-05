@@ -19,8 +19,9 @@
 				<p style="font-weight: bold; padding-top: 6px;">${productVO.price2} 원</p>
 				<label style="width: 70px; font-weight: bold; font-size: 1.24em;">수 량 : </label>
 				<input type="number" name="quantity" value="1" 
-					style="width: 55px; height: 18px; text-align: center; font-size: 1.25em; font-weight: bold"/><br>
-				<label style="line-height: 25px; padding: 15px 0 0 5px; font-weight: bold; font-size: 1.41em;">
+					style="width: 55px; height: 18px; text-align: center; font-size: 1.25em; font-weight: bold"
+					onclick="quantityCheck()"/><br>
+				<label style="width: 400px;line-height: 25px; padding: 15px 0 0 5px; font-weight: bold; font-size: 1.41em;">
 					${productVO.content}
 				</label>
 				<input type="hidden" name="pseq" value="${productVO.pseq}"/><br>
@@ -29,7 +30,7 @@
 			<div id="buttons">
 				<input type="button" value="장바구니에 담기" class="submit" onclick="go_cart()"/>
 				<input type="button" value="즉시 구매" class="submit" onclick="go_order()"/>
-				<input type="reset" value="취소" class="cancel"/>
+				<input type="reset" value="취소" class="cancel" onclick="history.go(-1)"/>
 			</div>
 		</form>
 	</div>

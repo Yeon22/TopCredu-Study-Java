@@ -1,3 +1,9 @@
+function quantityCheck(){
+	if(document.formm.quantity.value <= 0){
+		document.formm.quantity.value = 1;
+	}
+}
+
 function go_cart(){
 	if(document.formm.quantity.value == ""){
 		alert("수량을 입력하여 주세요.");

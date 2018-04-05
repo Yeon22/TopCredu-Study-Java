@@ -3,6 +3,10 @@ package Portfolio.Shopping.controller;
 import Portfolio.Shopping.controller.action.Action;
 import Portfolio.Shopping.controller.action.CategoryAction;
 import Portfolio.Shopping.controller.action.ContractAction;
+import Portfolio.Shopping.controller.action.FindIdAction;
+import Portfolio.Shopping.controller.action.FindIdPwdFormAction;
+import Portfolio.Shopping.controller.action.FindPwdAction;
+import Portfolio.Shopping.controller.action.FindZipNumAction;
 import Portfolio.Shopping.controller.action.IdCheckFormAction;
 import Portfolio.Shopping.controller.action.IndexAction;
 import Portfolio.Shopping.controller.action.JoinAction;
@@ -43,6 +47,14 @@ public class ActionFactory {
 			action = new IdCheckFormAction();
 		} else if(command.equals("join")) {
 			action = new JoinAction();
+		} else if(command.equals("find_zip_num")) {
+			action = new FindZipNumAction();
+		} else if(command.equals("find_id_pwd_form")) {
+			action = new FindIdPwdFormAction();
+		} else if(command.equals("find_id")) {
+			action = new FindIdAction();
+		} else if(command.equals("find_pwd")) {
+			action = new FindPwdAction();
 		}
 		
 		return action;

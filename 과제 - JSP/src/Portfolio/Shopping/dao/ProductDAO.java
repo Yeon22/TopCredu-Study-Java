@@ -287,7 +287,7 @@ public class ProductDAO {
 	public int insertProduct(ProductVO product) {
 		int result = 0;
 		String sql = "insert into pofol_product (pseq, kind, name, price1, price2, price3, content, image) "
-				+ "values(product_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
+				+ "values(pofol_product_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

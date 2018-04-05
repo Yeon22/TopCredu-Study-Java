@@ -23,7 +23,7 @@
 			<input type="text" name="name" style="margin-top: -5px"/><br>
 			
 			<label>이메일(E-Mail)</label>
-			<input type="email" name="email"/><br>
+			<input type="text" name="email"/><br>
 		</fieldset>
 		<fieldset>
 			<legend>옵션사항(Optional)</legend>
@@ -37,7 +37,7 @@
 			<input type="text" name="addr2" size="50"/><br>
 			
 			<label>전화번호<br>(Phone Number)</label>
-			<input type="tel" name="phone" style="margin-top: 10px;"/><br>
+			<input type="text" name="phone" style="margin-top: 10px;"/><br>
 		</fieldset>
 		<div class="clear"></div>
 		<div id="buttons">

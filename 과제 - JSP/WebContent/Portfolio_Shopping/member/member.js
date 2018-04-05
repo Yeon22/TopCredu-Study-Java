@@ -20,7 +20,7 @@ function idcheck(){
 
 function post_zip(){
 	var url = "ShoppingServlet?command=find_zip_num";
-	window.open(url, "_black_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=300, top=300, left=300");
+	window.open(url, "_black_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=500, top=300, left=300");
 }
 
 function go_save(){
@@ -43,7 +43,39 @@ function go_save(){
 		alert("이메일을 입력해주세요.");
 		document.formm.email.focus();
 	}else{
+		alert("회원가입이 정상적으로 완료되었습니다.");
 		document.formm.action = "ShoppingServlet?command=join";
 		document.formm.submit();
+	}
+}
+
+function FindIdCheck(){
+	if(document.formm.name1.value == ""){
+		alert("이름을 입력해주세요.");
+		document.formm.name1.focus();
+	}else if(document.formm.email1.value == ""){
+		alert("이메일을 입력해주세요.");
+		document.formm.email1.focus();
+	}else{
+		var url = "ShoppingServlet?command=find_id&name=" + document.formm.name1.value + 
+			"&email=" + document.formm.email1.value;
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=400, height=200");
+	}
+}
+
+function FindPwdCheck(){
+	if(document.formm.id.value == ""){
+		alert("아이디를 입력해주세요.");
+		document.formm.id.focus();
+	}else if(document.formm.name2.value == ""){
+		alert("이름을 입력해주세요.");
+		document.formm.name2.focus();
+	}else if(document.formm.email2.value == ""){
+		alert("이메일을 입력해주세요.");
+		document.formm.email2.focus();
+	}else{
+		var url = "ShoppingServlet?command=find_pwd&id=" +document.formm.id.value + "&name=" + document.formm.name2.value + 
+			"&email=" + document.formm.email2.value;
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=400, height=200");
 	}
 }
