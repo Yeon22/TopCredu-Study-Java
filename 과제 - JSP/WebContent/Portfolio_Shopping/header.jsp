@@ -8,6 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>SC쇼핑몰</title>
 <link href="css/style.css" rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="icon" type="image/gif" href="images/animated_favicon1.gif">
 <script type="text/javascript" src="member/member.js"></script>
 <script type="text/javascript" src="product/product.js"></script>
 <script type="text/javascript" src="mypage/mypage.js"></script>
