@@ -15,6 +15,7 @@ function go_cart(){
 }
 
 function go_order(){
+	alert("My Page로 이동합니다.\n주문을 원하실 경우 장바구니에 담은 후 주문하기를 눌러주시기 바랍니다.");
 	document.formm.action = "ShoppingServlet?command=mypage";
 	document.formm.submit();
 }

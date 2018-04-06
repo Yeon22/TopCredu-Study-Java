@@ -18,7 +18,7 @@ public class CartDAO {
 	}
 	
 	public void insertCart(CartVO cartVO) {
-		String sql = "insert into pofol_cart(cseq, id, pseq, quantity) values(cart_seq.nextval, ?, ?, ?)";
+		String sql = "insert into pofol_cart(cseq, id, pseq, quantity) values(pofol_cart_seq.nextval, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

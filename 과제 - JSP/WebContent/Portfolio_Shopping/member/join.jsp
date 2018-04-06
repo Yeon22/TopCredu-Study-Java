@@ -42,7 +42,7 @@
 		<div class="clear"></div>
 		<div id="buttons">
 			<input type="button" value="회원가입" class="submit" onclick="go_save()"/>
-			<input type="reset" value="취소" class="cancel"/>
+			<input type="reset" value="취소" class="cancel" onclick="location.href='ShoppingServlet?command=index'"/>
 		</div>
 	</form>
 </article>

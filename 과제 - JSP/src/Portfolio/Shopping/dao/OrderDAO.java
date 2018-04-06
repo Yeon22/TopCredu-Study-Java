@@ -36,7 +36,7 @@ public class OrderDAO {
 			}
 			pstmt.close();
 			
-			String insertOrder = "insert into pofol_orders(oseq, id) values(orders_seq.nextval, ?)";
+			String insertOrder = "insert into pofol_orders(oseq, id) values(pofol_orders_seq.nextval, ?)";
 			pstmt = conn.prepareStatement(insertOrder);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
