@@ -1,5 +1,12 @@
 package Portfolio.Shopping.controller;
 
+import Portfolio.Shopping.admin.AdminLoginAction;
+import Portfolio.Shopping.admin.AdminLoginFormAction;
+import Portfolio.Shopping.admin.AdminLogoutAction;
+import Portfolio.Shopping.admin.AdminProductDetailAction;
+import Portfolio.Shopping.admin.AdminProductListAction;
+import Portfolio.Shopping.admin.AdminProductWriteAction;
+import Portfolio.Shopping.admin.AdminProductWriteFormAction;
 import Portfolio.Shopping.controller.action.Action;
 import Portfolio.Shopping.controller.action.CartDeleteAction;
 import Portfolio.Shopping.controller.action.CartInsertAction;
@@ -91,6 +98,23 @@ public class ActionFactory {
 			action = new QnaWriteFormAction();
 		} else if(command.equals("qna_write")) {
 			action = new QnaWriteAction();
+		}
+		
+		//admin(관리자)용
+		if(command.equals("admin_login_form")) {
+			action = new AdminLoginFormAction();
+		} else if(command.equals("admin_login")) {
+			action = new AdminLoginAction();
+		} else if(command.equals("admin_logout")) {
+			action = new AdminLogoutAction();
+		} else if(command.equals("admin_product_list")) {
+			action = new AdminProductListAction();
+		} else if(command.equals("admin_product_detail")) {
+			action = new AdminProductDetailAction();
+		} else if(command.equals("admin_product_write_form")) {
+			action = new AdminProductWriteFormAction();
+		} else if(command.equals("admin_product_write")) {
+			action = new AdminProductWriteAction();
 		}
 		
 		return action;

@@ -1,0 +1,331 @@
+.clear{
+	clear: both;
+}
+
+header{
+	height: 145px;
+}
+
+body{
+	background-color: white;
+	margin: -50px 0 0 0;
+	padding: 0;
+	font-size: 1.01em;
+	line-height: 1.2em;
+	color: #333;
+}
+
+#logo{
+	width: 971px;
+	margin: 60px 0 15px 0;
+}
+
+#logo img{
+	width: 100%;
+	height: 100px;
+}
+
+#loginform{
+	margin-left: 280px;
+	margin-top: 80px;
+}
+
+#loginform strong{
+	font-size: 15pt;
+}
+
+#loginform input[type=text], input[type=password]{
+	height: 25px;
+	text-align: center;
+	font-size: 1.24em;
+}
+
+.btn{
+	width: 120px;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #FC3;
+	color: #333;
+	box-shadow: 3px 3px 3px #999999;
+	text-decoration:  none;
+	text-align: center;
+	padding: 5px;
+	margin: 10px 7px 7px 0;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+.btn:hover{
+	background-color: black;
+	color: white;
+	cursor: pointer;
+}
+
+.btn:active{
+	box-shadow: none;
+}
+
+article{
+	min-height: 600px;
+}
+
+nav#sub_menu{
+	float: left;
+	margin-right: 10px;
+}
+
+nav#sub_menu ul li{
+	list-style-type: none;
+	margin-top: 10px;
+}
+
+nav#sub_menu a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	border-bottom: 1px dotted #999;
+	display: block;
+	width: 100px;
+	height: 25px;
+	padding: 5px;
+}
+
+nav#sub_menu a:hover{
+	font-weight: bold;
+	background-color: gray;
+	color: white;
+}
+
+nav#sub_menu h1{
+	padding: 5px;
+	border-bottom: double;
+}
+
+nav#sub_menu ul{
+	margin-left: -20px;
+}
+
+a{
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover{
+	text-decoration: underline;
+	color: #0080ff;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#wrap{
+	width: 971px;
+	text-align: center;
+	margin: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#wrap_h1{
+	margin-top: 20px;
+	margin-bottom: -20px;
+	text-decoration: overline;
+	color: #3d16ef;
+}
+
+#login{
+	width: 200px;
+	float: right;
+	margin-top: 10px;
+}
+
+#login a{
+	text-decoration: none;
+	font-size: 10pt;
+}
+
+#login a:hover{
+	color: orange;
+}
+
+th{
+	background-color: #E4E4E4;
+	font-size: 1.14em;
+}
+
+th, td{
+	padding: 8px 2px;
+}
+
+table#productList{
+	border-collapse: collapse;
+	border-top: 2px solid #333;
+	border-bottom: 1px solid #333;
+	width: 80%;
+	margin-left: 100px;
+	margin-bottom: 20px;
+}
+
+#productList td{
+	padding-right: 40px;
+	text-align: right;
+}
+
+#list td{
+	padding: 8px 5px;
+	text-align: left;
+}
+
+table#orderList{
+	border-collapse: collapse;
+	border-top: 2px solid #333;
+	border-bottom: 1px solid #333;
+	width: 85%;
+	margin-left: 100px;
+	margin-bottom: 20px;
+}
+
+table#orderList th, td{
+	text-align: center;
+}
+
+#register{
+	margin-left: 300px;
+}
+
+#register table{
+	border: 1px solid black;
+	border-spacing: 5px;
+}
+
+#register td{
+	border: 1px solid black;
+	width: 270px;
+}
+
+#mypageReserve table{
+	border: 1px solid black;
+	width: 480px;
+	height: 180px;
+	margin-top: 10px;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-left: 300px;
+	color: #006700;
+}
+
+#mypageReserve .btn{
+	margin-right: 30px;
+}
+
+#mypageReserve b{
+	margin-top: 50px;
+	margin-left: 110px;
+	font-size: 20pt;
+	font-weight: bold;
+}
+
+#mypageReserveView table{
+	border: 1px solid gray;
+	width: 500px;
+	height: 150px;
+	margin-left: 300px;
+	margin-top: 10px;
+}
+
+#mypageReviewList table{
+	border: 1px solid black;
+	width: 800px;
+	margin-top: 10px;
+	margin-left: 150px;
+}
+
+#mypageReviewList td{
+	border-bottom: 1px solid gray;
+	width: 800px;
+	height: 30px;
+	margin-top: 10px;
+}
+
+#mypageReviewList th{
+	border: 1px solid black;
+	height: 30px;
+	width: 20px;
+}
+
+#userView table{
+	border:: 1px solid black;
+	width: 500px;
+	margin-top: 10px;
+	margin-left: 300px;
+}
+
+#userView td{
+	border: 1px solid gray;
+	height: 30px;
+	width: 20px;
+}
+
+#userView th{
+	border: 1px solid black;
+	height: 30px;
+	width: 20px;
+}
+
+#userView h1{
+	padding: 5px;
+}
+
+#userView a{
+	text-decoration: none;
+	font-size: 12pt;
+	margin-bottom: 100px;
+	margin-left: 150px;
+}
+
+#userUpdate h1{
+	padding: 5px;
+}
+
+#userUpdate table{
+	margin-left: 430px;
+}
+
+#check table{
+	border: 1px solid gray;
+	border-spacing: 5px;
+	margin-left: 300px;
+}
+
+#check td{
+	border: 1px solid gray;
+}
+
+#check h1{
+	font-size: 10pt;
+	text-align: center;
+}
+
+footer{
+	background-position: 40px center;
+	float: left;
+	min-height: 145px;
+	width: 952px;
+	margin-left: 10px;
+	font-weight: bold;
+}
+
+footer hr{
+	width: 950px;
+	border: 1px solid black;
+}
+
+footer a{
+	padding: 10px;
+	color: gray;
+	font-weight: bold;
+}
+
+footer a:hover{
+	color: green;
+	text-decoration: none;
+}
