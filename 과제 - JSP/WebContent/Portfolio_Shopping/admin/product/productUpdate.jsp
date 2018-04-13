@@ -87,4 +87,4 @@
 	</form>
 </article>
 
-<%@ include file="/Portfolio_Shopping/admin/header.jsp" %>
+<%@ include file="/Portfolio_Shopping/admin/footer.jsp" %>

@@ -5,6 +5,8 @@ import Portfolio.Shopping.admin.AdminLoginFormAction;
 import Portfolio.Shopping.admin.AdminLogoutAction;
 import Portfolio.Shopping.admin.AdminProductDetailAction;
 import Portfolio.Shopping.admin.AdminProductListAction;
+import Portfolio.Shopping.admin.AdminProductUpdateAction;
+import Portfolio.Shopping.admin.AdminProductUpdateFormAction;
 import Portfolio.Shopping.admin.AdminProductWriteAction;
 import Portfolio.Shopping.admin.AdminProductWriteFormAction;
 import Portfolio.Shopping.controller.action.Action;
@@ -115,6 +117,10 @@ public class ActionFactory {
 			action = new AdminProductWriteFormAction();
 		} else if(command.equals("admin_product_write")) {
 			action = new AdminProductWriteAction();
+		} else if(command.equals("admin_product_update_form")) {
+			action = new AdminProductUpdateFormAction();
+		} else if(command.equals("admin_product_update")) {
+			action = new AdminProductUpdateAction();
 		}
 		
 		return action;
