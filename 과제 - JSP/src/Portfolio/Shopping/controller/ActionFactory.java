@@ -3,6 +3,9 @@ package Portfolio.Shopping.controller;
 import Portfolio.Shopping.admin.AdminLoginAction;
 import Portfolio.Shopping.admin.AdminLoginFormAction;
 import Portfolio.Shopping.admin.AdminLogoutAction;
+import Portfolio.Shopping.admin.AdminMemberListAction;
+import Portfolio.Shopping.admin.AdminOrderListAction;
+import Portfolio.Shopping.admin.AdminOrderSaveAction;
 import Portfolio.Shopping.admin.AdminProductDetailAction;
 import Portfolio.Shopping.admin.AdminProductListAction;
 import Portfolio.Shopping.admin.AdminProductUpdateAction;
@@ -121,6 +124,12 @@ public class ActionFactory {
 			action = new AdminProductUpdateFormAction();
 		} else if(command.equals("admin_product_update")) {
 			action = new AdminProductUpdateAction();
+		} else if(command.equals("admin_member_list")) {
+			action = new AdminMemberListAction();
+		} else if(command.equals("admin_order_list")) {
+			action = new AdminOrderListAction();
+		} else if(command.equals("admin_order_save")) {
+			action = new AdminOrderSaveAction();
 		}
 		
 		return action;
