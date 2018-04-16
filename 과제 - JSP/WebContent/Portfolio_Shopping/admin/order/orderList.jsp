@@ -31,10 +31,11 @@ function go_order_save(){
 <article>
 	<h1>주문리스트(Order List)</h1>
 	<form name="frm" method="post">
-		<table style="float: right;">
+		<table style="float: right; margin-right: 0px;">
 			<tr>
-				<td>
-					주문자 이름<input type="text" name="key"/>
+				<td id="searchbar">
+					<strong style="font-size: 1.20em;">주문자 이름</strong>
+					<input type="text" name="key" size="25" style="border: 1px solid black; height: 20px; margin-right: 5px;"/>
 					<input class="btn" type="button" value="검색" onclick="order_search()"/>
 				</td>
 			</tr>
@@ -53,7 +54,7 @@ function go_order_save(){
 			</tr>
 			<c:forEach items="${orderList}" var="orderVO">
 			<tr>
-				<td>
+				<td height="23" align="center" style="text-align: center; padding-right: 0px; font-weight: bold;">
 					<c:choose>
 						<c:when test="${orderVO.result == '1'}">
 							<span style="font-weight: bold; color: blue;">${orderVO.odseq}</span>

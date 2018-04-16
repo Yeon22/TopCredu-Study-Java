@@ -150,7 +150,7 @@ public class OrderDAO {
 	//주문리스트
 	public ArrayList<OrderVO> listOrder(String member_name){
 		ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-		String sql = "select * from pofol_order_view where mname like '%'||?'%' order by result, oseq desc";
+		String sql = "select * from pofol_order_view where mname like '%'||?||'%' order by result, oseq desc";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -156,23 +156,23 @@ th, td{
 	padding: 8px 2px;
 }
 
-table#productList{
-	border-collapse: collapse;
+#list td{
+	padding: 8px 5px;
+	text-align: left;
+}
+
+table#productList {
+	border-collapse: collapse; /* border 사이의 간격 없앰 */
 	border-top: 2px solid #333;
 	border-bottom: 1px solid #333;
-	width: 80%;
+	width: 80%; /* 전체 테이블 길이 설정 */
 	margin-left: 100px;
 	margin-bottom: 20px;
 }
 
-#productList td{
+#productList td{ /* 테이블의 th 와 td 마진과 패딩 지정 */
 	padding-right: 40px;
 	text-align: right;
-}
-
-#list td{
-	padding: 8px 5px;
-	text-align: left;
 }
 
 table#orderList{

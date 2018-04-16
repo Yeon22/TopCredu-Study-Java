@@ -6,7 +6,7 @@
 <article>
 	<h1>상품리스트(Product List)</h1>
 	<form name="frm" method="post">
-		<table>
+		<table style="float: right;">
 			<tr>
 				<td width="700">
 					<strong style="font-size: 1.20em; margin-right: 5px;">상품명</strong> 

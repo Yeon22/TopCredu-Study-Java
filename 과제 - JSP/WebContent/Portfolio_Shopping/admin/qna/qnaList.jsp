@@ -6,7 +6,7 @@
 <script type="text/javascript">
 function go_view(qseq){
 	var theForm = document.frm;
-	theFrom.qseq.value = qseq;
+	theForm.qseq.value = qseq;
 	theForm.action = "ShoppingServlet?command=admin_qna_detail";
 	theForm.submit();
 }
@@ -16,7 +16,7 @@ function go_view(qseq){
 	<h1>Q&amp;A 게시글 리스트(Q&amp;A List)</h1>
 	<form name="frm" method="post">
 		<input type="hidden" name="qseq"/>
-		<table id="orderList">
+		<table id="productList">
 			<tr>
 				<th>번호(답변여부)</th>
 				<th>제목</th>
@@ -32,7 +32,7 @@ function go_view(qseq){
 					</c:choose>
 				</td>
 				<td>
-					<a href="#" onclick="javascript:go_view('${qnaVO.qseq}')">${qnaVO.subject}</a>
+					<a href="#" onclick="go_view('${qnaVO.qseq}')">${qnaVO.subject}</a>
 				</td>
 				<td>${qnaVO.id}</td>
 				<td><fmt:formatDate value="${qnaVO.indate}"/></td>

@@ -15,8 +15,9 @@ function go_search(){
 	<form name="frm" method="post">
 		<table style="float: right;">
 			<tr>
-				<td>
-					회원이름<input type="text" name="key"/>
+				<td id="searchbar">
+					<strong style="font-size: 1.20em">회원이름</strong>
+					<input type="text" name="key" size="25" style="border: 1px solid black; height: 20px; margin-right: 5px;"/>
 					<input class="btn" type="button" value="검색" onclick="go_search()"/>
 				</td>
 			</tr>

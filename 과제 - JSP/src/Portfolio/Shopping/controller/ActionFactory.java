@@ -12,6 +12,9 @@ import Portfolio.Shopping.admin.AdminProductUpdateAction;
 import Portfolio.Shopping.admin.AdminProductUpdateFormAction;
 import Portfolio.Shopping.admin.AdminProductWriteAction;
 import Portfolio.Shopping.admin.AdminProductWriteFormAction;
+import Portfolio.Shopping.admin.AdminQnaDetailAction;
+import Portfolio.Shopping.admin.AdminQnaListAction;
+import Portfolio.Shopping.admin.AdminQnaResaveAction;
 import Portfolio.Shopping.controller.action.Action;
 import Portfolio.Shopping.controller.action.CartDeleteAction;
 import Portfolio.Shopping.controller.action.CartInsertAction;
@@ -130,6 +133,12 @@ public class ActionFactory {
 			action = new AdminOrderListAction();
 		} else if(command.equals("admin_order_save")) {
 			action = new AdminOrderSaveAction();
+		} else if(command.equals("admin_qna_list")) {
+			action = new AdminQnaListAction();
+		} else if(command.equals("admin_qna_detail")) {
+			action = new AdminQnaDetailAction();
+		} else if(command.equals("admin_qna_resave")) {
+			action = new AdminQnaResaveAction();
 		}
 		
 		return action;
